@@ -27,7 +27,7 @@ namespace StudentAttendanceManagement
             InitializeComponent();
 
             string windowTitle = "Student Attendance  -  Login";
-            this.Title += windowTitle;
+            this.Title = windowTitle;
         }
     }
 
