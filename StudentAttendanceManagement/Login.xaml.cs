@@ -48,6 +48,10 @@ namespace StudentAttendanceManagement
 
                         MessageBox.Show(user.RoleId + "Welcome to Admin Section", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
                         Admin admin = new Admin();
+
+                        //Set Avatar To User
+                        user.UserAvatar = "Admin Icon.png";
+
                         admin.Show();
                         //Close Login Window
                         Close();
@@ -58,6 +62,9 @@ namespace StudentAttendanceManagement
 
                         MessageBox.Show(user.RoleId + "Welcome to Secretary Section", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
 
+                        //Set Avatar To User
+                        user.UserAvatar = "Secretary Icon.png";
+
                         //Close Login Window
                         Close();
 
@@ -65,6 +72,9 @@ namespace StudentAttendanceManagement
                     case 3:
                         //Staff
                         MessageBox.Show(user.RoleId + "Welcome to Staff Section", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                        //Set Avatar To User
+                        user.UserAvatar = "Staff Icon.png";
 
                         //Close Login Window
                         Close();
@@ -78,6 +88,11 @@ namespace StudentAttendanceManagement
                         //Close Login Window
 
                         Student userStudent = new Student();
+
+                        //Set Avatar To User
+                        user.UserAvatar = "Student Icon.png";
+
+                        //Open Student Window
                         userStudent.Show();
                         Close();
 
