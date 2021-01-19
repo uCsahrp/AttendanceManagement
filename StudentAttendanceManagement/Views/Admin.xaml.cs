@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,29 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Media.TextFormatting;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace StudentAttendanceManagement
+namespace StudentAttendanceManagement.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for Admin.xaml
     /// </summary>
-    public partial class Login : Window
+    public partial class Admin : Window
     {
-        public Login()
+        public Admin()
         {
             InitializeComponent();
-
-            string windowTitle = "Student Attendance  -  Login";
-            this.Title = windowTitle;
-        }
-
-        private void MainWindow_OnKeyDown()
-        {
-
         }
     }
-
 }
