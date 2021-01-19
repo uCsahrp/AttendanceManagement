@@ -14,6 +14,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Media.TextFormatting;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using StudentAttendanceManagement.Models;
+using StudentAttendanceManagement.Views;
 
 namespace StudentAttendanceManagement
 {
@@ -30,10 +32,116 @@ namespace StudentAttendanceManagement
             this.Title = windowTitle;
         }
 
-        private void MainWindow_OnKeyDown()
-        {
 
+        #region Button Login Event ==>
+
+        private void SubmitLogin_OnClick(object sender, RoutedEventArgs e)
+        {
+            UserModel user = new UserModel();
+
+            if (user.Login(InputEmail.Text, InputPassword.Password))
+            {
+                switch (user.RoleId)
+                {
+                    case 1:
+                        //Admin
+
+                        MessageBox.Show(user.RoleId + "Welcome to Admin Section", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+                        Admin admin = new Admin();
+                        admin.Show();
+                        //Close Login Window
+                        Close();
+
+                        break;
+                    case 2:
+                        //Secretary
+
+                        MessageBox.Show(user.RoleId + "Welcome to Secretary Section", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                        //Close Login Window
+                        Close();
+
+                        break;
+                    case 3:
+                        //Staff
+                        MessageBox.Show(user.RoleId + "Welcome to Staff Section", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                        //Close Login Window
+                        Close();
+
+                        break;
+                    case 4:
+                        //Student
+
+                        MessageBox.Show(user.RoleId + "Welcome to Student Section", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                        //Close Login Window
+
+                        Student userStudent = new Student();
+                        userStudent.Show();
+                        Close();
+
+                        break;
+                }
+            }
+            else
+            {
+                ErrorMsg.Text = user.error;
+                InputPassword.Password = "";
+                InputEmail.Focus();
+            }
         }
+
+        #endregion
+
+        #region EventMouse Down to Drag Window ==>
+
+        private void Border_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                DragMove();
+            }
+            catch
+            {
+            }
+            //
+        }
+
+        #endregion
+
+        #region Button Exit Event ==>
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
+
+        #endregion
+
+
+        #region Event Input mail TextChange To Delete Error Message ==>
+
+        private void InputEmail_OnTextChanged(object sender, TextChangedEventArgs e)
+        {
+            ErrorMsg.Text = "";
+        }
+
+        #endregion
+
+
+        #region Event For Event KeyDown 'Enter' ==>
+
+        private void MainWindow_OnKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                SubmitLogin_OnClick(sender, e);
+            }
+        }
+
+        #endregion
+
     }
 
 }
