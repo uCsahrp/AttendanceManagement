@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StudentAttendanceManagement.Models
+namespace AttendanceManagement.Models
 {
     public abstract class User
     {

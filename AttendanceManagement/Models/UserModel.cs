@@ -5,8 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using AttendanceManagement.Models;
 
-namespace StudentAttendanceManagement.Models
+namespace AttendanceManagement.Controllers
 {
     class UserModel : User
     {
@@ -33,7 +34,7 @@ namespace StudentAttendanceManagement.Models
             else
             {
                 //Open Connection
-                Adonet.connect();
+                Adonet.Connect();
 
                 //Check for user from DB
                 Adonet.Adapter = new SqlDataAdapter($"Select * from Users Where Email ='{email}' and Password ='{password}'", Adonet.Cnx);
@@ -42,7 +43,7 @@ namespace StudentAttendanceManagement.Models
                 Adonet.Adapter.Fill(Adonet.DataSet, "User");
 
                 //Close Cnx
-                Adonet.Cnx.Close();
+                Adonet.Disconnect();
 
                 //If their is a result
                 if (Adonet.DataSet.Tables["User"].Rows.Count > 0)

@@ -6,11 +6,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StudentAttendanceManagement.Models
+namespace AttendanceManagement.Models
 {
     class Ado
     {
-
 
 
         // Declaration des objets sql
@@ -40,23 +39,23 @@ namespace StudentAttendanceManagement.Models
 
 
         // declaration of connect 
-        public void connect()
+        public void Connect()
         {
             if (Cnx.State == ConnectionState.Closed || Cnx.State == ConnectionState.Broken)
             {
-                Cnx.ConnectionString = "Data Source=ADAM-DELL;Initial Catalog=Login;Integrated Security=True";
+                Cnx.ConnectionString = "Data Source=ADAM-DELL;Initial Catalog=AttendanceManagement;Integrated Security=True";
                 Cnx.Open();
             }
         }
 
         // declaration de la methode deconnecter
-        public void disconnect()
+        public void Disconnect()
         {
             if (Cnx.State == ConnectionState.Open)
             {
                 Cnx.Close();
             }
         }
-    }
 
+    }
 }

@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace StudentAttendanceManagement.Views
+namespace AttendanceManagement.Views
 {
     /// <summary>
-    /// Interaction logic for Student.xaml
+    /// Interaction logic for Admin.xaml
     /// </summary>
-    public partial class Student : Window
+    public partial class Admin : Window
     {
-        public Student()
+        public Admin()
         {
             InitializeComponent();
         }
