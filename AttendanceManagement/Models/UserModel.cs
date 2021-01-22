@@ -95,7 +95,7 @@ namespace AttendanceManagement.Controllers
 
         public override void Logout()
         {
-            throw new NotImplementedException();
+           
         }
 
         #endregion

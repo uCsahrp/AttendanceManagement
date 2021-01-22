@@ -15,19 +15,13 @@ using System.Windows.Shapes;
 namespace AttendanceManagement.Views
 {
     /// <summary>
-    /// Interaction logic for Admin.xaml
+    /// Logique d'interaction pour AdminPopup.xaml
     /// </summary>
-    public partial class Admin : Window
+    public partial class AdminPopup : Window
     {
-        public Admin()
+        public AdminPopup()
         {
             InitializeComponent();
-        }
-
-        private void AddNewUser_Click(object sender, RoutedEventArgs e)
-        {
-            AdminPopup popup = new AdminPopup();
-            popup.Show();
         }
     }
 }
