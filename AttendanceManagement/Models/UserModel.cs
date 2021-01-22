@@ -12,8 +12,10 @@ namespace AttendanceManagement.Controllers
     class UserModel : User
     {
 
+
         //New Ado For Connection
         Ado Adonet = new Ado();
+
 
         #region Methode Login
 

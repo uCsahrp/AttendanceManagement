@@ -5,10 +5,55 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AttendanceManagement.Views"
         mc:Ignorable="d"
-        Title="Admin" Height="450" Width="800">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="14"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        WindowStyle="ThreeDBorderWindow"
+        ResizeMode="NoResize"
+        BorderBrush="#007bff"
+        BorderThickness="1"
+        Title="Admin" Height="450" Width="800"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        >
     <Grid>
-        <StackPanel VerticalAlignment="Center">
-            <TextBlock TextAlignment="Center" FontSize="33"  Text="Welcome to Admin Page !"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+            <ColumnDefinition Width="1.2*"></ColumnDefinition>
+
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="6*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <!--Side Panel-->
+        <StackPanel Grid.Row="0" Grid.RowSpan="2" Grid.Column="0" Orientation="Vertical" Background="#2A2D35">
+            <!--<Image Source="" Width="80" />-->
+            <TextBlock Text="Logo" TextAlignment="Center" Margin="5" FontWeight="SemiBold" FontSize="30"/>
+            <Border Padding="20"></Border>
+
+            <!--Dashborad-->
+            <Button Content="Dashboard" Style="{DynamicResource MaterialDesignFlatButton}" BorderThickness="0" />
+
+            <Border Padding="8"></Border>
+
+            <!--Add User-->
+            <Button Content="Add New User" Style="{DynamicResource MaterialDesignFlatButton}" BorderThickness="0" />
+        </StackPanel>
+
+        <!--///////////////-->
+        <Border Grid.Column="1" Background="#2A2D35"></Border>
+        <StackPanel Grid.Row="0" Grid.Column="2" Background="#2A2D35" Orientation="Horizontal">
+            <materialDesign:PackIcon HorizontalAlignment="Right" Width="15" Height="15" VerticalAlignment="Center" Kind="Notifications" Margin="5"/>
+
+            <Button Style="{DynamicResource MaterialDesignFlatAccentButton}" Foreground="White" HorizontalAlignment="Right" Content="Admin Profile"/>
+
         </StackPanel>
     </Grid>
 </Window>
