@@ -30,11 +30,13 @@ namespace AttendanceManagement.Models
             Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             Match match = regex.Match(email);
             string avatar;
-
+            roleId++;
+            classId++;
             switch (roleId)
             {
                 case 1:
                     avatar = "Avatars/Admin.png";
+
                     break;
                 case 2:
                     avatar = "Avatars/Secretary.png";
@@ -80,20 +82,26 @@ namespace AttendanceManagement.Models
                 // define INSERT query with parameters
                 string query = "INSERT INTO Users ([Full Name], [Email], [Password], [Avatar], [Role Id], [Class Id]) " +
                                "VALUES (@fullName, @email, @password, @avatar, @roleId, @classId) ";
-                ado.Adapter = new SqlDataAdapter("INSERT INTO Users ([Full Name], [Email], [Password], [Avatar], [Role Id], [Class Id]) " +
-                                                 "VALUES (@fullName, @email, @password, @avatar, @roleId, @clsssId) ", ado.Cnx);
+
+                ado.Adapter = new SqlDataAdapter(query, ado.Cnx);
                 try
                 {
                     using (var cmd = ado.Cmd = new SqlCommand(query, ado.Cnx))
                     {
-
                         // define parameters and their values
-                        cmd.Parameters.Add("@fullName", SqlDbType.VarChar, 50).Value = fullName;
-                        cmd.Parameters.Add("@email", SqlDbType.VarChar, 50).Value = email;
-                        cmd.Parameters.Add("@password", SqlDbType.VarChar, 50).Value = password;
-                        cmd.Parameters.Add("@avatar", SqlDbType.VarChar, 50).Value = avatar;
-                        cmd.Parameters.Add("@roleId", SqlDbType.Int).Value = roleId + 1;
-                        cmd.Parameters.Add("@classId", SqlDbType.VarChar, 50).Value = classId + 1;
+                        cmd.Parameters.Add("@fullName", SqlDbType.VarChar, 200).Value = fullName;
+                        cmd.Parameters.Add("@email", SqlDbType.VarChar, 100).Value = email;
+                        cmd.Parameters.Add("@password", SqlDbType.VarChar, 250).Value = password;
+                        cmd.Parameters.Add("@avatar", SqlDbType.VarChar, 250).Value = avatar;
+                        cmd.Parameters.Add("@roleId", SqlDbType.Int).Value = roleId;
+                        if (roleId > 2)
+                        {
+                            cmd.Parameters.Add("@classId", SqlDbType.VarChar, 50).Value = classId;
+                        }
+                        else
+                        {
+                            cmd.Parameters.Add("@classId", SqlDbType.VarChar, 50).Value = null;
+                        }
 
                         //Open Connection
                         ado.Connect();
