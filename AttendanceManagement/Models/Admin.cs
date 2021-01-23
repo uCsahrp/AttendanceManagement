@@ -7,6 +7,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using AttendanceManagement.Views;
 
 namespace AttendanceManagement.Models
@@ -15,10 +16,11 @@ namespace AttendanceManagement.Models
     {
         private Ado ado = new Ado();
 
-        void GetUsers()
+        public void GetUsers(DataGrid usertable)
         {
             ado.Adapter = new SqlDataAdapter("Select * From Users;", ado.Cnx);
             ado.Adapter.Fill(ado.DataSet, "Users");
+            usertable.ItemsSource = ado.DataSet.Tables["users"].DefaultView;
 
         }
 
@@ -118,6 +120,20 @@ namespace AttendanceManagement.Models
 
             }
         }
+
+        #endregion
+
+
+        #region Edit USERS
+
+        void EditUsers()
+        {
+
+
+        }
+
+
+
 
         #endregion
     }

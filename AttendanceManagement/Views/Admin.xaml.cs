@@ -19,15 +19,24 @@ namespace AttendanceManagement.Views
     /// </summary>
     public partial class Admin : Window
     {
+        Models.Admin admin = new Models.Admin();
         public Admin()
         {
             InitializeComponent();
+            admin.GetUsers(userstable);
         }
 
         private void AddNewUser_Click(object sender, RoutedEventArgs e)
         {
             AdminPopup popup = new AdminPopup();
             popup.Show();
+        }
+
+        private void userstable_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            EditPopup editPop = new EditPopup();
+            editPop.Show();
+            
         }
     }
 }

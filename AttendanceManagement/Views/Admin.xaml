@@ -60,7 +60,7 @@
                         <TextBox Height="31" Width="150" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Search" Background="#FF707070" BorderBrush="{x:Null}" Foreground="White" Margin="0,0,214,0"/>
                     </Grid>
 
-                    <DataGrid x:Name="userstable" Margin="0,48,0,0">
+                    <DataGrid x:Name="userstable" Margin="0,48,0,0" MouseDoubleClick="userstable_MouseDoubleClick">
                         <DataGrid.Columns>
 
                         </DataGrid.Columns>
