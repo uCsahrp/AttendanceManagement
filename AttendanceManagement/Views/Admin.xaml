@@ -15,10 +15,10 @@
         BorderBrush="#007bff"
         BorderThickness="1"
         Title="Admin" 
-         Height="800" Width="1280" WindowStartupLocation="CenterScreen"
+        Height="800" Width="1280" WindowStartupLocation="CenterScreen"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
-        FontFamily="{DynamicResource MaterialDesignFont}"
+        FontFamily="Roboto"
         >
     <Grid Background="#FF2A2D35">
         <Grid.ColumnDefinitions>
@@ -41,10 +41,12 @@
         </StackPanel>
         <StackPanel Grid.Row="0" Grid.RowSpan="2">
 
-            <TextBlock  HorizontalAlignment="Left" Foreground="White" Text="attendance." Margin="25,20,0,0" FontSize="21"
-                        FontFamily="Arial Rounded MT Bold" VerticalAlignment="Center"/>
-            <Button x:Name="btnnewuser" Foreground="White" FontSize="24" FontFamily="Roboto" Width="230" Background="#FF03DAC5" Height="50" BorderBrush="{x:Null}" HorizontalAlignment="Left" HorizontalContentAlignment="Left" Margin="10,140,0,5">Create New User</Button>
-            <Button x:Name="btndash" Margin="10,40,0,0"  Foreground="White" FontSize="24" FontFamily="Roboto" Width="230" Background="{x:Null}" Height="50" BorderBrush="{x:Null}" HorizontalAlignment="Left" HorizontalContentAlignment="Left">Dashboard</Button>
+            <TextBlock  HorizontalAlignment="Center" Text="attendance." Margin="0,20,0,0" FontSize="21"
+                        TextAlignment="Center"/>
+
+            <Border Padding="50"></Border>
+            <Button x:Name="btnnewuser" Foreground="White" FontSize="24"  Background="#FF03DAC5" Height="50" BorderBrush="{x:Null}" HorizontalContentAlignment="Left">Create New User</Button>
+            <Button x:Name="btndash" Margin="0,40,0,0"  Foreground="White" FontSize="24" FontFamily="Roboto"  Background="{x:Null}" Height="50" BorderBrush="{x:Null}" HorizontalContentAlignment="Left">Dashboard</Button>
 
         </StackPanel>
         <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Background="#353740" >
