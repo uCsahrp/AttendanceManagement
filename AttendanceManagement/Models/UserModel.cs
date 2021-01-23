@@ -21,6 +21,9 @@ namespace AttendanceManagement.Views
 
         public override bool Login(string email, string password)
         {
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            Match match = regex.Match(email);
+
             //Check if Email Entered
             if (email.Length == 0)
             {
@@ -28,7 +31,8 @@ namespace AttendanceManagement.Views
                 return false;
             }
             //Check if it's a valid email
-            else if (IsValidEmail(email))
+
+            else if (!match.Success)
             {
                 error = "Please Enter a valid email address.";
                 return false;
@@ -71,20 +75,6 @@ namespace AttendanceManagement.Views
                     return false;
                 }
             }
-        }
-
-        #endregion
-
-
-        #region Helper To Check if it's a valid email
-
-        public bool IsValidEmail(string email)
-        {
-            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-            if (!regex.IsMatch(email))
-                return true;
-            else
-                return false;
         }
 
         #endregion

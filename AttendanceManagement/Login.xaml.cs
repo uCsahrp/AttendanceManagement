@@ -131,7 +131,10 @@ namespace AttendanceManagement
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            Application.Current.Shutdown();
+            MainWindow main = new MainWindow();
+            main.Show();
+            Close();
+
         }
 
         #endregion
