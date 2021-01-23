@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AttendanceManagement.Models;
 
-namespace AttendanceManagement.Controllers
+namespace AttendanceManagement.Views
 {
     class UserModel : User
     {
@@ -62,6 +62,7 @@ namespace AttendanceManagement.Controllers
                     {
                         ClassId = Convert.ToInt32(Adonet.DataSet.Tables["User"].Rows[0][6].ToString().Trim());
                     }
+
                     return true;
                 }
                 else
@@ -79,9 +80,7 @@ namespace AttendanceManagement.Controllers
 
         public bool IsValidEmail(string email)
         {
-            Regex regex = new Regex(@"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
-                                    + "@"
-                                    + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$");
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             if (!regex.IsMatch(email))
                 return true;
             else
@@ -95,7 +94,7 @@ namespace AttendanceManagement.Controllers
 
         public override void Logout()
         {
-           
+
         }
 
         #endregion

@@ -1,90 +1,76 @@
 ﻿<Window x:Class="AttendanceManagement.Views.AdminPopup"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:AttendanceManagement.Views"
         mc:Ignorable="d"
-        Title="AdminPopup" Width="593" Height="681" WindowStyle="None" WindowStartupLocation="CenterScreen">
-    <Grid Width="593" Height="681">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="60"/>
-            <ColumnDefinition Width="236.5"/>
-            <ColumnDefinition Width="236.5" />
-            <ColumnDefinition Width="60"/>
+        Title="AdminPopup" Width="593" Height="681" WindowStyle="None" WindowStartupLocation="CenterScreen"
+        FontFamily="Roboto"
+        Loaded="AdminPopup_OnLoaded">
+    <Grid>
 
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition />
-        </Grid.RowDefinitions>
 
-        <StackPanel Background="#FF353740" Grid.ColumnSpan="4" Grid.Column="0" Grid.RowSpan="2">
+        <StackPanel Background="#FF353740" >
             <!--<TextBlock Foreground="White" FontSize="14" HorizontalAlignment="Right" Margin="0,9,21,0" >Close</TextBlock>-->
-   
-            <TextBlock FontSize="24" Margin="35,12,21,0" Foreground="White" Width="488" Padding="0,6,0,0"><Run Text="Create New User"/></TextBlock>
-            
-            
-            <StackPanel Grid.Column="1" Grid.ColumnSpan="3" Orientation="Horizontal" Width="472" Margin="0,58,0,0">
 
-                <Rectangle Width="80" Height="80" Margin="0,0,59,0">
-                    <Rectangle.Fill>
-                        <ImageBrush/>
-                    </Rectangle.Fill>
-                </Rectangle>
+            <TextBlock FontSize="24" Margin="0 25" Foreground="White" FontWeight="SemiBold" Width="488" Text="Create New User" TextAlignment="Center"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 45 0 0" >
+
+                <Border Width="80" Height="80" BorderBrush="Aqua" BorderThickness="1" Margin="0,0,50,0" >
+                    <Image />
+                </Border>
                 <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <StackPanel Orientation="Horizontal">
-                        <Button Background="#CBAEFF" Height="29" Width="117" Padding="5,6" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center">Upload Picture</Button>
-                        <Button Background="#E9D6FF" Width="67" Height="29" Margin="23,0,0,0" Padding="5,4">Cancel</Button>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button Name="BtnUploadImg" Background="#CBAEFF" Height="29" Width="117" Padding="5,6" HorizontalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center">Upload Picture</Button>
+                        <Button Name="BtnCancelUpload" Background="#E9D6FF" Width="67" Height="29" Margin="23,0,0,0" Padding="5,4">Cancel</Button>
                     </StackPanel>
-                    <TextBlock Foreground="White" FontSize="11" Padding="0,4,0,0" UseLayoutRounding="True">
+                    <TextBlock Foreground="White" FontSize="11" Padding="0,8,0,0" UseLayoutRounding="True">
                             Image Should be at least 300 * 300 in PNG or JPGE
                     </TextBlock>
                 </StackPanel>
             </StackPanel>
+
             <StackPanel Orientation="Horizontal"  Width="474" Margin="0,40,0,0">
-                <StackPanel Margin="3,0,0,0" >
-                    <TextBlock Foreground="White" FontSize="11" FontFamily="Roboto">FisrtName</TextBlock>
-                    <TextBox Width="230" Style="{DynamicResource MaterialDesignTextBox}" Background="#FF3B3E46" BorderBrush="{x:Null}" Foreground="White"></TextBox>
+                <StackPanel Margin="3,0,0,0">
+                    <TextBlock Foreground="White" FontSize="11" FontFamily="Roboto" Margin="0 0 0 5" Text="Full name"/>
+                    <TextBox Name="FullName" Width="230" Style="{DynamicResource MaterialDesignTextBox}" Background="#FF3B3E46" BorderBrush="{x:Null}" Foreground="White"></TextBox>
                 </StackPanel>
-                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="9,0,0,0" >
-                    <TextBlock Foreground="White" FontSize="11" FontFamily="Roboto">LastName</TextBlock>
-                    <TextBox Background="#FF3B3E46" Width="230" Margin="0" BorderBrush="{x:Null}" Foreground="White"></TextBox>
+                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="9,0,0,0">
+                    <TextBlock  Foreground="White" FontSize="11" FontFamily="Roboto" Margin="0 0 0 5" Text="Email"/>
+                    <TextBox Name="UserMail" Background="#FF3B3E46" Width="230" Margin="0" BorderBrush="{x:Null}" Foreground="White"></TextBox>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal"  Width="474" Margin="0,40,0,0">
-                <StackPanel Margin="3,0,0,0" >
-                    <TextBlock Foreground="White" FontSize="11" FontFamily="Roboto">UserName</TextBlock>
+                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" >
+                    <TextBlock Foreground="White" FontSize="11" FontFamily="Roboto" Margin="0 0 0 5">Password</TextBlock>
+                    <PasswordBox Name="UserPassword" Background="#FF3B3E46"  Width="230" BorderBrush="{x:Null}" Foreground="White" />
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="9,0,0,0">
+                    <TextBlock Foreground="White" FontSize="11" FontFamily="Roboto" Margin="0 0 0 5">Confirme Password</TextBlock>
+                    <PasswordBox Name="UserPassword2" Background="#FF3B3E46"  Width="230" BorderBrush="{x:Null}" Foreground="White" />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"  Width="474" Margin="0,40,0,0">
+                <StackPanel Margin="3,0,0,0">
+                    <TextBlock Foreground="White" FontSize="11" FontFamily="Roboto" Text="Role" Margin="0 0 0 5"/>
+
+                    <ComboBox Name="UserRole" Width="230"  Style="{DynamicResource MaterialDesignComboBox}" Foreground="White"></ComboBox>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="9,0,0,0">
+                    <TextBlock Foreground="White" FontSize="11"  Margin="0 0 0 5" Text="Class"/>
+                    <ComboBox Style="{DynamicResource MaterialDesignComboBox}"  Margin="0 0 0 5" Width="230" Name="ClassesBox" />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal"   HorizontalAlignment="Center" Margin="0,40,0,0">
+                <StackPanel Margin="3,0,0,0">
+                    <TextBlock Foreground="White" FontSize="11" FontFamily="Roboto" Margin="0 0 0 5">Anné Scollaire</TextBlock>
                     <TextBox Width="230" Background="#FF3B3E46" BorderBrush="{x:Null}" Foreground="White"></TextBox>
                 </StackPanel>
-                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="9,0,0,0" >
-                    <TextBlock Foreground="White" FontSize="11" FontFamily="Roboto">Password</TextBlock>
-                    <TextBox Background="#FF3B3E46"  Width="230" Margin="0" BorderBrush="{x:Null}" Foreground="White"></TextBox>
-                </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal"  Width="474" Margin="0,40,0,0">
-                <StackPanel Margin="3,0,0,0" >
-                    <TextBlock Foreground="White" FontSize="11" FontFamily="Roboto">Role</TextBlock>
-                    <TextBox Width="230" Background="#FF3B3E46" BorderBrush="{x:Null}" Foreground="White"></TextBox>
-                </StackPanel>
-                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="9,0,0,0" >
-                    <TextBlock Foreground="White" FontSize="11" FontFamily="Roboto">Classe</TextBlock>
-                    <TextBox Background="#FF3B3E46"  Width="230" Margin="0" BorderBrush="{x:Null}" Foreground="White"></TextBox>
-                </StackPanel>
+            <StackPanel Orientation="Horizontal"  Margin="0,40,0,0" HorizontalAlignment="Center" >
+                <Button Name="BtnAddSubmit" Click="BtnAddSubmit_OnClick" Background="#FF03DAC5" Width="64" Foreground="White" Content="Add"/>
             </StackPanel>
-            <StackPanel Orientation="Horizontal"  Width="474" Margin="0,40,0,0">
-                <StackPanel Margin="3,0,0,0" >
-                    <TextBlock Foreground="White" FontSize="11" FontFamily="Roboto">Anné Scollaire</TextBlock>
-                    <TextBox Width="230" Background="#FF3B3E46" BorderBrush="{x:Null}" Foreground="White"></TextBox>
-                </StackPanel>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal"  Width="474" Margin="0,40,0,0">
-                <Button Background="#FF03DAC5" Width="64" Foreground="White" HorizontalAlignment="Center">Save</Button>
-            </StackPanel>
-
-
-
         </StackPanel>
-
     </Grid>
 </Window>
