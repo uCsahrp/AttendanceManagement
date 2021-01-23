@@ -68,7 +68,7 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal"  Margin="0,40,0,0" HorizontalAlignment="Center" >
-                <Button Name="BtnAddSubmit" Background="#FF03DAC5" Width="64" Foreground="White" Content="Save"/>
+                <Button Name="BtnAddSubmit" Background="#FF03DAC5" Width="64" Foreground="White" Content="Save" Loaded="BtnAddSubmit_Loaded"/>
             </StackPanel>
         </StackPanel>
     </Grid>

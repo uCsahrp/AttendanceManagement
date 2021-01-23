@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,9 @@ namespace AttendanceManagement.Views
     /// </summary>
     public partial class Admin : Window
     {
+
         Models.Admin admin = new Models.Admin();
+         public static DataRowView items;
         public Admin()
         {
             InitializeComponent();
@@ -34,6 +37,8 @@ namespace AttendanceManagement.Views
 
         private void userstable_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            
+            items = userstable.SelectedItem as DataRowView;
             EditPopup editPop = new EditPopup();
             editPop.Show();
             

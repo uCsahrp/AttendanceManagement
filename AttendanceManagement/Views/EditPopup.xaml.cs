@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +20,21 @@ namespace AttendanceManagement.Views
     /// </summary>
     public partial class EditPopup : Window
     {
+        Models.Admin admin = new Models.Admin();
         public EditPopup()
         {
             InitializeComponent();
+        }
+
+        private void BtnAddSubmit_Loaded(object sender, RoutedEventArgs e)
+        {
+            var item = Admin.items;
+            if (item != null)
+            {
+                int id = int.Parse(item.Row["User Id"].ToString());
+                admin.getusersedit(id, FullName, UserMail, UserPassword, UserPassword2) ;
+               
+            }
         }
     }
 }

@@ -20,9 +20,23 @@ namespace AttendanceManagement.Models
         {
             ado.Adapter = new SqlDataAdapter("Select * From Users;", ado.Cnx);
             ado.Adapter.Fill(ado.DataSet, "Users");
-            usertable.ItemsSource = ado.DataSet.Tables["users"].DefaultView;
+            usertable.ItemsSource = ado.DataSet.Tables["Users"].DefaultView;
 
         }
+
+        #region get users for edit
+
+        public void getusersedit(int id, TextBox FullName, TextBox UseUserMail, PasswordBox UserPassword2, PasswordBox UserPassword)
+        {
+            //ado.Adapter = new SqlDataAdapter("Select * From Users WHERE id =" + id, ado.Cnx);
+            ado.Row = ado.DataSet.Tables["Users"].Rows.Find(id);
+            FullName.Text = ado.Row[1].ToString();
+            UseUserMail.Text = ado.Row[2].ToString();
+            UserPassword2.Password = ado.Row[3].ToString();
+            UserPassword.Password = ado.Row[4].ToString();
+
+        }
+        #endregion
 
         #region Add New User
 
@@ -121,6 +135,7 @@ namespace AttendanceManagement.Models
         void EditUsers()
         {
 
+           
 
         }
 
