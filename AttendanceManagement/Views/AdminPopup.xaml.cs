@@ -70,8 +70,15 @@ namespace AttendanceManagement.Views
             }));
         }
 
+
         #endregion
 
-
+        private void UserRole_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (((ComboBox)sender).SelectedIndex > 1)
+            {
+                ClassCombo.Visibility = Visibility.Visible;
+            }
+        }
     }
 }

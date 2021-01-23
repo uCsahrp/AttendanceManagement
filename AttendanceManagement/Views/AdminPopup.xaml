@@ -55,9 +55,9 @@
                 <StackPanel Margin="3,0,0,0">
                     <TextBlock Foreground="White" FontSize="11" FontFamily="Roboto" Text="Role" Margin="0 0 0 5"/>
 
-                    <ComboBox Name="UserRole" Width="230"  Style="{DynamicResource MaterialDesignComboBox}" Foreground="White"></ComboBox>
+                    <ComboBox Name="UserRole" Width="230"  Style="{DynamicResource MaterialDesignComboBox}" Foreground="White" SelectionChanged="UserRole_SelectionChanged"></ComboBox>
                 </StackPanel>
-                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="9,0,0,0">
+                <StackPanel x:Name="ClassCombo" Visibility="Hidden" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="9,0,0,0">
                     <TextBlock Foreground="White" FontSize="11"  Margin="0 0 0 5" Text="Class"/>
                     <ComboBox Style="{DynamicResource MaterialDesignComboBox}"  Margin="0 0 0 5" Width="230" Name="ClassesBox" />
                 </StackPanel>
