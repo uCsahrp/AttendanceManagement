@@ -145,8 +145,97 @@ namespace AttendanceManagement.Models
 
         #region Edit USERS
 
-        void EditUsers()
+        public bool  EditUsers(int id, string fullName, string email, string password, string confirmPass, int classId, int roleId)
         {
+
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            Match match = regex.Match(email);
+            var cId = classId + 1;
+            var rId = roleId + 1;
+
+
+            //Confirm pass must equal password.
+            if (password != confirmPass)
+            {
+                error = "Passwords do not match";
+                //MessageBox.Show("Passwords do not match");
+                return false;
+            }
+            //Password must be at least 8 characters long
+            else if (password.Length < 6)
+            {
+                error = "Password must be at least 6 characters long";
+                //MessageBox.Show("Password must be at least 6 characters long");
+                return false;
+            }
+            //If email is NOT valid
+            else if (!match.Success)
+            {
+                error = "Invalid Email";
+                //MessageBox.Show("Invalid Email");
+                return false;
+            }
+            //If there is no username
+            else if (fullName == null)
+            {
+                error = "User Must have a Name";
+                //MessageBox.Show("User Must have a Name");
+                return false;
+            }
+            else if (rId == 0)
+            {
+                error = "User must have a Role";
+                return false;
+            }
+
+            else
+            {
+                string query;
+                if (rId > 2)
+                {
+                    // define Update query with parameters
+                    query = $"UPDATE Users set [Full Name] = @fullName,[Email] = @email, [Password]=@password,[Role Id]=@roleId, [Class Id]=@classId WHERE [User Id]=@id";
+                }
+                else
+                {
+                    // define INSERT query with parameters
+                    query = $"UPDATE Users set [Full Name] = @fullName,[Email] = @email, [Password]=@password,[Role Id]=@roleId WHERE [User Id]=@id";
+                                                  
+                }
+
+
+                ado.Adapter = new SqlDataAdapter(query, ado.Cnx);
+                try
+                {
+                    using (var cmd = ado.Cmd = new SqlCommand(query, ado.Cnx))
+                    {
+                        // define parameters and their values
+                        cmd.Parameters.Add("@id", SqlDbType.Int, 0).Value = id;
+                        cmd.Parameters.Add("@fullName", SqlDbType.VarChar, 200).Value = fullName;
+                        cmd.Parameters.Add("@email", SqlDbType.VarChar, 100).Value = email;
+                        cmd.Parameters.Add("@password", SqlDbType.VarChar, 250).Value = password;
+                        cmd.Parameters.Add("@roleId", SqlDbType.Int).Value = rId;
+                        if (rId > 2) cmd.Parameters.Add("@classId", SqlDbType.Int).Value = cId;
+
+
+                        //Open Connection
+                        ado.Connect();
+                        cmd.ExecuteNonQuery();
+                        ado.Disconnect();
+                        error = "User updated Successfully.";
+                        return true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex + string.Empty);
+                    throw;
+                }
+
+            }
+
+
+
 
 
 

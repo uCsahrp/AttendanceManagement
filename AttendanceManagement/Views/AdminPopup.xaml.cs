@@ -46,9 +46,6 @@ namespace AttendanceManagement.Views
         }
 
 
-
-
-
         #region Add User
 
         private void BtnAddSubmit_OnClick(object sender, RoutedEventArgs e)
