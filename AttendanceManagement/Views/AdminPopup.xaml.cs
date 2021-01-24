@@ -53,21 +53,28 @@ namespace AttendanceManagement.Views
 
         private void BtnAddSubmit_OnClick(object sender, RoutedEventArgs e)
         {
-            Dispatcher.InvokeAsync((() =>
+            Dispatcher.Invoke(() =>
             {
 
                 if (admin.AddUser(FullName.Text, UserMail.Text, UserPassword.Password, UserPassword2.Password, UserRole.SelectedIndex
                     , ClassesBox.SelectedIndex))
                 {
+                    Message.Text = admin.error;
                     FullName.Text = "";
                     UserMail.Text = "";
                     UserRole.SelectedIndex = -1;
                     ClassesBox.SelectedIndex = -1;
+                    UserPassword.Password = "";
                     UserPassword2.Password = "";
+                }
+                else
+                {
+                    Message.Text = admin.error;
+
                 }
 
 
-            }));
+            });
         }
 
 

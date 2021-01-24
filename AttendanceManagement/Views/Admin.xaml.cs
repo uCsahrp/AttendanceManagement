@@ -22,7 +22,9 @@ namespace AttendanceManagement.Views
     {
 
         Models.Admin admin = new Models.Admin();
-         public static DataRowView items;
+        public static DataRowView items;
+        int IdSelectedUser = 0;
+
         public Admin()
         {
             InitializeComponent();
@@ -32,16 +34,38 @@ namespace AttendanceManagement.Views
         private void AddNewUser_Click(object sender, RoutedEventArgs e)
         {
             AdminPopup popup = new AdminPopup();
+
             popup.Show();
         }
 
         private void userstable_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            
+
             items = userstable.SelectedItem as DataRowView;
             EditPopup editPop = new EditPopup();
             editPop.Show();
-            
+
+        }
+
+        private void userstable_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataRowView row = userstable.SelectedItem as DataRowView;
+            IdSelectedUser = int.Parse(row.Row[0].ToString());
+        }
+
+        private void DelUser_Click(object sender, RoutedEventArgs e)
+        {
+
+
+            Dispatcher.Invoke(() =>
+            {
+                admin.DeleteUser(IdSelectedUser);
+                userstable.Items.Clear();
+                admin.GetUsers(userstable);
+                Message.Text = admin.error;
+            });
+
+
         }
     }
 }

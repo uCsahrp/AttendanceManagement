@@ -14,7 +14,7 @@
             <!--<TextBlock Foreground="White" FontSize="14" HorizontalAlignment="Right" Margin="0,9,21,0" >Close</TextBlock>-->
 
             <TextBlock FontSize="24" Margin="0 25" Foreground="White" FontWeight="SemiBold" Width="488" Text="Create New User" TextAlignment="Center"/>
-
+            <TextBlock x:Name="Message" TextAlignment="Center" Style="{DynamicResource MaterialDesignBody1TextBlock}" Foreground="#007bff" />
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 45 0 0" >
 
                 <Border Width="80" Height="80" BorderBrush="Aqua" BorderThickness="1" Margin="0,0,50,0" >
