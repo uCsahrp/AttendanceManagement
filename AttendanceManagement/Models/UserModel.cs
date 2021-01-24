@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using AttendanceManagement.Models;
-
 namespace AttendanceManagement.Views
 {
     class UserModel : User
@@ -99,5 +94,16 @@ namespace AttendanceManagement.Views
         #endregion
 
 
+        #region Search
+        public void Search(int UserId)
+        {
+
+        }
+
+        public void Search(string UserName)
+        {
+
+        }
+        #endregion
     }
 }

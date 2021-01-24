@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,11 +30,11 @@ namespace AttendanceManagement.Views
 
         private void AdminPopup_OnLoaded(object sender, RoutedEventArgs e)
         {
-            Dispatcher.InvokeAsync((() =>
+            Dispatcher.Invoke((() =>
             {
                 Helper.GetRoles(UserRole);
             }));
-            Dispatcher.InvokeAsync((() =>
+            Dispatcher.Invoke((() =>
             {
                 Helper.GetClasses(ClassesBox);
 
@@ -63,12 +64,16 @@ namespace AttendanceManagement.Views
                     ClassesBox.SelectedIndex = -1;
                     UserPassword.Password = "";
                     UserPassword2.Password = "";
+                    Admin adminV = new Admin();
+                    adminV.Show();
+                    this.Close();
                 }
                 else
                 {
                     Message.Text = admin.error;
 
                 }
+                Thread.Sleep(1000);
 
 
             });

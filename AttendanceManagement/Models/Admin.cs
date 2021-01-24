@@ -23,6 +23,8 @@ namespace AttendanceManagement.Models
             ado.Adapter = new SqlDataAdapter("Select * From Users;", ado.Cnx);
             ado.Adapter.Fill(ado.DataSet, "Users");
             ado.Disconnect();
+            //usertable.Items.Clear();
+
             usertable.ItemsSource = ado.DataSet.Tables["Users"].DefaultView;
         }
 
@@ -128,6 +130,7 @@ namespace AttendanceManagement.Models
                         cmd.ExecuteNonQuery();
                         ado.Disconnect();
                         error = "User Added Successfully.";
+
                         return true;
                     }
                 }
