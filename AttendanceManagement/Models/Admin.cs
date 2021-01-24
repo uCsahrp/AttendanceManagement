@@ -148,7 +148,7 @@ namespace AttendanceManagement.Models
 
         #region Edit USERS
 
-        public bool  EditUsers(int id, string fullName, string email, string password, string confirmPass, int classId, int roleId)
+        public bool  EditUsers(int id, string fullName, string email, string password, string confirmPass, int roleId, int classId)
         {
 
             Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");

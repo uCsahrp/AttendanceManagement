@@ -45,7 +45,7 @@ namespace AttendanceManagement.Views
             AdminPopup popup = new AdminPopup();
 
             popup.Show();
-            this.Close();
+            //this.Close();
 
         }
 
