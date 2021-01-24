@@ -7,8 +7,6 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="450" MinWidth="400"
 
-       
-
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
@@ -36,7 +34,7 @@
             </StackPanel>
             <StackPanel Width="80">
                 <Button x:Name="btnExit" Margin="10 10" Style="{StaticResource MaterialDesignFloatingActionButton}" Background="{x:Null}" Width="40" Height="40"
-                        ToolTip="Close" Click="btnExit_Click">
+                        ToolTip="Close" Click="btnExit_Click" Foreground="White">
                     <materialDesign:PackIcon Kind="Close" Foreground="White" Width="20" Height="20" />
                 </Button>
             </StackPanel>

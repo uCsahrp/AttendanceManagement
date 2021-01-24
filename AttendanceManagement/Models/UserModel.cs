@@ -7,18 +7,23 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using AttendanceManagement.Models;
 
-namespace AttendanceManagement.Controllers
+namespace AttendanceManagement.Views
 {
     class UserModel : User
     {
 
+
         //New Ado For Connection
         Ado Adonet = new Ado();
+
 
         #region Methode Login
 
         public override bool Login(string email, string password)
         {
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            Match match = regex.Match(email);
+
             //Check if Email Entered
             if (email.Length == 0)
             {
@@ -26,7 +31,8 @@ namespace AttendanceManagement.Controllers
                 return false;
             }
             //Check if it's a valid email
-            else if (IsValidEmail(email))
+
+            else if (!match.Success)
             {
                 error = "Please Enter a valid email address.";
                 return false;
@@ -60,6 +66,7 @@ namespace AttendanceManagement.Controllers
                     {
                         ClassId = Convert.ToInt32(Adonet.DataSet.Tables["User"].Rows[0][6].ToString().Trim());
                     }
+
                     return true;
                 }
                 else
@@ -73,27 +80,11 @@ namespace AttendanceManagement.Controllers
         #endregion
 
 
-        #region Helper To Check if it's a valid email
-
-        public bool IsValidEmail(string email)
-        {
-            Regex regex = new Regex(@"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
-                                    + "@"
-                                    + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$");
-            if (!regex.IsMatch(email))
-                return true;
-            else
-                return false;
-        }
-
-        #endregion
-
-
         #region Method User LogOut
 
         public override void Logout()
         {
-            throw new NotImplementedException();
+
         }
 
         #endregion

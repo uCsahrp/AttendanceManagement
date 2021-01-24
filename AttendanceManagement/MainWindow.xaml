@@ -4,9 +4,38 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AttendanceManagement"
+
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="14"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        BorderBrush="#007bff"
+        BorderThickness="1"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="Roboto"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid></Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+
+
+            <StackPanel Margin=" 0 0 0 20">
+                <TextBlock Text="Welcome..." FontSize="32" TextAlignment="Center" Style="{DynamicResource MaterialDesignTextBlock}" Foreground="#007bff" FontWeight="Bold"/>
+                <Border  Padding="20"/>
+                <Button Width="180" Content="LOGIN" Style="{DynamicResource MaterialDesignFlatButton}"  Background="#007bff" Foreground="White"  FontWeight="SemiBold" Click="ButtonBase_OnClick"/>
+            </StackPanel>
+
+        </StackPanel>
+        <StackPanel Width="80" HorizontalAlignment="Right" >
+            <Button x:Name="btnExit" Margin="10" Style="{StaticResource MaterialDesignFloatingActionButton}" Background="{x:Null}" Width="40" Height="40"
+                    ToolTip="Close" Click="btnExit_Click" Foreground="White">
+                <materialDesign:PackIcon Kind="Close" Foreground="White" Width="20" Height="20" />
+            </Button>
+        </StackPanel>
     </Grid>
 </Window>

@@ -5,10 +5,74 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AttendanceManagement.Views"
         mc:Ignorable="d"
-        Title="Admin" Height="450" Width="800">
-    <Grid>
-        <StackPanel VerticalAlignment="Center">
-            <TextBlock TextAlignment="Center" FontSize="33"  Text="Welcome to Admin Page !"/>
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="14"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        WindowStyle="ThreeDBorderWindow"
+        ResizeMode="NoResize"
+        BorderBrush="#007bff"
+        BorderThickness="1"
+        Title="Admin" 
+        Height="800" Width="1280" WindowStartupLocation="CenterScreen"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="Roboto"
+        >
+    <Grid Background="#FF2A2D35">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="240"/>
+            <ColumnDefinition/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="54"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Width="180" >
+
+            <Rectangle Width="20" Height="20" VerticalAlignment="Center" Margin="0,0,45,0" HorizontalAlignment="Right" />
+            <!--<TextBlock VerticalAlignment="Center" Margin="0,0,29,0"  Foreground="#FFDEB383" FontSize="16" HorizontalAlignment="Right" >Admin Name</TextBlock>-->
+            <Button Style="{DynamicResource MaterialDesignFlatAccentButton}" Foreground="White" HorizontalAlignment="Right" Content="Admin Name" Background="#FFDEB383" Padding="10,0" Margin="0,0,-1,0"/>
+
+
         </StackPanel>
+        <StackPanel Grid.Row="0" Grid.RowSpan="2">
+
+            <TextBlock  HorizontalAlignment="Center" Text="attendance." Margin="0,20,0,0" FontSize="21"
+                        TextAlignment="Center"/>
+
+            <Border Padding="50"></Border>
+            <Button x:Name="btnnewuser" Foreground="White" FontSize="24"  Background="#FF03DAC5" Height="50" BorderBrush="{x:Null}" HorizontalContentAlignment="Left">Create New User</Button>
+            <Button x:Name="btndash" Margin="0,40,0,0"  Foreground="White" FontSize="24" FontFamily="Roboto"  Background="{x:Null}" Height="50" BorderBrush="{x:Null}" HorizontalContentAlignment="Left">Dashboard</Button>
+
+        </StackPanel>
+        <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Background="#353740" >
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="45">
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Background="#FFDEB383" x:Name="AddNewUser" Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Height="35" Width="145"  Margin="10 0" Click="AddNewUser_Click">Create New Users</Button>
+                    <Button x:Name="DelUser" Width="145" Height="35" Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Background="OrangeRed" Content="Delete User" ToolTip="Select a User To Delete" Click="DelUser_Click" Margin="10 0"/>
+                </StackPanel>
+                <TextBlock x:Name="Message" TextAlignment="Center" Style="{DynamicResource MaterialDesignBody1TextBlock}" Foreground="#007bff" />
+
+                <Grid Background="#FF3B3E46" Height="540" Margin="0,24,0,0" VerticalAlignment="Top" >
+                    <Grid Height="43" Width="916" VerticalAlignment="Top" HorizontalAlignment="Center">
+                        <TextBlock Width="104" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="42,0,23,0" FontSize="16" FontFamily="Arial Rounded MT Bold" Text="Users List"/>
+                        <ComboBox Width="150" Height="31" VerticalAlignment="Center" HorizontalAlignment="Right"  Margin="0,0,35,0" Background="#FF707070" BorderBrush="{x:Null}" Foreground="White"/>
+                        <TextBox x:Name="SearchInput" Height="31" Width="150" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Search" Background="#FF707070" BorderBrush="{x:Null}" Foreground="White" Margin="0,0,214,0"/>
+                    </Grid>
+
+                    <DataGrid x:Name="userstable" Margin="0,48,0,0" MouseDoubleClick="userstable_MouseDoubleClick" SelectionChanged="userstable_SelectionChanged">
+                        <DataGrid.Columns>
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </Grid>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
