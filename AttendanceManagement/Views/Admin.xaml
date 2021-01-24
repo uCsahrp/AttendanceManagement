@@ -69,8 +69,7 @@
 
                     <DataGrid x:Name="userstable" Margin="0,48,0,0"  MouseDoubleClick="userstable_MouseDoubleClick" CanUserAddRows="False" SelectionChanged="userstable_SelectionChanged" >
                         <DataGrid.Columns>
-                            <materialDesign:DataGridTextColumn materialDesign:BottomDashedLineAdorner.Brush="White">
-                            </materialDesign:DataGridTextColumn>
+
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
