@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using AttendanceManagement.Models;
 
 namespace AttendanceManagement.Views
 {
@@ -21,20 +22,53 @@ namespace AttendanceManagement.Views
     public partial class EditPopup : Window
     {
         Models.Admin admin = new Models.Admin();
+        
         public EditPopup()
         {
             InitializeComponent();
         }
 
-        private void BtnAddSubmit_Loaded(object sender, RoutedEventArgs e)
+
+
+
+
+        private void UserRole_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (((ComboBox)sender).SelectedIndex > 1)
+            {
+                ClassCombo.Visibility = Visibility.Visible;
+            }
+        }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var item = Admin.items;
             if (item != null)
             {
+                Helper.GetRoles(UserRole);
+                Helper.GetClasses(ClassesBox);
+                int Roleid = int.Parse(item.Row["Role Id"].ToString());
                 int id = int.Parse(item.Row["User Id"].ToString());
-                admin.getusersedit(id, FullName, UserMail, UserPassword, UserPassword2) ;
-               
+                FullName.Text = item.Row["Full Name"].ToString();
+                UserMail.Text = item.Row["Email"].ToString();
+                var roleId = int.Parse(item.Row["Role Id"].ToString());
+                UserRole.SelectedValue = roleId;
+                if (roleId > 2)
+                {
+                    ClassesBox.SelectedIndex = int.Parse(item.Row["Class Id"].ToString());
+
+                }
+
+                //admin.getusersedit(id, FullName, UserMail, UserPassword, UserPassword2);
+
+
+
             }
+
+        }
+
+        private void UserRole_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

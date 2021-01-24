@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AttendanceManagement.Views"
         mc:Ignorable="d"
-        Title="EditPopup"  Width="593" Height="681" WindowStyle="None" WindowStartupLocation="CenterScreen">
+        Title="EditPopup" Loaded="Window_Loaded" Width="593" Height="681" WindowStyle="None" WindowStartupLocation="CenterScreen">
     <Grid>
 
 
@@ -53,10 +53,9 @@
             <StackPanel Orientation="Horizontal"  Width="474" Margin="0,40,0,0">
                 <StackPanel Margin="3,0,0,0">
                     <TextBlock Foreground="White" FontSize="11" FontFamily="Roboto" Text="Role" Margin="0 0 0 5"/>
-
-                    <ComboBox Name="UserRole" Width="230"  Style="{DynamicResource MaterialDesignComboBox}" Foreground="White"></ComboBox>
+                    <ComboBox x:Name="UserRole" SelectionChanged="UserRole_SelectionChanged" Width="230"  Style="{DynamicResource MaterialDesignComboBox}" Foreground="White"/>
                 </StackPanel>
-                <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="9,0,0,0">
+                <StackPanel x:Name="ClassCombo" Visibility="Hidden" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="9,0,0,0">
                     <TextBlock Foreground="White" FontSize="11"  Margin="0 0 0 5" Text="Class"/>
                     <ComboBox Style="{DynamicResource MaterialDesignComboBox}"  Margin="0 0 0 5" Width="230" Name="ClassesBox" />
                 </StackPanel>
@@ -68,7 +67,7 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal"  Margin="0,40,0,0" HorizontalAlignment="Center" >
-                <Button Name="BtnAddSubmit" Background="#FF03DAC5" Width="64" Foreground="White" Content="Save" Loaded="BtnAddSubmit_Loaded"/>
+                <Button Name="BtnAddSubmit" Background="#FF03DAC5" Width="64" Foreground="White" Content="Save" />
             </StackPanel>
         </StackPanel>
     </Grid>
