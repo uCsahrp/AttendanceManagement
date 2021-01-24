@@ -34,6 +34,7 @@ namespace AttendanceManagement.Views
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            //admin.usertable = userstable;
             admin.GetUsers(userstable);
             userName.Text = admin.UserName;
         }
@@ -45,7 +46,7 @@ namespace AttendanceManagement.Views
             AdminPopup popup = new AdminPopup();
 
             popup.Show();
-            this.Close();
+            //this.Close();
 
         }
 

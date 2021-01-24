@@ -15,7 +15,7 @@ namespace AttendanceManagement.Models
     class Admin : UserModel
     {
         private Ado ado = new Ado();
-
+        public DataGrid usertable;
         public void GetUsers(DataGrid usertable)
         {
 
@@ -130,7 +130,7 @@ namespace AttendanceManagement.Models
                         cmd.ExecuteNonQuery();
                         ado.Disconnect();
                         error = "User Added Successfully.";
-
+                        GetUsers(usertable);
                         return true;
                     }
                 }
@@ -148,7 +148,7 @@ namespace AttendanceManagement.Models
 
         #region Edit USERS
 
-        public bool  EditUsers(int id, string fullName, string email, string password, string confirmPass, int classId, int roleId)
+        public bool EditUsers(int id, string fullName, string email, string password, string confirmPass, int classId, int roleId)
         {
 
             Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
@@ -203,7 +203,7 @@ namespace AttendanceManagement.Models
                 {
                     // define INSERT query with parameters
                     query = $"UPDATE Users set [Full Name] = @fullName,[Email] = @email, [Password]=@password,[Role Id]=@roleId WHERE [User Id]=@id";
-                                                  
+
                 }
 
 

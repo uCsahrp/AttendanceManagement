@@ -22,7 +22,7 @@ namespace AttendanceManagement.Views
     public partial class EditPopup : Window
     {
         Models.Admin admin = new Models.Admin();
-        
+
         public EditPopup()
         {
             InitializeComponent();
@@ -46,7 +46,7 @@ namespace AttendanceManagement.Views
             var item = Admin.items;
             if (item != null)
             {
-              
+
                 //int Roleid = int.Parse(item.Row["Role Id"].ToString());
                 int id = int.Parse(item.Row["User Id"].ToString());
                 FullName.Text = item.Row["Full Name"].ToString();
@@ -55,7 +55,7 @@ namespace AttendanceManagement.Views
                 UserPassword2.Password = item.Row["Password"].ToString();
                 var roleId = int.Parse(item.Row["Role Id"].ToString());
                 UserRole.SelectedValue = roleId;
-                
+
                 if (roleId > 2)
                 {
                     ClassesBox.SelectedIndex = int.Parse(item.Row["Class Id"].ToString());
@@ -67,33 +67,33 @@ namespace AttendanceManagement.Views
 
         }
 
-       
+
         private void BtnEditSubmit_Click(object sender, RoutedEventArgs e)
         {
             var item = Admin.items;
             int id = int.Parse(item.Row["User Id"].ToString());
 
-              
-               if (admin.EditUsers(id, FullName.Text, UserMail.Text, UserPassword.Password, UserPassword2.Password, UserRole.SelectedIndex, ClassesBox.SelectedIndex))
-                {
-                    
-                    Message.Text = admin.error;
-                    FullName.Text = "";
-                    UserMail.Text = "";
-                    UserRole.SelectedIndex = -1;
-                    ClassesBox.SelectedIndex = -1;
-                    UserPassword.Password = "";
-                    UserPassword2.Password = "";
-                }
-                else
-                {
-                    Message.Text = admin.error;
-                    hello.Text = UserRole.SelectedIndex.ToString();
 
-                 }
+            if (admin.EditUsers(id, FullName.Text, UserMail.Text, UserPassword.Password, UserPassword2.Password, ClassesBox.SelectedIndex, UserRole.SelectedIndex))
+            {
+
+                Message.Text = admin.error;
+                FullName.Text = "";
+                UserMail.Text = "";
+                UserRole.SelectedIndex = -1;
+                ClassesBox.SelectedIndex = -1;
+                UserPassword.Password = "";
+                UserPassword2.Password = "";
+            }
+            else
+            {
+                Message.Text = admin.error;
+                hello.Text = UserRole.SelectedIndex.ToString();
+
+            }
 
 
-            
+
 
         }
     }
