@@ -28,15 +28,28 @@ namespace AttendanceManagement.Views
         public Admin()
         {
             InitializeComponent();
-            admin.GetUsers(userstable);
+            //admin.GetUsers(userstable);
         }
+
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            admin.GetUsers(userstable);
+            userName.Text = admin.UserName;
+        }
+
+
 
         private void AddNewUser_Click(object sender, RoutedEventArgs e)
         {
             AdminPopup popup = new AdminPopup();
 
             popup.Show();
+            this.Close();
+
         }
+
+
 
         private void userstable_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -47,25 +60,38 @@ namespace AttendanceManagement.Views
 
         }
 
+
         private void userstable_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DataRowView row = userstable.SelectedItem as DataRowView;
-            IdSelectedUser = int.Parse(row.Row[0].ToString());
+            IdSelectedUser = int.Parse(row.Row.ItemArray[0].ToString());
+
         }
+
+
 
         private void DelUser_Click(object sender, RoutedEventArgs e)
         {
 
 
-            Dispatcher.Invoke(() =>
+            admin.DeleteUser(IdSelectedUser);
+            Task.Run(() =>
             {
-                admin.DeleteUser(IdSelectedUser);
                 userstable.Items.Clear();
                 admin.GetUsers(userstable);
-                Message.Text = admin.error;
+
             });
+            Message.Text = admin.error;
+
 
 
         }
+
+        private void SearchInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+
     }
 }
