@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AttendanceManagement.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -90,25 +91,15 @@ namespace AttendanceManagement.Views
         private void DelUser_Click_1(object sender, RoutedEventArgs e)
         {
 
-            Dispatcher.Invoke(() =>
-            {
-                Task.Run(() =>
-                    {
-                        userstable.Items.Clear();
-                        admin.GetUsers(userstable);
-                        admin.DeleteUser(IdSelectedUser);
-                    });
-
-            Dispatcher.Invoke(() =>
-            {
-                Task.Run(() =>
             Task.Run(() =>
+            {
+
+                admin.DeleteUser(IdSelectedUser);
+                if (admin.changed)
                 {
-                   
-                
-                    admin.GetUsers(userstable);
-                    admin.DeleteUser(IdSelectedUser);
-                });
+                    Helper.GetUsers(userstable);
+                }
+            });
             Message.Text = admin.error;
 
         }
@@ -121,9 +112,6 @@ namespace AttendanceManagement.Views
             items = userstable.SelectedItem as DataRowView;
             EditPopup editPop = new EditPopup();
             editPop.Show();
-
-            var fullname = SearchInput.Text.ToString();
-            UserModel.Search(fullname, userstable);
         }
     }
 }
