@@ -6,9 +6,13 @@
         mc:Ignorable="d"
         Title="AdminPopup" Width="593" Height="681" WindowStyle="None" WindowStartupLocation="CenterScreen"
         FontFamily="Roboto"
-        Loaded="AdminPopup_OnLoaded">
-    <Grid>
+        Loaded="AdminPopup_OnLoaded"
+        >
+    <Grid MouseDown="Grid_MouseDown">
 
+        <StackPanel HorizontalAlignment="Right" VerticalAlignment="Top" Height="30" Width="30" Margin="5">
+            <Button Content="X" Foreground="White" FontSize="20" Width="30" Height="30" />
+        </StackPanel>
 
         <StackPanel Background="#FF353740" >
             <!--<TextBlock Foreground="White" FontSize="14" HorizontalAlignment="Right" Margin="0,9,21,0" >Close</TextBlock>-->

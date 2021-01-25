@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AttendanceManagement.Views"
         mc:Ignorable="d"
-        Title="EditPopup" Loaded="Window_Loaded" Width="593" Height="681" WindowStyle="None" WindowStartupLocation="CenterScreen">
-    <Grid>
+        Title="EditPopup" Loaded="Window_Loaded" Width="593" Height="681" WindowStyle="None"  WindowStartupLocation="CenterScreen">
+    <Grid MouseDown="Grid_MouseDown">
 
 
         <StackPanel Background="#FF353740" >

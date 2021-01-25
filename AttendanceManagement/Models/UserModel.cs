@@ -102,7 +102,7 @@ namespace AttendanceManagement.Views
 
         //}
 
-        public static  void Search(string FullName, DataGrid userstable)
+        public static void Search(string FullName, DataGrid userstable)
         {
             
         }

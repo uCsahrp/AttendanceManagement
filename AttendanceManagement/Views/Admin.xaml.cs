@@ -47,8 +47,7 @@ namespace AttendanceManagement.Views
             AdminPopup popup = new AdminPopup();
 
             popup.Show();
-            //this.Close();
-            this.Close();
+
             if (admin.changed)
             {
 
@@ -94,25 +93,37 @@ namespace AttendanceManagement.Views
             Dispatcher.Invoke(() =>
             {
                 Task.Run(() =>
+                    {
+                        userstable.Items.Clear();
+                        admin.GetUsers(userstable);
+                        admin.DeleteUser(IdSelectedUser);
+                    });
+
+            Dispatcher.Invoke(() =>
+            {
+                Task.Run(() =>
+            Task.Run(() =>
                 {
                    
+                
                     admin.GetUsers(userstable);
                     admin.DeleteUser(IdSelectedUser);
                 });
-
-                Message.Text = admin.error;
-
-
-            });
+            Message.Text = admin.error;
 
         }
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
+
+            var fullname = SearchInput.Text.ToString();
+            UserModel.Search(fullname, userstable);
             items = userstable.SelectedItem as DataRowView;
             EditPopup editPop = new EditPopup();
             editPop.Show();
 
+            var fullname = SearchInput.Text.ToString();
+            UserModel.Search(fullname, userstable);
         }
     }
 }
