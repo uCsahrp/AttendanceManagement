@@ -19,8 +19,7 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="Roboto"
-        Loaded="Window_Loaded"
-        >
+        Loaded="Window_Loaded" >
     <Grid Background="#FF2A2D35">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="240"/>
@@ -54,9 +53,9 @@
 
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="45">
 
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
                     <Button Background="#FFDEB383" x:Name="AddNewUser" Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Height="35" Width="145"  Margin="10 0" Click="AddNewUser_Click">Create New Users</Button>
-                    <Button x:Name="DelUser" Width="145" Height="35" Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Background="OrangeRed" Content="Delete User" ToolTip="Select a User To Delete" Click="DelUser_Click" Margin="10 0"/>
+                    <!--<Button  Width="145" Height="35" Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Background="OrangeRed" Content="Delete User" ToolTip="Select a User To Delete" Click="DelUser_Click" Margin="10 0"/>-->
                 </StackPanel>
                 <TextBlock x:Name="Message" TextAlignment="Center" Style="{DynamicResource MaterialDesignBody1TextBlock}" Foreground="#007bff" />
 
@@ -67,8 +66,27 @@
                         <TextBox x:Name="SearchInput" TextChanged="SearchInput_TextChanged" Height="31" Width="150" VerticalAlignment="Center" HorizontalAlignment="Right" Text="Search" Background="#FF707070" BorderBrush="{x:Null}" Foreground="White" Margin="0,0,214,0"/>
                     </Grid>
 
-                    <DataGrid x:Name="userstable" Margin="0,48,0,0"  MouseDoubleClick="userstable_MouseDoubleClick" CanUserAddRows="False" SelectionChanged="userstable_SelectionChanged" >
+                    <DataGrid x:Name="userstable" Margin="0,48,0,0" ColumnWidth="130" AutoGenerateColumns="False" MouseDoubleClick="userstable_MouseDoubleClick" CanUserAddRows="False" SelectionChanged="userstable_SelectionChanged" >
                         <DataGrid.Columns>
+                            <DataGridTextColumn Header="User Id" Binding="{Binding [User Id]}" />
+                            <DataGridTextColumn Header="Full Name" Binding="{Binding [Full Name]}"  />
+                            <DataGridTextColumn Header="Email" Binding="{Binding [Email]}"  />
+                            <DataGridTextColumn Header="Role Id"  Binding="{Binding [Role Id]}" />
+                            <DataGridTextColumn Header="Class Id" Binding="{Binding [Class Id]}" />
+                            <DataGridTemplateColumn Width="125" x:Name="action" Header="Action">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate >
+                                        <Button x:Name="Edit" Content="Edit" Width="80" Click="Edit_Click" Background="#FFB18CF2" BorderBrush="{x:Null}" Foreground="White" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            <DataGridTemplateColumn Width="125" x:Name="action1" >
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate >
+                                        <Button x:Name="DelUser"  Content="Delete" Width="80" Click="DelUser_Click_1" Background="#FFCF6679" BorderBrush="{x:Null}" Foreground="White" />
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
 
                         </DataGrid.Columns>
                     </DataGrid>
