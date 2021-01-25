@@ -27,7 +27,7 @@
             <StackPanel HorizontalAlignment="Center" Margin="0 25 0 0" >
 
                 <Border Width="120" Height="120" BorderBrush="#007bff" BorderThickness="1" CornerRadius="100">
-                    <Image />
+                    <Image Source="../Assets/Avatars/programmer.svg" x:Name="Avatar"/>
                 </Border>
                 <TextBlock x:Name="UserAvatar" Visibility="Collapsed"/>
             </StackPanel>

@@ -44,7 +44,8 @@ namespace AttendanceManagement.Models
         {
             if (Cnx.State == ConnectionState.Closed || Cnx.State == ConnectionState.Broken)
             {
-                Cnx.ConnectionString = "Data Source=ADAM-DELL;Initial Catalog=AttendanceManagement;Integrated Security=True";
+                Cnx.Close();
+                Cnx.ConnectionString = "Data Source=ADAM-HP;Initial Catalog=AttendanceManagement;Integrated Security=True";
                 Cnx.Open();
             }
         }
