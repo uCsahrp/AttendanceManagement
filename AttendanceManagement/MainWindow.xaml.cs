@@ -41,5 +41,22 @@ namespace AttendanceManagement
         }
 
         #endregion
+
+        #region EventMouse Down to Drag Window ==>
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                DragMove();
+            }
+            catch
+            {
+            }
+            //
+        }
+
+        #endregion
+
     }
 }
