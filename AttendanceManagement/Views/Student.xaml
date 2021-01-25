@@ -5,10 +5,65 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AttendanceManagement.Views"
         mc:Ignorable="d"
-        Title="Student" Height="450" Width="800">
-    <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Student Page" FontSize="30"/>
+        Title="Student" Height="800" Width="1280" WindowStartupLocation="CenterScreen">
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="240"/>
+            <ColumnDefinition/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="54"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Width="180" VerticalAlignment="Center" >
+
+            <Rectangle Width="20" Height="20" VerticalAlignment="Center" Margin="0,0,45,0" HorizontalAlignment="Right"  />
+            <TextBlock x:Name="userName" VerticalAlignment="Center" Margin="0"  Foreground="#007bff" FontSize="16" HorizontalAlignment="Left" >Student Name</TextBlock>
+            <!--<Button Style="{DynamicResource MaterialDesignFlatAccentButton}" Foreground="White" HorizontalAlignment="Left" Content="Admin Name" Background="#FFDEB383" Padding="10,0,7,0" Margin="-34,0,0,0" VerticalAlignment="Center" HorizontalContentAlignment="Left"/>-->
+
+
         </StackPanel>
+        <StackPanel Grid.Row="0" Grid.RowSpan="2" Background="#FFB18CF2">
+
+            <TextBlock  HorizontalAlignment="Center" Text="attendance." Margin="0,20,0,0" FontSize="21"
+                        TextAlignment="Center"/>
+
+            <StackPanel Orientation="Vertical">
+                <Image Height="240" Width="240">
+                    <Image.OpacityMask>
+                        <ImageBrush ImageSource="christina-wocintechchat-com-4yTHVRarfGY-unsplash.jpg" TileMode="Tile"/>
+                    </Image.OpacityMask>
+                </Image>
+                <TextBlock FontSize="24" HorizontalAlignment="Center">Student Name</TextBlock>
+
+
+            </StackPanel>
+
+        </StackPanel>
+        <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" >
+
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,53,0,0">
+
+                    <StackPanel Width="250" Height="130" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#FFB18CF2" Margin="0,0,117,0">
+                        <Label HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Background="{x:Null}" Foreground="#DDFFFFFF" Margin="0,21,0,0">Les jours Absenté</Label>
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="24" Margin="0,21,0,0">25 Jours</TextBlock>
+                    </StackPanel>
+                    <StackPanel Width="250" Height="132" Background="#FFB18CF2">
+                        <Label Background="{x:Null}" Foreground="#DDFFFFFF" FontSize="20" Margin="0,21,0,0" HorizontalAlignment="Center">Les Absences Non-justfiée</Label>
+                        <TextBlock Foreground="White" Margin="0,21,0,0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center">25 Jours</TextBlock>
+                    </StackPanel>
+
+                </StackPanel>
+
+                <DataGrid x:Name="userstable" Margin="0,25,0,0" ColumnWidth="130" AutoGenerateColumns="False"  CanUserAddRows="False" Width="800" Height="481" >
+
+                </DataGrid>
+
+            </StackPanel>
+
+        </Grid>
     </Grid>
 </Window>
