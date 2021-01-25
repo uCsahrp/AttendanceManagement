@@ -83,7 +83,7 @@
                             <DataGridTemplateColumn Width="125" x:Name="action1" >
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate >
-                                        <Button x:Name="DelUser"  Content="Delete" Width="80" Click="DelUser_Click_1" Background="#FFCF6679" BorderBrush="{x:Null}" Foreground="White" />
+                                        <Button x:Name="DelUser"  Content="Delete" Width="80" Click="DelUser_Click" Background="#FFCF6679" BorderBrush="{x:Null}" Foreground="White" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>

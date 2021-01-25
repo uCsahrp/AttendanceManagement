@@ -92,34 +92,46 @@ namespace AttendanceManagement.Views
 
 
 
-        var fullname = SearchInput.Text.ToString();
-        UserModel.Search(fullname, userstable);
+
+
+        private void DelUser_Click(object sender, RoutedEventArgs e)
+        {
+            Task.Run(() =>
+               {
+                   admin.DeleteUser(IdSelectedUser);
+                   if (admin.changed)
+                   {
+                       Helper.GetUsers(userstable);
+                   }
+               });
+            Message.Text = admin.error;
+
         }
 
-    private void DelUser_Click_1(object sender, RoutedEventArgs e)
-    {
 
-        Task.Run(() =>
-           {
-               admin.DeleteUser(IdSelectedUser);
-               if (admin.changed)
-               {
-                   Helper.GetUsers(userstable);
-               }
-           });
-        Message.Text = admin.error;
+        private void SearchInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+            var fullname = SearchInput.Text.ToString();
+            UserModel.Search(fullname, userstable);
+            items = userstable.SelectedItem as DataRowView;
+            EditPopup editPop = new EditPopup();
+            editPop.Show();
+        }
+
+
+
+
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+
+            var fullname = SearchInput.Text.ToString();
+            UserModel.Search(fullname, userstable);
+            items = userstable.SelectedItem as DataRowView;
+            EditPopup editPop = new EditPopup();
+            editPop.Show();
+        }
 
     }
-
-
-    private void SearchInput_TextChanged(object sender, TextChangedEventArgs e)
-    {
-
-        var fullname = SearchInput.Text.ToString();
-        UserModel.Search(fullname, userstable);
-        items = userstable.SelectedItem as DataRowView;
-        EditPopup editPop = new EditPopup();
-        editPop.Show();
-    }
-}
 }
