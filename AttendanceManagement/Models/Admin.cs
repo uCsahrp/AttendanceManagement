@@ -15,7 +15,8 @@ namespace AttendanceManagement.Models
     class Admin : UserModel
     {
         private Ado ado = new Ado();
-        public DataGrid usertable;
+        public DataTable usersTable;
+        public bool changed = false;
         public void GetUsers(DataGrid usertable)
         {
 
@@ -24,7 +25,17 @@ namespace AttendanceManagement.Models
             ado.Adapter.Fill(ado.DataSet, "Users");
             ado.Disconnect();
             //usertable.Items.Clear();
-            usertable.ItemsSource = ado.DataSet.Tables["Users"].DefaultView;
+
+            try
+            {
+                usertable.ItemsSource = ado.DataSet.Tables["Users"].DefaultView;
+                usersTable = ado.DataSet.Tables["Users"];
+            }
+            catch (Exception)
+            {
+
+
+            }
         }
 
 
@@ -129,7 +140,7 @@ namespace AttendanceManagement.Models
                         cmd.ExecuteNonQuery();
                         ado.Disconnect();
                         error = "User Added Successfully.";
-                        GetUsers(usertable);
+                        //GetUsers(userTable);
                         return true;
                     }
                 }
@@ -147,7 +158,10 @@ namespace AttendanceManagement.Models
 
         #region Edit USERS
 
+        public bool  EditUsers(int id, string fullName, string email, string password, string confirmPass, int classId, int roleId)
+        public bool  EditUsers(int id, string fullName, string email, string password, string confirmPass, int roleId, int classId)
        
+
         public bool EditUsers(int id, string fullName, string email, string password, string confirmPass, int classId, int roleId)
         {
 

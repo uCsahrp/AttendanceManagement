@@ -47,7 +47,13 @@ namespace AttendanceManagement.Views
             AdminPopup popup = new AdminPopup();
 
             popup.Show();
+            //this.Close();
             this.Close();
+            if (admin.changed)
+            {
+
+            }
+            //this.Close();
 
         }
 
@@ -59,6 +65,7 @@ namespace AttendanceManagement.Views
             items = userstable.SelectedItem as DataRowView;
             EditPopup editPop = new EditPopup();
             editPop.Show();
+            
 
         }
 
@@ -68,6 +75,9 @@ namespace AttendanceManagement.Views
             DataRowView row = userstable.SelectedItem as DataRowView;
             IdSelectedUser = int.Parse(row.Row.ItemArray[0].ToString());
 
+            MessageBox.Show(IdSelectedUser+String.Empty);
+
+
         }
 
 
@@ -75,14 +85,28 @@ namespace AttendanceManagement.Views
         private void DelUser_Click(object sender, RoutedEventArgs e)
         {
 
+            Dispatcher.Invoke(() =>
+            {
+                admin.DeleteUser(IdSelectedUser);
+                Task.Run(() =>
+                {
+                    userstable.Items.Clear();
+                    admin.GetUsers(userstable);
 
+            admin.DeleteUser(IdSelectedUser);
+            Task.Run(() =>
+            {
+                userstable.Items.Clear();
+                admin.GetUsers(userstable);
             admin.DeleteUser(IdSelectedUser);
             Task.Run(() =>
             {
                
                 admin.GetUsers(userstable);
+                });
 
             });
+
             Message.Text = admin.error;
 
 
