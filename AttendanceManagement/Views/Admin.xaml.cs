@@ -75,29 +75,9 @@ namespace AttendanceManagement.Views
             DataRowView row = userstable.SelectedItem as DataRowView;
             IdSelectedUser = int.Parse(row.Row.ItemArray[0].ToString());
 
-            MessageBox.Show(IdSelectedUser + String.Empty);
+            //MessageBox.Show(IdSelectedUser + String.Empty);
 
 
-        }
-
-
-
-        private void DelUser_Click(object sender, RoutedEventArgs e)
-        {
-
-            Dispatcher.Invoke(() =>
-            {
-                Task.Run(() =>
-                    {
-                        userstable.Items.Clear();
-                        admin.GetUsers(userstable);
-                        admin.DeleteUser(IdSelectedUser);
-                    });
-
-                Message.Text = admin.error;
-
-
-            });
         }
 
 
@@ -108,5 +88,31 @@ namespace AttendanceManagement.Views
             UserModel.Search(fullname, userstable);
         }
 
+        private void DelUser_Click_1(object sender, RoutedEventArgs e)
+        {
+
+            Dispatcher.Invoke(() =>
+            {
+                Task.Run(() =>
+                {
+                   
+                    admin.GetUsers(userstable);
+                    admin.DeleteUser(IdSelectedUser);
+                });
+
+                Message.Text = admin.error;
+
+
+            });
+
+        }
+
+        private void Edit_Click(object sender, RoutedEventArgs e)
+        {
+            items = userstable.SelectedItem as DataRowView;
+            EditPopup editPop = new EditPopup();
+            editPop.Show();
+
+        }
     }
 }
