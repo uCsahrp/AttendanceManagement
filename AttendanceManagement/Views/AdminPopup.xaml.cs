@@ -91,6 +91,10 @@ namespace AttendanceManagement.Views
             {
                 ClassCombo.Visibility = Visibility.Visible;
             }
+            else
+            {
+                ClassCombo.Visibility = Visibility.Hidden;
+            }
         }
 
 
