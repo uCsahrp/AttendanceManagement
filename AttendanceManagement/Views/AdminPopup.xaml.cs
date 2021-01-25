@@ -27,7 +27,7 @@ namespace AttendanceManagement.Views
             InitializeComponent();
         }
         Models.Admin admin = new Models.Admin();
-
+        
         private void AdminPopup_OnLoaded(object sender, RoutedEventArgs e)
         {
             Dispatcher.Invoke((() =>
@@ -64,8 +64,7 @@ namespace AttendanceManagement.Views
                     ClassesBox.SelectedIndex = -1;
                     UserPassword.Password = "";
                     UserPassword2.Password = "";
-                    Admin adminV = new Admin();
-                    adminV.Show();
+                    admin.changed = true;
                     this.Close();
                 }
                 else
