@@ -47,8 +47,7 @@ namespace AttendanceManagement.Views
             AdminPopup popup = new AdminPopup();
 
             popup.Show();
-            //this.Close();
-            this.Close();
+
             if (admin.changed)
             {
 
@@ -84,26 +83,18 @@ namespace AttendanceManagement.Views
 
         private void DelUser_Click(object sender, RoutedEventArgs e)
         {
-
-            Dispatcher.Invoke(() =>
-            {
-                Task.Run(() =>
-                    {
-                        userstable.Items.Clear();
-                        admin.GetUsers(userstable);
-                        admin.DeleteUser(IdSelectedUser);
-                    });
-
-                Message.Text = admin.error;
-
-
-            });
+            Task.Run(() =>
+                {
+                    userstable.Items.Clear();
+                    admin.GetUsers(userstable);
+                    admin.DeleteUser(IdSelectedUser);
+                });
+            Message.Text = admin.error;
         }
 
 
         private void SearchInput_TextChanged(object sender, TextChangedEventArgs e)
         {
-
             var fullname = SearchInput.Text.ToString();
             UserModel.Search(fullname, userstable);
         }

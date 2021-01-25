@@ -102,7 +102,7 @@ namespace AttendanceManagement.Views
 
         //}
 
-        public static  void Search(string FullName, DataGrid userstable)
+        public static void Search(string FullName, DataGrid userstable)
         {
             //SqlCommand Cmd= new SqlCommand("Select * FROM Users Where [Full Name]= @FullName", Adonet.Cnx);
             //Cmd.Parameters.Add("@FullName", SqlDbType.VarChar, 200).Value= FullName;

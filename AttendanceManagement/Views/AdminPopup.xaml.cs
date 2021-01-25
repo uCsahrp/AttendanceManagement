@@ -27,7 +27,7 @@ namespace AttendanceManagement.Views
             InitializeComponent();
         }
         Models.Admin admin = new Models.Admin();
-        
+
         private void AdminPopup_OnLoaded(object sender, RoutedEventArgs e)
         {
             Dispatcher.Invoke((() =>
@@ -88,5 +88,24 @@ namespace AttendanceManagement.Views
                 ClassCombo.Visibility = Visibility.Visible;
             }
         }
+
+      
+
+        #region EventMouse Down to Drag Window ==>
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                DragMove();
+            }
+            catch
+            {
+            }
+            //
+        }
+
+        #endregion
+
     }
 }
