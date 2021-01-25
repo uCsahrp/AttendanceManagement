@@ -24,6 +24,7 @@ namespace AttendanceManagement.Views
         Models.Admin admin = new Models.Admin();
         public static DataRowView items;
         int IdSelectedUser = 0;
+      
 
         public Admin()
         {
@@ -46,7 +47,7 @@ namespace AttendanceManagement.Views
             AdminPopup popup = new AdminPopup();
 
             popup.Show();
-            //this.Close();
+            this.Close();
 
         }
 
@@ -78,7 +79,7 @@ namespace AttendanceManagement.Views
             admin.DeleteUser(IdSelectedUser);
             Task.Run(() =>
             {
-                userstable.Items.Clear();
+               
                 admin.GetUsers(userstable);
 
             });
@@ -90,7 +91,9 @@ namespace AttendanceManagement.Views
 
         private void SearchInput_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            
+            var fullname = SearchInput.Text.ToString();
+            UserModel.Search(fullname, userstable);
         }
 
 

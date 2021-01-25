@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
+using System.Windows.Controls;
 using AttendanceManagement.Models;
 namespace AttendanceManagement.Views
 {
@@ -9,7 +11,7 @@ namespace AttendanceManagement.Views
 
 
         //New Ado For Connection
-        Ado Adonet = new Ado();
+        static Ado Adonet = new Ado();
 
 
         #region Methode Login
@@ -95,13 +97,21 @@ namespace AttendanceManagement.Views
 
 
         #region Search
-        public void Search(int UserId)
-        {
+        //public void Search(int UserId)
+        //{
 
-        }
+        //}
 
-        public void Search(string UserName)
+        public static  void Search(string FullName, DataGrid userstable)
         {
+            //SqlCommand Cmd= new SqlCommand("Select * FROM Users Where [Full Name]= @FullName", Adonet.Cnx);
+            //Cmd.Parameters.Add("@FullName", SqlDbType.VarChar, 200).Value= FullName;
+            //Adonet.Cnx.Open();
+            //Adonet.DataReader = Cmd.ExecuteReader();
+            //Adonet.Datatable = new DataTable();
+            //Adonet.Datatable.Load(Adonet.DataReader);
+            //userstable.ItemsSource = Adonet.Datatable.DefaultView;
+            //Adonet.Cnx.Close();
 
         }
         #endregion
