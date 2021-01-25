@@ -24,7 +24,7 @@ namespace AttendanceManagement.Views
         Models.Admin admin = new Models.Admin();
         public static DataRowView items;
         int IdSelectedUser = 0;
-      
+
 
         public Admin()
         {
@@ -65,7 +65,7 @@ namespace AttendanceManagement.Views
             items = userstable.SelectedItem as DataRowView;
             EditPopup editPop = new EditPopup();
             editPop.Show();
-            
+
 
         }
 
@@ -75,7 +75,7 @@ namespace AttendanceManagement.Views
             DataRowView row = userstable.SelectedItem as DataRowView;
             IdSelectedUser = int.Parse(row.Row.ItemArray[0].ToString());
 
-            MessageBox.Show(IdSelectedUser+String.Empty);
+            MessageBox.Show(IdSelectedUser + String.Empty);
 
 
         }
@@ -87,39 +87,26 @@ namespace AttendanceManagement.Views
 
             Dispatcher.Invoke(() =>
             {
-                admin.DeleteUser(IdSelectedUser);
                 Task.Run(() =>
-                {
-                    userstable.Items.Clear();
-                    admin.GetUsers(userstable);
+                    {
+                        userstable.Items.Clear();
+                        admin.GetUsers(userstable);
+                        admin.DeleteUser(IdSelectedUser);
+                    });
 
-            admin.DeleteUser(IdSelectedUser);
-            Task.Run(() =>
-            {
-                userstable.Items.Clear();
-                admin.GetUsers(userstable);
-            admin.DeleteUser(IdSelectedUser);
-            Task.Run(() =>
-            {
-               
-                admin.GetUsers(userstable);
-                });
+                Message.Text = admin.error;
+
 
             });
-
-            Message.Text = admin.error;
-
-
-
         }
+
 
         private void SearchInput_TextChanged(object sender, TextChangedEventArgs e)
         {
-            
+
             var fullname = SearchInput.Text.ToString();
             UserModel.Search(fullname, userstable);
         }
-
 
     }
 }

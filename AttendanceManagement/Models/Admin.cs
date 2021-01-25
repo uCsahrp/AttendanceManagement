@@ -158,9 +158,6 @@ namespace AttendanceManagement.Models
 
         #region Edit USERS
 
-        public bool  EditUsers(int id, string fullName, string email, string password, string confirmPass, int classId, int roleId)
-        public bool  EditUsers(int id, string fullName, string email, string password, string confirmPass, int roleId, int classId)
-       
 
         public bool EditUsers(int id, string fullName, string email, string password, string confirmPass, int classId, int roleId)
         {
