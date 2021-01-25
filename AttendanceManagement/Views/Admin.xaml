@@ -31,11 +31,11 @@
             <RowDefinition />
         </Grid.RowDefinitions>
 
-        <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Width="180" >
+        <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Width="180" VerticalAlignment="Center" >
 
-            <Rectangle Width="20" Height="20" VerticalAlignment="Center" Margin="0,0,45,0" HorizontalAlignment="Right" />
+            <Rectangle Width="20" Height="20" VerticalAlignment="Center" Margin="0,0,45,0" HorizontalAlignment="Right"  />
             <TextBlock x:Name="userName" VerticalAlignment="Center" Margin="0,0,29,0"  Foreground="#007bff" FontSize="16" HorizontalAlignment="Right" ></TextBlock>
-            <!--<Button Style="{DynamicResource MaterialDesignFlatAccentButton}" Foreground="White" HorizontalAlignment="Right" Content="Admin Name" Background="#FFDEB383" Padding="10,0" Margin="0,0,-1,0"/>-->
+            <!--<Button Style="{DynamicResource MaterialDesignFlatAccentButton}" Foreground="White" HorizontalAlignment="Left" Content="Admin Name" Background="#FFDEB383" Padding="10,0,7,0" Margin="-34,0,0,0" VerticalAlignment="Center" HorizontalContentAlignment="Left"/>-->
 
 
         </StackPanel>
@@ -52,13 +52,12 @@
         <Grid Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Background="#353740" >
 
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="45">
-
+                <TextBlock x:Name="Message" TextAlignment="Center" Style="{DynamicResource MaterialDesignBody1TextBlock}" Foreground="#007bff" />
                 <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
                     <Button Background="#FFDEB383" x:Name="AddNewUser" Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Height="35" Width="145"  Margin="10 0" Click="AddNewUser_Click">Create New Users</Button>
                     <!--<Button  Width="145" Height="35" Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Background="OrangeRed" Content="Delete User" ToolTip="Select a User To Delete" Click="DelUser_Click" Margin="10 0"/>-->
                 </StackPanel>
-                <TextBlock x:Name="Message" TextAlignment="Center" Style="{DynamicResource MaterialDesignBody1TextBlock}" Foreground="#007bff" />
-
+              
                 <Grid Background="#FF3B3E46" Height="540" Margin="0,24,0,0" VerticalAlignment="Top" >
                     <Grid Height="43" Width="916" VerticalAlignment="Top" HorizontalAlignment="Center">
                         <TextBlock Width="104" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White" Margin="42,0,23,0" FontSize="16" FontFamily="Arial Rounded MT Bold" Text="Users List"/>
@@ -71,12 +70,12 @@
                             <DataGridTextColumn Header="User Id" Binding="{Binding [User Id]}" />
                             <DataGridTextColumn Header="Full Name" Binding="{Binding [Full Name]}"  />
                             <DataGridTextColumn Header="Email" Binding="{Binding [Email]}"  />
-                            <DataGridTextColumn Header="Role Id"  Binding="{Binding [Role Id]}" />
-                            <DataGridTextColumn Header="Class Id" Binding="{Binding [Class Id]}" />
+                            <DataGridTextColumn Header="Role Name"  Binding="{Binding [Role Name]}" />
+                            <DataGridTextColumn Header="Class Name" Binding="{Binding [Class Name]}" />
                             <DataGridTemplateColumn Width="125" x:Name="action" Header="Action">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate >
-                                        <Button x:Name="Edit" Content="Edit" Width="80" Click="Edit_Click" Background="#FFB18CF2" BorderBrush="{x:Null}" Foreground="White" />
+                                        <Button x:Name="Edit" Content="Edit" Width="80" Click="Edit_Click" Background="#03DAC5" BorderBrush="{x:Null}" Foreground="White" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>

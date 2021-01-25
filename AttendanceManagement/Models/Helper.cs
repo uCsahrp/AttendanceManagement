@@ -54,7 +54,7 @@ namespace AttendanceManagement.Models
         {
             Ado adonet = new Ado();
             adonet.Connect();
-            adonet.Adapter = new SqlDataAdapter("Select * From Users;", adonet.Cnx);
+            adonet.Adapter = new SqlDataAdapter("Select * From Users INNER JOIN Roles ON Users.[Role Id]= Roles.[Role Id] INNER JOIN Classes On Users.[Class Id] = Classes.[Id Class];", adonet.Cnx);
             adonet.Adapter.Fill(adonet.DataSet, "Users");
             adonet.Disconnect();
 

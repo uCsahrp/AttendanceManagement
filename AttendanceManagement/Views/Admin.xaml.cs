@@ -30,7 +30,7 @@ namespace AttendanceManagement.Views
         public Admin()
         {
             InitializeComponent();
-            //admin.GetUsers(userstable);
+            
         }
 
 
