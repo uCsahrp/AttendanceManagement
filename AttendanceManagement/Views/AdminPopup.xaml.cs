@@ -65,6 +65,10 @@ namespace AttendanceManagement.Views
                     UserPassword.Password = "";
                     UserPassword2.Password = "";
                     admin.changed = true;
+                    Admin ad = new Admin();
+
+                    Helper.GetUsers(ad.userstable);
+
                     this.Close();
                 }
                 else
@@ -89,7 +93,18 @@ namespace AttendanceManagement.Views
             }
         }
 
-      
+
+        #region BtnExit
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+
+            Close();
+
+        }
+
+        #endregion
+
 
         #region EventMouse Down to Drag Window ==>
 

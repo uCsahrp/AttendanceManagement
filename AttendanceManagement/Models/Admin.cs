@@ -15,28 +15,9 @@ namespace AttendanceManagement.Models
     class Admin : UserModel
     {
         private Ado ado = new Ado();
-        public DataTable usersTable;
         public bool changed = false;
-        public void GetUsers(DataGrid usertable)
-        {
-
-            ado.Connect();
-            ado.Adapter = new SqlDataAdapter("Select * From Users;", ado.Cnx);
-            ado.Adapter.Fill(ado.DataSet, "Users");
-            ado.Disconnect();
-            //usertable.Items.Clear();
-
-            try
-            {
-                usertable.ItemsSource = ado.DataSet.Tables["Users"].DefaultView;
-                usersTable = ado.DataSet.Tables["Users"];
-            }
-            catch (Exception)
-            {
 
 
-            }
-        }
 
 
         #region Add New User
@@ -237,6 +218,7 @@ namespace AttendanceManagement.Models
                         cmd.ExecuteNonQuery();
                         ado.Disconnect();
                         error = "User updated Successfully.";
+                        this.changed = true;
                         return true;
                     }
                 }

@@ -16,8 +16,8 @@ namespace AttendanceManagement.Models
 
         public static void GetRoles(object comboBox)
         {
-
             Ado adonet = new Ado();
+
 
             adonet.Connect();
             adonet.Adapter = new SqlDataAdapter("Select * From Roles", adonet.Cnx);
@@ -46,6 +46,35 @@ namespace AttendanceManagement.Models
             combo.DisplayMemberPath = "Class Name";
             combo.ItemsSource = adonet.DataSet.Tables["Classes"].DefaultView;
         }
+
+
+
+
+        public static void GetUsers(DataGrid usertable)
+        {
+            Ado adonet = new Ado();
+            adonet.Connect();
+            adonet.Adapter = new SqlDataAdapter("Select * From Users;", adonet.Cnx);
+            adonet.Adapter.Fill(adonet.DataSet, "Users");
+            adonet.Disconnect();
+
+            try
+            {
+                usertable.Items.Clear();
+                usertable.ItemsSource = adonet.DataSet.Tables["Users"].DefaultView;
+            }
+            catch (Exception)
+            {
+
+
+            }
+        }
+
+
+
+
+
+
 
     }
 }

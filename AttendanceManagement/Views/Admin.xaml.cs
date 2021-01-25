@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AttendanceManagement.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -36,7 +37,7 @@ namespace AttendanceManagement.Views
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             //admin.usertable = userstable;
-            admin.GetUsers(userstable);
+            Helper.GetUsers(userstable);
             userName.Text = admin.UserName;
         }
 
@@ -47,11 +48,14 @@ namespace AttendanceManagement.Views
             AdminPopup popup = new AdminPopup();
 
             popup.Show();
-
-            if (admin.changed)
+            popup.Closed += (s, e) =>
             {
 
-            }
+                if (admin.changed)
+                {
+                    Helper.GetUsers(userstable);
+                }
+            };
             //this.Close();
 
         }
@@ -64,7 +68,14 @@ namespace AttendanceManagement.Views
             items = userstable.SelectedItem as DataRowView;
             EditPopup editPop = new EditPopup();
             editPop.Show();
+            editPop.Closed += (s, e) =>
+            {
 
+                if (admin.changed)
+                {
+                    Helper.GetUsers(userstable);
+                }
+            };
 
         }
 
@@ -80,17 +91,23 @@ namespace AttendanceManagement.Views
         }
 
 
+        #region Btn Delete Event
 
         private void DelUser_Click(object sender, RoutedEventArgs e)
         {
             Task.Run(() =>
                 {
-                    userstable.Items.Clear();
-                    admin.GetUsers(userstable);
                     admin.DeleteUser(IdSelectedUser);
+                    if (admin.changed)
+                    {
+                        Helper.GetUsers(userstable);
+                    }
                 });
             Message.Text = admin.error;
         }
+
+        #endregion
+
 
 
         private void SearchInput_TextChanged(object sender, TextChangedEventArgs e)
