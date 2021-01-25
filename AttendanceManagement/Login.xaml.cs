@@ -28,6 +28,7 @@ namespace AttendanceManagement
 
         #region Button Login Event ==>
 
+        public static int userid;
         private void SubmitLogin_OnClick(object sender, RoutedEventArgs e)
         {
             UserModel user = new UserModel();
@@ -91,6 +92,7 @@ namespace AttendanceManagement
                             //Set Avatar To User
                             user.UserAvatar = "Student Icon.png";
 
+                            userid = user.UserId;
                             //Open Student Window
                             userStudent.Show();
                             Close();

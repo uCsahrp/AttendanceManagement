@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AttendanceManagement.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,24 @@ namespace AttendanceManagement.Views
     /// </summary>
     public partial class Student : Window
     {
+        
         public Student()
         {
             InitializeComponent();
+        }
+
+        private void Grid_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            var userid = Login.userid;
+            Helper.GetStudent(userid, studentattendence);
+            Helper.getcountabsent(userid, absentdays);
+
+
         }
     }
 }

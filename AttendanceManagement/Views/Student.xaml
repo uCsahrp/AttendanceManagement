@@ -5,10 +5,127 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AttendanceManagement.Views"
         mc:Ignorable="d"
-        Title="Student" Height="450" Width="800">
-    <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Student Page" FontSize="30"/>
+        Title="Student" Height="800" Width="1280" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded">
+    <Grid Background="#FFF1F1F4"  >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition  Width="333"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="55"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="180" VerticalAlignment="Center" Grid.Column="1"  Height="22" Margin="0,16,0,17" >
+
+            <Rectangle Width="20" Height="20" VerticalAlignment="Center" Margin="0,0,45,0" HorizontalAlignment="Right"  />
+            <TextBlock x:Name="userName" VerticalAlignment="Center" Margin="0" Text="{Binding [Full Name]}"  Foreground="#007bff" FontSize="16" HorizontalAlignment="Left" ></TextBlock>
+            <!--<Button Style="{DynamicResource MaterialDesignFlatAccentButton}" Foreground="White" HorizontalAlignment="Left" Content="Admin Name" Background="#FFDEB383" Padding="10,0,7,0" Margin="-34,0,0,0" VerticalAlignment="Center" HorizontalContentAlignment="Left"/>-->
+
+
         </StackPanel>
+        <TextBlock  HorizontalAlignment="Left" Text="attendance." Margin="30,20,18,0" FontSize="21"
+                        TextAlignment="Center"/>
+        <StackPanel Grid.Row="1" Grid.RowSpan="2" Background="WhiteSmoke" Width="887" Height="671">
+
+
+
+            <StackPanel Orientation="Vertical"  Grid.Column="0"  Grid.Row="1" Height="623">
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  Margin="0,53,0,0">
+                    <Border CornerRadius="15">
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFBCD5EE" Offset="0"/>
+                                <GradientStop Color="#FF3699FB" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <StackPanel Width="250" Height="130" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,6,0,0">
+                            <Label HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Background="{x:Null}" Foreground="#DDFFFFFF" Margin="0,21,0,0" Content="Les jours Absenté"/>
+                            <TextBlock x:Name="absentdays" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="24" Margin="0,21,0,0"><Run Text="25 Jours"/></TextBlock>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Padding="20"></Border>
+                    <Border CornerRadius="15" >
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FFE1CBEE" Offset="0"/>
+                                <GradientStop Color="#FFB18CF2" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <StackPanel  Width="250" Height="132" >
+                            <Label Background="{x:Null}" Foreground="#DDFFFFFF" FontSize="20" Margin="0,21,0,0" HorizontalAlignment="Center" Content="Les Absences Non-justfiée"/>
+                            <TextBlock Foreground="White" Margin="0,21,0,0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"><Run Text="25 Jours"/></TextBlock>
+                        </StackPanel>
+                    </Border>
+                    <Border Padding="20"></Border>
+                    <Border CornerRadius="15" >
+                        <Border.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF8DD28A" Offset="0"/>
+                                <GradientStop Color="#FF03DAC5" Offset="1"/>
+                            </LinearGradientBrush>
+                        </Border.Background>
+                        <StackPanel  Width="250" Height="132" >
+                            <Label Background="{x:Null}" Foreground="#DDFFFFFF" FontSize="20" Margin="0,21,0,0" HorizontalAlignment="Center" Content="Les Absences justfiée"/>
+                            <TextBlock Foreground="White" Margin="0,21,0,0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"><Run Text="25 Jours"/></TextBlock>
+                        </StackPanel>
+                    </Border>
+
+
+                </StackPanel>
+
+                <StackPanel Orientation="Vertical" Margin="30,30,29,0" Background="WhiteSmoke" Height="403" Width="828">
+
+
+                    <DataGrid x:Name="studentattendence" Margin="14,25,14,0" ColumnWidth="130" AutoGenerateColumns="False"  CanUserAddRows="False" Width="800" Height="376" >
+
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="User Id" Binding="{Binding [User Id]}" />
+                            <DataGridTextColumn Header="Full Name" Binding="{Binding [Full Name]}"  />
+                            <DataGridTextColumn Header="Email" Binding="{Binding [Email]}"  />
+                            <DataGridTextColumn Header="Absent"  Binding="{Binding [Date]}" />
+                            <DataGridTextColumn Header="Justifié" Binding="{Binding [IsJustified]}" />
+                         </DataGrid.Columns>
+
+                    </DataGrid>
+
+
+                </StackPanel>
+
+
+
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel  Orientation="Vertical" Grid.Column="1" Grid.Row="1" Background="#FF007ACC">
+
+            <StackPanel Orientation="Vertical" Width="300" Margin="0,31,0,0">
+                <Border Width="120" Height="120" BorderBrush="#007bff" BorderThickness="1" CornerRadius="100">
+                    <Image />
+                </Border>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock FontSize="24" TextAlignment="Center"  Text="{Binding Path=[Full Name]}" HorizontalAlignment="Center"  Width="209" VerticalAlignment="Center" Margin="0,23,0,0" Foreground="White" FontFamily="Roboto"/>
+                    <TextBlock TextAlignment="Center" FontSize="22" Foreground="Gainsboro">Student</TextBlock>
+
+                </StackPanel>
+            </StackPanel>
+            <Border Padding="15"/>
+            <StackPanel Orientation="Vertical" >
+                <Label FontSize="24" HorizontalContentAlignment="Center" Background="White" Foreground="#DD000000" Margin="0,20,0,0">Your Teacher Name</Label>
+                <TextBlock FontSize="22" HorizontalAlignment="Center" Text="{Binding [Staff Id]}" Foreground="#FFEAEAEA"/>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Margin="0,20,0,0" >
+                <Label FontSize="24" HorizontalContentAlignment="Center" Background="White" Foreground="#DD000000" Margin="0,20,0,0" Content="Your Classe Name"/>
+                <TextBlock HorizontalAlignment="Center" Text="{Binding [Class Name]}" Foreground="#FFE4E4E4" FontSize="22"></TextBlock>
+            </StackPanel>
+
+
+
+        </StackPanel>
+
+
+
     </Grid>
 </Window>

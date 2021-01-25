@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
@@ -70,6 +71,44 @@ namespace AttendanceManagement.Models
             }
         }
 
+
+
+        #region getstudentdata
+
+        public static  void GetStudent(int userid, DataGrid usertable)
+        {
+            Ado adonet = new Ado();
+            adonet.Connect();
+            adonet.Cmd = new SqlCommand("Select * From Users INNER JOIN Roles ON Users.[Role Id]= Roles.[Role Id] INNER JOIN Classes On Users.[Class Id] = Classes.[Id Class] INNER JOIN Attendance ON Attendance.[Student Id] = Users.[User Id] WHERE [User Id ]=@userid;", adonet.Cnx);
+            adonet.Adapter = new SqlDataAdapter();
+            adonet.Cmd.Parameters.Add("@userid", SqlDbType.VarChar, 200).Value = userid;
+            adonet.Adapter.SelectCommand = adonet.Cmd;
+            adonet.Adapter.Fill(adonet.DataSet, "student");
+            usertable.Items.Clear();
+            usertable.ItemsSource = adonet.DataSet.Tables["student"].DefaultView;
+            adonet.Disconnect();
+
+        }
+
+
+        #endregion
+        #region getcountabsent
+
+        public static void getcountabsent(int userid, TextBlock absentdays)
+        {
+            Ado adonet = new Ado();
+            adonet.Connect();
+            adonet.Cmd = new SqlCommand("SELECT COUNT(Date) FROM Attendance WHERE [Student Id ]=@userid;", adonet.Cnx);
+            adonet.Adapter = new SqlDataAdapter();
+            adonet.Cmd.Parameters.Add("@userid", SqlDbType.VarChar, 200).Value = userid;
+            adonet.Adapter.SelectCommand = adonet.Cmd;
+            adonet.Adapter.Fill(adonet.DataSet, "Count");
+            string count = adonet.Cmd.ExecuteScalar().ToString() +" DAYS";
+            absentdays.Text = count;
+            adonet.Disconnect();
+
+        }
+        #endregion
 
 
 
