@@ -84,6 +84,8 @@ namespace AttendanceManagement.Views
                 ClassesBox.SelectedIndex = -1;
                 UserPassword.Password = "";
                 UserPassword2.Password = "";
+
+                this.Close();
             }
             else
             {

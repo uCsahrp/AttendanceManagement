@@ -99,10 +99,7 @@ namespace AttendanceManagement.Views
             Task.Run(() =>
                {
                    admin.DeleteUser(IdSelectedUser);
-                   if (admin.changed)
-                   {
-                       Helper.GetUsers(userstable);
-                   }
+
                });
             Message.Text = admin.error;
 
@@ -112,11 +109,11 @@ namespace AttendanceManagement.Views
         private void SearchInput_TextChanged(object sender, TextChangedEventArgs e)
         {
 
-            var fullname = SearchInput.Text.ToString();
-            UserModel.Search(fullname, userstable);
-            items = userstable.SelectedItem as DataRowView;
-            EditPopup editPop = new EditPopup();
-            editPop.Show();
+            //var fullname = SearchInput.Text.ToString();
+            //UserModel.Search(fullname, userstable);
+            //items = userstable.SelectedItem as DataRowView;
+            //EditPopup editPop = new EditPopup();
+            //editPop.Show();
         }
 
 
@@ -131,6 +128,13 @@ namespace AttendanceManagement.Views
             items = userstable.SelectedItem as DataRowView;
             EditPopup editPop = new EditPopup();
             editPop.Show();
+
+
+            editPop.Closed += (s, e) =>
+            {
+                Helper.GetUsers(userstable);
+
+            };
         }
 
     }
