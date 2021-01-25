@@ -147,9 +147,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Views\christina-wocintechchat-com-4yTHVRarfGY-unsplash.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Assets\account.png" />
     <Resource Include="Assets\login.jpg" />
     <Resource Include="Assets\login.png" />
