@@ -28,7 +28,7 @@ namespace AttendanceManagement.Models
             try
             {
                 usertable.ItemsSource = ado.DataSet.Tables["Users"].DefaultView;
-                usersTable =  ado.DataSet.Tables["Users"];
+                usersTable = ado.DataSet.Tables["Users"];
             }
             catch (Exception)
             {
@@ -157,8 +157,7 @@ namespace AttendanceManagement.Models
 
         #region Edit USERS
 
-        public bool  EditUsers(int id, string fullName, string email, string password, string confirmPass, int classId, int roleId)
-        public bool  EditUsers(int id, string fullName, string email, string password, string confirmPass, int roleId, int classId)
+
         public bool EditUsers(int id, string fullName, string email, string password, string confirmPass, int classId, int roleId)
         {
 
