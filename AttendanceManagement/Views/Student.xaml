@@ -99,7 +99,9 @@
             </StackPanel>
         </StackPanel>
 
+        <StackPanel  Orientation="Vertical" Grid.Column="1" Grid.Row="1" Background="#FF007ACC">
         <StackPanel  Orientation="Vertical" Grid.Column="1" Background="#FF007ACC" Grid.RowSpan="2">
+        <StackPanel  Orientation="Vertical" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Background="#FF007ACC">
 
             <StackPanel Orientation="Vertical" Width="300" Margin="0,31,0,0">
                 <Border Padding="30"></Border>

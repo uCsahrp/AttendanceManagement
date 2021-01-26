@@ -147,6 +147,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Avatars\manager.svg" />
+    <Content Include="Assets\Avatars\programmer.svg" />
+    <Content Include="Assets\Avatars\secretary.svg" />
+    <Content Include="Assets\Avatars\teacher.svg" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Assets\account.png" />
     <Resource Include="Assets\login.jpg" />
     <Resource Include="Assets\login.png" />
