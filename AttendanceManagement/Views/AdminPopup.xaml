@@ -14,15 +14,15 @@
     <Grid MouseDown="Grid_MouseDown">
 
         <StackPanel Width="80" HorizontalAlignment="Right" Panel.ZIndex="1">
-            <Button x:Name="btnExit" Margin="10 10" Style="{StaticResource MaterialDesignFloatingActionButton}" Background="{x:Null}" Width="40" Height="40"
+            <Button x:Name="btnExit" Margin="10 18" Style="{StaticResource MaterialDesignFloatingActionButton}" Background="{x:Null}" Width="40" Height="40"
                         ToolTip="Close" Click="btnExit_Click">
                 <materialDesign:PackIcon Kind="Close" Width="20" Height="20" Foreground="White" />
             </Button>
         </StackPanel>
 
         <StackPanel>
-            <StackPanel Background="#007bff">
-                <TextBlock FontSize="24" Margin="0 60 0 0" Foreground="White" FontWeight="Bold" Text="Create New User" TextAlignment="Center" />
+            <StackPanel Background="#007bff" Height="80" >
+                <TextBlock FontSize="24" Margin="0 26 0 0" Foreground="White" FontWeight="Bold" Text="Create New User" TextAlignment="Center" />
             </StackPanel>
             <StackPanel HorizontalAlignment="Center" Margin="0 25 0 0" >
 
@@ -36,7 +36,7 @@
             <TextBlock x:Name="Message" TextAlignment="Center" Style="{DynamicResource MaterialDesignBody1TextBlock}" Foreground="#007bff" />
 
             <StackPanel Orientation="Horizontal"  Width="474" Margin="0,40,0,0">
-                <StackPanel Margin="3,0,0,0">
+                <StackPanel >
                     <TextBox Name="FullName" Width="230" Style="{DynamicResource MaterialDesignTextBox}" BorderBrush="#007bff" materialDesign:HintAssist.Hint="Full name"></TextBox>
                 </StackPanel>
                 <StackPanel HorizontalAlignment="Right" VerticalAlignment="Center" Margin="9,0,0,0">
@@ -52,11 +52,11 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Horizontal"  Width="474" Margin="0,40,0,0" HorizontalAlignment="Center">
-                <StackPanel Margin="3,0,0,0">
+                <StackPanel >
 
                     <ComboBox Name="UserRole" Width="230"  Style="{DynamicResource MaterialDesignComboBox}"  materialDesign:HintAssist.Hint="Role" BorderBrush="#007bff" SelectionChanged="UserRole_SelectionChanged"></ComboBox>
                 </StackPanel>
-                <StackPanel x:Name="ClassCombo" Visibility="Hidden" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="3,0,0,0">
+                <StackPanel x:Name="ClassCombo" Visibility="Hidden" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="10,0,0,0">
 
                     <ComboBox Style="{DynamicResource MaterialDesignComboBox}"  materialDesign:HintAssist.Hint="Class" BorderBrush="#007bff" Margin="0 0 0 5" Width="230" Name="ClassesBox" />
                 </StackPanel>

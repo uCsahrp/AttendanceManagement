@@ -145,8 +145,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-     </ItemGroup>
-   <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="Assets\Avatars\manager.svg" />
     <Content Include="Assets\Avatars\programmer.svg" />
     <Content Include="Assets\Avatars\secretary.svg" />
