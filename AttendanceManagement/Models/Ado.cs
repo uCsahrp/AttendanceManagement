@@ -44,7 +44,7 @@ namespace AttendanceManagement.Models
         {
             if (Cnx.State == ConnectionState.Closed || Cnx.State == ConnectionState.Broken)
             {
-                Cnx.ConnectionString = "Data Source=DESKTOP-OC51QH5;Initial Catalog=AttendanceManagement;Integrated Security=True";
+                Cnx.ConnectionString = "Data Source=ADAM-HP;Initial Catalog=AttendanceManagement;Integrated Security=True";
                 Cnx.Open();
             }
         }
