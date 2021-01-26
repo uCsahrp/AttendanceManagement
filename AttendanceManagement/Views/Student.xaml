@@ -87,7 +87,7 @@
                             <DataGridTextColumn Header="Email" Binding="{Binding [Email]}"  />
                             <DataGridTextColumn Header="Absent"  Binding="{Binding [Date]}" />
                             <DataGridTextColumn Header="Justifié" Binding="{Binding [IsJustified]}" />
-                         </DataGrid.Columns>
+                        </DataGrid.Columns>
 
                     </DataGrid>
 
@@ -99,9 +99,10 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel  Orientation="Vertical" Grid.Column="1" Grid.Row="1" Background="#FF007ACC">
+        <StackPanel  Orientation="Vertical" Grid.Column="1" Background="#FF007ACC" Grid.RowSpan="2">
 
             <StackPanel Orientation="Vertical" Width="300" Margin="0,31,0,0">
+                <Border Padding="30"></Border>
                 <Border Width="120" Height="120" BorderBrush="#007bff" BorderThickness="1" CornerRadius="100">
                     <Image />
                 </Border>
