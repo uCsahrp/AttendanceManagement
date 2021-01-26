@@ -34,8 +34,10 @@ namespace AttendanceManagement.Views
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var userid = Login.userid;
-            Helper.GetStudent(userid, studentattendence);
+            Helper.GetStudent(userid, studentattendence, studentName, TeacherName, ClassName);
             Helper.getcountabsent(userid, absentdays);
+            Helper.GetCountAbsentJust(userid, absentdaysjust);
+            Helper.GetCountAbsentNotJust(userid, absentdaysNojust);
 
 
         }
