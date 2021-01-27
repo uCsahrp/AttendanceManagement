@@ -42,7 +42,7 @@
                         </Border.Background>
                         <StackPanel Width="250" Height="130" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,6,0,0">
                             <Label HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Background="{x:Null}" Foreground="#DDFFFFFF" Margin="0,21,0,0" Content="Les jours Absenté"/>
-                            <TextBlock x:Name="absentdays" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="24" Margin="0,21,0,0"><Run Text="25 Jours"/></TextBlock>
+                            <TextBlock x:Name="absentdays" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="24" Margin="0,21,0,0"></TextBlock>
                         </StackPanel>
                     </Border>
 
@@ -56,7 +56,7 @@
                         </Border.Background>
                         <StackPanel  Width="250" Height="132" >
                             <Label Background="{x:Null}" Foreground="#DDFFFFFF" FontSize="20" Margin="0,21,0,0" HorizontalAlignment="Center" Content="Les Absences Non-justfiée"/>
-                            <TextBlock x:Name="absentdaysNojust" Foreground="White" Margin="0,21,0,0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"><Run Text="25 Jours"/></TextBlock>
+                            <TextBlock x:Name="absentdaysNojust" Foreground="White" Margin="0,21,0,0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </StackPanel>
                     </Border>
                     <Border Padding="20"></Border>
@@ -69,7 +69,7 @@
                         </Border.Background>
                         <StackPanel  Width="250" Height="132" >
                             <Label Background="{x:Null}" Foreground="#DDFFFFFF" FontSize="20" Margin="0,21,0,0" HorizontalAlignment="Center" Content="Les Absences justfiée"/>
-                            <TextBlock  x:Name="absentdaysjust" Foreground="White" Margin="0,21,0,0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"><Run Text="25 Jours"/></TextBlock>
+                            <TextBlock  x:Name="absentdaysjust" Foreground="White" Margin="0,21,0,0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </StackPanel>
                     </Border>
 
@@ -82,11 +82,12 @@
                     <DataGrid x:Name="studentattendence" Margin="14,25,14,0" ColumnWidth="130" AutoGenerateColumns="False"  CanUserAddRows="False" Width="800" Height="376" >
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="User Id" Binding="{Binding [User Id]}" />
-                            <DataGridTextColumn Header="Full Name" Binding="{Binding [Full Name]}"  />
-                            <DataGridTextColumn Header="Email" Binding="{Binding [Email]}"  />
-                            <DataGridTextColumn Header="Absent"  Binding="{Binding [Date]}" />
-                            <DataGridTextColumn Header="Justifié" Binding="{Binding [IsJustified]}" />
+                            <DataGridTextColumn Header="User Id" Width="120" Binding="{Binding [User Id]}" />
+                            <DataGridTextColumn Header="Full Name" Width="120" Binding="{Binding [Full Name]}"  />
+                            <DataGridTextColumn Header="Email" Width="200" Binding="{Binding [Email]}"  />
+                            <DataGridTextColumn Header="Absent" Width="120"  Binding="{Binding [Date]}" />
+                            <DataGridTextColumn Header="Description" Width="120"  Binding="{Binding [Description]}" />
+                            <DataGridTextColumn Header="Justifié" Width="120" Binding="{Binding [IsJustified]}" />
                         </DataGrid.Columns>
 
                     </DataGrid>
