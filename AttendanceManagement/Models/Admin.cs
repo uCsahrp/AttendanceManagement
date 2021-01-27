@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace AttendanceManagement.Models
     class Admin : UserModel
     {
         private Ado ado = new Ado();
-        public bool changed = false;
+        public bool changed;
 
 
 
@@ -24,6 +25,7 @@ namespace AttendanceManagement.Models
 
         public bool AddUser(string fullName, string email, string password, string confirmPass, int roleId, int classId)
         {
+            changed = false;
             //Regex for making sure Email is valid
             Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             Match match = regex.Match(email);
@@ -255,12 +257,14 @@ namespace AttendanceManagement.Models
             {
                 try
                 {
+                    //Helper.observableCollection.RemoveAt(IdUser + 1);
+                    //IdSelectedUser = int.Parse(row.ItemArray[0].ToString());
                     ado.Connect();
                     ado.Cmd = new SqlCommand($"DELETE FROM [Users] WHERE [User Id]={IdUser} ", ado.Cnx);
                     ado.Cmd.ExecuteNonQuery();
                     ado.Disconnect();
                     error = "User was Deleted Successfully";
-                    changed = true;
+                    this.changed = true;
                 }
                 catch (Exception e)
                 {

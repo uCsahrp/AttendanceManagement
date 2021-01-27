@@ -87,7 +87,15 @@
 
                             <TextBlock Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold"  Foreground="White" Style="{DynamicResource MaterialDesignHeadline3TextBlock}" FontSize="20" Text="Users List"/>
 
-                            <ComboBox Grid.Column="2" Width="150" Height="31" Padding="6" VerticalAlignment="Center" Foreground="White" BorderBrush="White" HorizontalAlignment="Right" materialDesign:HintAssist.Hint=" Filter"  Style="{DynamicResource MaterialDesignFilledComboBox}"/>
+                            <StackPanel  Grid.Column="2" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+                                <ComboBox Name="ClassFilter" Width="150" Height="31" Padding="6" VerticalAlignment="Center" Foreground="White" BorderBrush="White" HorizontalAlignment="Right" materialDesign:HintAssist.Hint=" Filter"  Style="{DynamicResource MaterialDesignFilledComboBox}"/>
+
+
+                                <Button Style="{DynamicResource MaterialDesignFlatButton}" Background="LightSeaGreen"  Margin="10 0" Click="Button_Click">
+                                    <materialDesign:PackIcon Kind="Reload" Foreground="White" FontWeight="Bold" Margin="2" Width="20" Height="20"/>
+                                </Button>
+                            </StackPanel>
+
 
                         </Grid>
 
@@ -95,7 +103,7 @@
 
                             <DataGrid.Columns >
                                 <DataGridTextColumn Header="User Id" Binding="{Binding [User Id]}" />
-                                <DataGridTextColumn Header="Full Name" Binding="{Binding [Full Name]}"  />
+                                <DataGridTextColumn Header="Full Name" Binding="{Binding [Full Name]}" />
                                 <DataGridTextColumn Header="Email" Binding="{Binding [Email]}"  />
                                 <DataGridTextColumn Header="Role Name"  Binding="{Binding [Role Name]}" />
                                 <DataGridTextColumn Header="Class Name" Binding="{Binding [Class Name]}" />

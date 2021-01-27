@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -12,6 +13,8 @@ namespace AttendanceManagement.Models
 {
     public static class Helper
     {
+        public static ObservableCollection<DataRow> observableCollection = new ObservableCollection<DataRow>();
+
 
         #region Methode Get Roles To Fill Drop Down
 
@@ -75,10 +78,17 @@ namespace AttendanceManagement.Models
             adonet.Cmd.Connection = adonet.Cnx;
             adonet.DataReader = adonet.Cmd.ExecuteReader();
             adonet.Datatable.Load(adonet.DataReader);
+            //var rr = adonet.Datatable.Rows;
+            //foreach (var row in rr)
+            //{
+            //    observableCollection.Add((DataRow)row);
+
+            //}
             adonet.Disconnect();
             usertable.ItemsSource = adonet.Datatable.DefaultView;
 
         }
+
 
 
 

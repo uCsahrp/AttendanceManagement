@@ -39,6 +39,7 @@ namespace AttendanceManagement.Models
         public SqlDataAdapter Adapter1 { get => adapter1; set => adapter1 = value; }
 
 
+
         // declaration of connect 
         public void Connect()
         {
@@ -49,7 +50,10 @@ namespace AttendanceManagement.Models
             }
         }
 
+
+
         // declaration de la methode deconnecter
+
         public void Disconnect()
         {
             if (Cnx.State == ConnectionState.Open)
