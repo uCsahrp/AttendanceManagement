@@ -91,7 +91,7 @@
 
                         </Grid>
 
-                        <DataGrid x:Name="userstable"  Height="472" Margin="5 " VerticalScrollBarVisibility="Auto" ColumnWidth="130" HorizontalAlignment="Center" RowBackground="Aquamarine" AutoGenerateColumns="False" MouseDoubleClick="userstable_MouseDoubleClick" CanUserAddRows="False" SelectionChanged="userstable_SelectionChanged" Style="{DynamicResource MaterialDesignDataGrid}" BorderBrush="#007bff" RowHeaderStyle="{DynamicResource MaterialDesignDataGrid}">
+                        <DataGrid x:Name="userstable"  Height="472" Margin="5 " VerticalScrollBarVisibility="Auto" ColumnWidth="130" HorizontalAlignment="Center" RowBackground="Azure" AutoGenerateColumns="False" MouseDoubleClick="userstable_MouseDoubleClick" CanUserAddRows="False" SelectionChanged="userstable_SelectionChanged" Style="{DynamicResource MaterialDesignDataGrid}" BorderBrush="#007bff" >
 
                             <DataGrid.Columns >
                                 <DataGridTextColumn Header="User Id" Binding="{Binding [User Id]}" />

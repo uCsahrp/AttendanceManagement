@@ -75,8 +75,8 @@ namespace AttendanceManagement.Models
 
         #region getstudentdata
 
-        public static  void GetStudent(int userid, DataGrid usertable, TextBlock fullname, TextBlock staffName, TextBlock ClassName)
-        { 
+        public static void GetStudent(int userid, DataGrid usertable, TextBlock fullname, TextBlock staffName, TextBlock ClassName)
+        {
             Ado adonet = new Ado();
             adonet.Connect();
             adonet.Cmd = new SqlCommand("Select * From Users INNER JOIN Roles ON Users.[Role Id]= Roles.[Role Id] INNER JOIN Classes On Users.[Class Id] = Classes.[Id Class] INNER JOIN Attendance ON Attendance.[Student Id] = Users.[User Id] WHERE [User Id ]=@userid;", adonet.Cnx);
@@ -89,7 +89,7 @@ namespace AttendanceManagement.Models
             staffName.Text = adonet.DataSet.Tables["student"].Rows[0][12].ToString();
             ClassName.Text = adonet.DataSet.Tables["student"].Rows[0][10].ToString();
             adonet.Disconnect();
-            
+
 
 
 
@@ -97,6 +97,8 @@ namespace AttendanceManagement.Models
 
 
         #endregion
+
+
         #region getcountabsent
 
         public static void getcountabsent(int userid, TextBlock absentdays)
@@ -108,12 +110,13 @@ namespace AttendanceManagement.Models
             adonet.Adapter.SelectCommand = adonet.Cmd;
             adonet.Adapter.Fill(adonet.DataSet, "Count");
             //Executes the query, and returns the first column of the first row in the result set returned by the query. Additional columns or rows are ignored.
-            string count = adonet.Cmd.ExecuteScalar().ToString() +" DAYS";
+            string count = adonet.Cmd.ExecuteScalar().ToString() + " DAYS";
             absentdays.Text = count;
             adonet.Disconnect();
 
         }
         #endregion
+
 
         #region GetAbsentJustified
 
@@ -136,6 +139,7 @@ namespace AttendanceManagement.Models
 
 
         #endregion
+
 
         #region GetAbsentnotJustified
 

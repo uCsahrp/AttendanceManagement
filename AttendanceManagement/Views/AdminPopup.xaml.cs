@@ -103,7 +103,8 @@ namespace AttendanceManagement.Views
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
 
-            Close();
+            this.Close();
+
 
         }
 
@@ -116,7 +117,7 @@ namespace AttendanceManagement.Views
         {
             try
             {
-                DragMove();
+                this.DragMove();
             }
             catch
             {
