@@ -121,7 +121,7 @@ namespace AttendanceManagement.Models
                         cmd.ExecuteNonQuery();
                         ado.Disconnect();
                         error = "User Added Successfully.";
-                        //GetUsers(userTable);
+                        changed = true;
                         return true;
                     }
                 }
@@ -273,6 +273,6 @@ namespace AttendanceManagement.Models
         #endregion
 
 
-      
+
     }
 }
