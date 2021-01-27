@@ -260,7 +260,7 @@ namespace AttendanceManagement.Models
                     ado.Cmd.ExecuteNonQuery();
                     ado.Disconnect();
                     error = "User was Deleted Successfully";
-
+                    changed = true;
                 }
                 catch (Exception e)
                 {

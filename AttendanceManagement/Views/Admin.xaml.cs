@@ -101,6 +101,7 @@ namespace AttendanceManagement.Views
                    admin.DeleteUser(IdSelectedUser);
 
                });
+
             Message.Text = admin.error;
 
         }
@@ -136,6 +137,9 @@ namespace AttendanceManagement.Views
 
             };
         }
+
+
+
         #region Button Exit Event ==>
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -145,6 +149,8 @@ namespace AttendanceManagement.Views
         }
 
         #endregion
+
+
         #region EventMouse Down to Drag Window ==>
 
         private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
