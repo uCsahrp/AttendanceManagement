@@ -75,8 +75,15 @@ namespace AttendanceManagement.Views
 
         private void userstable_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            if (userstable.SelectedItem is DataRowView)
+            {
+                items = userstable.SelectedItem as DataRowView;
+            }
+            else
+            {
+                return;
+            }
 
-            items = userstable.SelectedItem as DataRowView;
             EditPopup editPop = new EditPopup();
             editPop.Show();
             editPop.Closed += (s, e) =>
@@ -99,12 +106,30 @@ namespace AttendanceManagement.Views
 
             //TODO Fix This
 
-            DataRow row = userstable.SelectedItems as DataRow;
+            //var row = dg.SelectedCells[0];//Row[userstable.SelectedIndex];
+            try
+            {
+
+                //var cell = sender as DataGridCell;
+                if (userstable.SelectedItem is DataRowView)
+                {
+                    var row = (DataRowView)userstable.SelectedItem;
+
+                    IdSelectedUser = int.Parse(row.Row.ItemArray[0].ToString());
+
+                    MessageBox.Show(IdSelectedUser + "");
+                }
+                else
+                {
+                    return;
+                }
+            }
+            catch
+            {
 
 
-            IdSelectedUser = int.Parse(row..ToString());
-
-            MessageBox.Show(IdSelectedUser + String.Empty);
+            }
+            //Console.WriteLine("row : " + new System.Xml.Serialization.XmlSerializer(row.Item));
 
         }
 
@@ -161,7 +186,17 @@ namespace AttendanceManagement.Views
 
             var fullname = SearchInput.Text.ToString();
             UserModel.Search(fullname, userstable);
-            items = userstable.SelectedItem as DataRowView;
+
+            if (userstable.SelectedItem is DataRowView)
+            {
+                items = userstable.SelectedItem as DataRowView;
+            }
+            else
+            {
+                //TODO FIX IN CASE TYPE BUTTON OR COLUMN NAME !!!!
+                return;
+            }
+
             EditPopup editPop = new EditPopup();
             editPop.Show();
 
@@ -182,13 +217,17 @@ namespace AttendanceManagement.Views
         void GetUsers()
         {
             Ado adonet = new Ado();
-            adonet.Cmd.CommandText = "Select u.[User Id], u.[Full Name], u.Email, r.[Role Name],c.[Class Name] From Users u INNER JOIN Roles r ON u.[Role Id]= r.[Role Id] Left JOIN Classes c On u.[Class Id] = c.[Id Class]; ";
-            adonet.Cmd.Connection = adonet.Cnx;
-            adonet.Connect();
-            adonet.DataReader = adonet.Cmd.ExecuteReader();
-            adonet.Datatable.Load(adonet.DataReader);
-            adonet.Disconnect();
-            userstable.ItemsSource = adonet.Datatable.DefaultView;
+            //adonet.Cmd.CommandText = "Select u.[User Id], u.[Full Name], u.Email, r.[Role Name],c.[Class Name] From Users u INNER JOIN Roles r ON u.[Role Id]= r.[Role Id] Left JOIN Classes c On u.[Class Id] = c.[Id Class]; ";
+            //adonet.Cmd.Connection = adonet.Cnx;
+            //adonet.Connect();
+            //adonet.DataReader = adonet.Cmd.ExecuteReader();
+            //adonet.Datatable.Load(adonet.DataReader);
+            //adonet.Disconnect();
+            var query = $"Select u.[User Id], u.[Full Name], u.Email, r.[Role Name],c.[Class Name] From Users u INNER JOIN Roles r ON u.[Role Id]= r.[Role Id] Left JOIN Classes c On u.[Class Id] = c.[Id Class]; ";
+            adonet.Adapter = new SqlDataAdapter(query, adonet.Cnx);
+            adonet.Adapter.Fill(adonet.DataSet);
+
+            userstable.ItemsSource = adonet.DataSet.Tables[0].DefaultView;
 
         }
 
