@@ -113,5 +113,18 @@ namespace AttendanceManagement.Views
 
         #endregion
 
+
+        #region Button Exit Event ==>
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow main = new MainWindow();
+            main.Show();
+            Close();
+
+        }
+
+        #endregion
+
     }
 }
