@@ -68,7 +68,6 @@ namespace AttendanceManagement.Views
                     Admin ad = new Admin();
 
                     Helper.GetUsers(ad.userstable);
-
                     this.Close();
                 }
                 else
