@@ -54,7 +54,6 @@ namespace AttendanceManagement.Views
                     //If their is a result
                     if (Adonet.DataSet.Tables["User"].Rows.Count > 0)
                     {
-
                         //Collect user information
                         RoleId = Convert.ToInt32(Adonet.DataSet.Tables["User"].Rows[0][5]);
                         UserId = Convert.ToInt32(Adonet.DataSet.Tables["User"].Rows[0][0]);
@@ -69,6 +68,7 @@ namespace AttendanceManagement.Views
 
                         return true;
                     }
+
                     else
                     {
                         error = "Sorry, user not found !";
@@ -80,7 +80,6 @@ namespace AttendanceManagement.Views
             {
                 MessageBox.Show(ex + String.Empty);
                 return false;
-
             }
         }
 

@@ -222,15 +222,22 @@ namespace AttendanceManagement.Views
 
         void GetUsers()
         {
-            //    adonet.Cmd.CommandText = "Select u.[User Id], u.[Full Name], u.Email, r.[Role Name],c.[Class Name] From Users u INNER JOIN Roles r ON u.[Role Id]= r.[Role Id] Left JOIN Classes c On u.[Class Id] = c.[Id Class]; ";
-            //    adonet.Cmd.Connection = adonet.Cnx;
-            adonet.Connect();
-            //    adonet.DataReader = adonet.Cmd.ExecuteReader();
-            //    adonet.Datatable.Load(adonet.DataReader);
 
-            var query = $"Select u.[User Id], u.[Full Name], u.Email, r.[Role Name],c.[Class Name],c.[Class Id] From Users u INNER JOIN Roles r ON u.[Role Id]= r.[Role Id] Left JOIN Classes c On u.[Class Id] = c.[Id Class]; ";
+            Task.Run(() =>
+         {
+
+             adonet.DataSet.Tables.Clear();
+             userstable.Items.Clear();
+
+         });
+
+            adonet.Connect();
+
+            var query = $"Select u.[User Id], u.[Full Name], u.Email, r.[Role Name],c.[Class Name],c.[Id Class] From Users u INNER JOIN Roles r ON u.[Role Id]= r.[Role Id] Left JOIN Classes c On u.[Class Id] = c.[Id Class]; ";
             adonet.Adapter = new SqlDataAdapter(query, adonet.Cnx);
+
             adonet.Adapter.Fill(adonet.DataSet);
+
             adonet.Disconnect();
 
             userstable.ItemsSource = adonet.DataSet.Tables[0].DefaultView;
@@ -259,7 +266,6 @@ namespace AttendanceManagement.Views
         }
 
         #endregion
-
 
 
         #region Button Exit Event ==>
@@ -307,7 +313,7 @@ namespace AttendanceManagement.Views
         private void ClassFilter_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             DataView view = adonet.DataSet.Tables[0].DefaultView;
-            view.RowFilter = $"[City Id] = '{ClassFilter.SelectedValue}'";
+            view.RowFilter = $"[Class Name] = '{ClassFilter.SelectedItem.ToString()}'";
             userstable.ItemsSource = view.ToTable().DefaultView;
             view.RowFilter = String.Empty;
 

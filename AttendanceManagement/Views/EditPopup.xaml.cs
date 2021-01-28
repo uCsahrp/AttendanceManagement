@@ -29,10 +29,8 @@ namespace AttendanceManagement.Views
         public EditPopup()
         {
             InitializeComponent();
-            Helper.GetRoles(UserRole);
             Helper.GetClasses(ClassesBox);
         }
-
 
 
 

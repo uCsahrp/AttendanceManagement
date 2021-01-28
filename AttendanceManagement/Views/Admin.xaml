@@ -88,9 +88,11 @@
                             <TextBlock Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold"  Foreground="White" Style="{DynamicResource MaterialDesignHeadline3TextBlock}" FontSize="20" Text="Users List"/>
 
                             <StackPanel  Grid.Column="2" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
-                                <ComboBox Name="ClassFilter" Width="150" Height="31" Padding="6" VerticalAlignment="Center" Foreground="White" BorderBrush="White" HorizontalAlignment="Right" materialDesign:HintAssist.Hint=" Filter"  Style="{DynamicResource MaterialDesignFilledComboBox}"
-                                          SelectionChanged="ClassFilter_OnSelectionChanged"
-                                          />
+                                <ComboBox Name="ClassFilter" Width="150" Height="31" Padding="6" VerticalAlignment="Center" Foreground="DimGray" BorderBrush="White" HorizontalAlignment="Right" materialDesign:HintAssist.Hint=" Filter"  Style="{DynamicResource MaterialDesignComboBox}"
+                                          SelectionChanged="ClassFilter_OnSelectionChanged" 
+                                          >
+                                    
+                                </ComboBox>
 
 
                                 <Button Style="{DynamicResource MaterialDesignFlatButton}" Background="LightSeaGreen"  Margin="10 0" Click="Button_Click">
