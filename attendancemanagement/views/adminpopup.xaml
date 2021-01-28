@@ -9,6 +9,7 @@
         Loaded="AdminPopup_OnLoaded"
         BorderBrush="#007bff"
         ResizeMode="NoResize"
+        
         BorderThickness="3"
         >
     <Grid MouseDown="Grid_MouseDown">

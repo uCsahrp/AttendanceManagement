@@ -23,8 +23,7 @@ namespace AttendanceManagement.Views
     /// </summary>
     public partial class Admin : Window
     {
-
-        Models.Admin admin = new Models.Admin();
+        private Models.Admin admin = new Models.Admin();
         public static DataRowView items;
         int IdSelectedUser = 0;
 
@@ -37,15 +36,21 @@ namespace AttendanceManagement.Views
 
 
         #region On Window Loads
-        private void Window_Loaded(object sender, RoutedEventArgs e)
+        private void Admin_Loaded(object sender, RoutedEventArgs e)
         {
             //admin.usertable = userstable;
             GetUsers();
             userName.Text = admin.UserName;
-            Helper.GetClasses(ClassFilter);
+
+            Dispatcher.Invoke(() =>
+            {
+                GetClasses();
+            });
         }
 
         #endregion
+
+
 
 
         #region Add Users To and Refesh the DataGrid
@@ -68,6 +73,7 @@ namespace AttendanceManagement.Views
         }
 
         #endregion
+
 
 
 
@@ -99,37 +105,35 @@ namespace AttendanceManagement.Views
 
         #endregion
 
+
+
+
         #region Selection Changed
 
         private void userstable_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
             //TODO Fix This
-
-            //var row = dg.SelectedCells[0];//Row[userstable.SelectedIndex];
             try
             {
-
-                //var cell = sender as DataGridCell;
-                if (userstable.SelectedItem is DataRowView)
+                int i = userstable.SelectedIndex;
+                if (userstable.Items[i] is DataRowView)
                 {
-                    var row = (DataRowView)userstable.SelectedItem;
-
-                    IdSelectedUser = int.Parse(row.Row.ItemArray[0].ToString());
-
-                    MessageBox.Show(IdSelectedUser + "");
+                    DataRowView rowView = (DataRowView)userstable.Items[i];
+                    string Id_user = rowView[0].ToString().Trim();
+                    IdSelectedUser = int.Parse(Id_user);
+                    // MessageBox.Show(Id_user);
+                    items = rowView;
                 }
                 else
                 {
                     return;
                 }
             }
-            catch
+            catch (Exception exception)
             {
-
-
+                Console.WriteLine(exception);
             }
-            //Console.WriteLine("row : " + new System.Xml.Serialization.XmlSerializer(row.Item));
 
         }
 
@@ -184,6 +188,7 @@ namespace AttendanceManagement.Views
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
 
+
             var fullname = SearchInput.Text.ToString();
             UserModel.Search(fullname, userstable);
 
@@ -213,25 +218,48 @@ namespace AttendanceManagement.Views
 
 
         #region GetUsers
+        Ado adonet = new Ado();
 
         void GetUsers()
         {
-            Ado adonet = new Ado();
-            //adonet.Cmd.CommandText = "Select u.[User Id], u.[Full Name], u.Email, r.[Role Name],c.[Class Name] From Users u INNER JOIN Roles r ON u.[Role Id]= r.[Role Id] Left JOIN Classes c On u.[Class Id] = c.[Id Class]; ";
-            //adonet.Cmd.Connection = adonet.Cnx;
-            //adonet.Connect();
-            //adonet.DataReader = adonet.Cmd.ExecuteReader();
-            //adonet.Datatable.Load(adonet.DataReader);
-            //adonet.Disconnect();
-            var query = $"Select u.[User Id], u.[Full Name], u.Email, r.[Role Name],c.[Class Name] From Users u INNER JOIN Roles r ON u.[Role Id]= r.[Role Id] Left JOIN Classes c On u.[Class Id] = c.[Id Class]; ";
+            //    adonet.Cmd.CommandText = "Select u.[User Id], u.[Full Name], u.Email, r.[Role Name],c.[Class Name] From Users u INNER JOIN Roles r ON u.[Role Id]= r.[Role Id] Left JOIN Classes c On u.[Class Id] = c.[Id Class]; ";
+            //    adonet.Cmd.Connection = adonet.Cnx;
+            adonet.Connect();
+            //    adonet.DataReader = adonet.Cmd.ExecuteReader();
+            //    adonet.Datatable.Load(adonet.DataReader);
+
+            var query = $"Select u.[User Id], u.[Full Name], u.Email, r.[Role Name],c.[Class Name],c.[Class Id] From Users u INNER JOIN Roles r ON u.[Role Id]= r.[Role Id] Left JOIN Classes c On u.[Class Id] = c.[Id Class]; ";
             adonet.Adapter = new SqlDataAdapter(query, adonet.Cnx);
             adonet.Adapter.Fill(adonet.DataSet);
+            adonet.Disconnect();
 
             userstable.ItemsSource = adonet.DataSet.Tables[0].DefaultView;
 
         }
 
         #endregion
+
+
+        #region GetClasses
+
+
+        void GetClasses()
+        {
+            Ado ado = new Ado();
+
+            ado.Connect();
+            var query = $"Select * From Classes";
+            ado.Adapter = new SqlDataAdapter(query, ado.Cnx);
+            ado.Adapter.Fill(ado.DataSet);
+            ado.Disconnect();
+            ClassFilter.SelectedValuePath = "Class Id";
+            ClassFilter.DisplayMemberPath = "Class Name";
+            ClassFilter.ItemsSource = ado.DataSet.Tables[0].DefaultView;
+
+        }
+
+        #endregion
+
 
 
         #region Button Exit Event ==>
@@ -264,6 +292,26 @@ namespace AttendanceManagement.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             GetUsers();
+        }
+
+        private void Userstable_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        {
+            //var grid = (DataGrid)sender;
+            //var selected = grid.SelectedCells;
+            //var id = selected[0].Item.ToString();
+            //string value = ((DataGrid)sender).Rows[e.RowIndex].Cells[0].Value;
+            //MessageBox.Show(id);
+        }
+
+
+        private void ClassFilter_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            DataView view = adonet.DataSet.Tables[0].DefaultView;
+            view.RowFilter = $"[City Id] = '{ClassFilter.SelectedValue}'";
+            userstable.ItemsSource = view.ToTable().DefaultView;
+            view.RowFilter = String.Empty;
+
+
         }
     }
 }

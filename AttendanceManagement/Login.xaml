@@ -16,6 +16,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         BorderBrush="#007bff"
         BorderThickness="4" KeyDown="MainWindow_OnKeyDown">

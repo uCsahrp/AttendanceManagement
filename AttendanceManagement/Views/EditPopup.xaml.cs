@@ -21,7 +21,10 @@ namespace AttendanceManagement.Views
     /// </summary>
     public partial class EditPopup : Window
     {
-        Models.Admin admin = new Models.Admin();
+
+        private Models.Admin admin = new Models.Admin();
+
+
 
         public EditPopup()
         {
@@ -48,18 +51,25 @@ namespace AttendanceManagement.Views
             {
 
                 //int Roleid = int.Parse(item.Row["Role Id"].ToString());
-                int id = int.Parse(item.Row["User Id"].ToString());
-                FullName.Text = item.Row["Full Name"].ToString();
-                UserMail.Text = item.Row["Email"].ToString();
-                UserPassword.Password = item.Row["Password"].ToString();
-                UserPassword2.Password = item.Row["Password"].ToString();
-                var roleId = int.Parse(item.Row["Role Id"].ToString());
-                UserRole.SelectedValue = roleId;
-
-                if (roleId > 2)
+                try
                 {
-                    ClassesBox.SelectedIndex = int.Parse(item.Row["Class Id"].ToString());
+                    int id = int.Parse(item["User Id"].ToString());
+                    FullName.Text = item["Full Name"].ToString();
+                    UserMail.Text = item["Email"].ToString();
+                    UserPassword.Password = item["Password"].ToString();
+                    UserPassword2.Password = item["Password"].ToString();
+                    var roleId = int.Parse(item["Role Id"].ToString());
+                    UserRole.SelectedValue = roleId;
 
+                    if (roleId > 2)
+                    {
+                        ClassesBox.SelectedIndex = int.Parse(item["Class Id"].ToString());
+
+                    }
+                }
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception);
                 }
 
                 //admin.getusersedit(id, FullName, UserMail, UserPassword, UserPassword2);
@@ -71,7 +81,7 @@ namespace AttendanceManagement.Views
         private void BtnEditSubmit_Click(object sender, RoutedEventArgs e)
         {
             var item = Admin.items;
-            int id = int.Parse(item.Row["User Id"].ToString());
+            int id = int.Parse(item["User Id"].ToString());
 
 
             if (admin.EditUsers(id, FullName.Text, UserMail.Text, UserPassword.Password, UserPassword2.Password, ClassesBox.SelectedIndex, UserRole.SelectedIndex))
@@ -118,13 +128,15 @@ namespace AttendanceManagement.Views
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow();
-            main.Show();
-            Close();
 
+            Close();
+            admin.changed = true;
         }
 
         #endregion
+
+
+
 
     }
 }

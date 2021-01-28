@@ -247,11 +247,12 @@ namespace AttendanceManagement.Models
 
         #region Delete User
 
-        public void DeleteUser(int IdUser)
+        public bool DeleteUser(int IdUser)
         {
             if (IdUser == 0)
             {
                 error = "Please select the user you Want to Delete";
+                return false;
             }
             else
             {
@@ -265,6 +266,7 @@ namespace AttendanceManagement.Models
                     ado.Disconnect();
                     error = "User was Deleted Successfully";
                     this.changed = true;
+                    return true;
                 }
                 catch (Exception e)
                 {

@@ -28,8 +28,10 @@ namespace AttendanceManagement
         private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
         {
             Login login = new Login();
+
             login.Show();
-            Close();
+            this.Close();
+
         }
 
         #region Button Exit Event ==>
@@ -39,6 +41,7 @@ namespace AttendanceManagement
             Application.Current.Shutdown();
 
         }
+
 
         #endregion
 

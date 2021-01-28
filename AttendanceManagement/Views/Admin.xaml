@@ -19,7 +19,7 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="Roboto"
-        Loaded="Window_Loaded" >
+        Loaded="Admin_Loaded" >
     <Grid Background="#007bff" MouseDown="Grid_MouseDown">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="240"/>
@@ -88,7 +88,9 @@
                             <TextBlock Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold"  Foreground="White" Style="{DynamicResource MaterialDesignHeadline3TextBlock}" FontSize="20" Text="Users List"/>
 
                             <StackPanel  Grid.Column="2" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
-                                <ComboBox Name="ClassFilter" Width="150" Height="31" Padding="6" VerticalAlignment="Center" Foreground="White" BorderBrush="White" HorizontalAlignment="Right" materialDesign:HintAssist.Hint=" Filter"  Style="{DynamicResource MaterialDesignFilledComboBox}"/>
+                                <ComboBox Name="ClassFilter" Width="150" Height="31" Padding="6" VerticalAlignment="Center" Foreground="White" BorderBrush="White" HorizontalAlignment="Right" materialDesign:HintAssist.Hint=" Filter"  Style="{DynamicResource MaterialDesignFilledComboBox}"
+                                          SelectionChanged="ClassFilter_OnSelectionChanged"
+                                          />
 
 
                                 <Button Style="{DynamicResource MaterialDesignFlatButton}" Background="LightSeaGreen"  Margin="10 0" Click="Button_Click">
@@ -99,7 +101,7 @@
 
                         </Grid>
 
-                        <DataGrid x:Name="userstable"  Height="472" Margin="5 " VerticalScrollBarVisibility="Auto" ColumnWidth="130" HorizontalAlignment="Center" RowBackground="Azure" AutoGenerateColumns="False" MouseDoubleClick="userstable_MouseDoubleClick" CanUserAddRows="False" SelectionChanged="userstable_SelectionChanged" Style="{DynamicResource MaterialDesignDataGrid}" BorderBrush="#007bff" IsReadOnly="True" >
+                        <DataGrid x:Name="userstable"  Height="472" Margin="5 " VerticalScrollBarVisibility="Auto" ColumnWidth="130" HorizontalAlignment="Center" RowBackground="Azure" AutoGenerateColumns="False" MouseDoubleClick="userstable_MouseDoubleClick" CanUserAddRows="False" SelectionChanged="userstable_SelectionChanged" Style="{DynamicResource MaterialDesignDataGrid}" BorderBrush="#007bff" IsReadOnly="True" SelectionMode="Single" SelectedCellsChanged="Userstable_OnSelectedCellsChanged">
 
                             <DataGrid.Columns >
                                 <DataGridTextColumn Header="User Id" Binding="{Binding [User Id]}" />

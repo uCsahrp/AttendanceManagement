@@ -42,65 +42,67 @@ namespace AttendanceManagement
                          switch (user.RoleId)
                          {
                              case 1:
-                                //Admin
+                                 //Admin
 
-                                MessageBox.Show(user.RoleId + "Welcome to Admin Section", "Success", MessageBoxButton.OK,
-                                     MessageBoxImage.Information);
+                                 MessageBox.Show(user.RoleId + "Welcome to Admin Section", "Success", MessageBoxButton.OK,
+                                      MessageBoxImage.Information);
                                  Admin admin = new Admin();
 
-                                //Set Avatar To User
-                                user.UserAvatar = "Admin Icon.png";
+                                 //Set Avatar To User
+                                 user.UserAvatar = "Admin Icon.png";
 
                                  admin.Show();
-                                //Close Login Window
-                                Close();
+                                 //Close Login Window
+                                 Close();
 
                                  break;
                              case 2:
-                                //Secretary
+                                 //Secretary
 
-                                MessageBox.Show(user.RoleId + "Welcome to Secretary Section", "Success",
-                                     MessageBoxButton.OK, MessageBoxImage.Information);
+                                 MessageBox.Show(user.RoleId + "Welcome to Secretary Section", "Success",
+                                      MessageBoxButton.OK, MessageBoxImage.Information);
 
-                                //Set Avatar To User
-                                user.UserAvatar = "Secretary Icon.png";
+                                 //Set Avatar To User
+                                 user.UserAvatar = "Secretary Icon.png";
 
-                                //Close Login Window
-                                Close();
+                                 //Close Login Window
+                                 Close();
 
                                  break;
                              case 3:
-                                //Staff
-                                MessageBox.Show(user.RoleId + "Welcome to Staff Section", "Success", MessageBoxButton.OK,
-                                     MessageBoxImage.Information);
+                                 //Staff
+                                 MessageBox.Show(user.RoleId + "Welcome to Staff Section", "Success", MessageBoxButton.OK,
+                                      MessageBoxImage.Information);
 
-                                //Set Avatar To User
-                                user.UserAvatar = "Staff Icon.png";
+                                 //Set Avatar To User
+                                 user.UserAvatar = "Staff Icon.png";
 
-                                //Close Login Window
-                                Close();
+                                 //Close Login Window
+                                 Close();
 
                                  break;
                              case 4:
-                                //Student
+                                 //Student
 
-                                MessageBox.Show(user.RoleId + "Welcome to Student Section", "Success", MessageBoxButton.OK,
-                                     MessageBoxImage.Information);
+                                 MessageBox.Show(user.RoleId + "Welcome to Student Section", "Success", MessageBoxButton.OK,
+                                      MessageBoxImage.Information);
 
-                                //Close Login Window
+                                 //Close Login Window
 
-                                Student userStudent = new Student();
+                                 Student userStudent = new Student();
 
-                                //Set Avatar To User
-                                user.UserAvatar = "Student Icon.png";
+                                 //Set Avatar To User
+                                 user.UserAvatar = "Student Icon.png";
 
                                  userid = user.UserId;
-                                //Open Student Window
-                                userStudent.Show();
+                                 //Open Student Window
+                                 userStudent.Show();
                                  Close();
 
                                  break;
                          }
+
+
                      }
                      else
                      {
@@ -117,6 +119,7 @@ namespace AttendanceManagement
 
              });
         }
+
 
         #endregion
 
