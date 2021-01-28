@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:AttendanceManagement"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          
-             StartupUri="Views/Admin.xaml">
+             StartupUri="MainWindow.xaml">
 
 
     <Application.Resources>
@@ -14,7 +14,6 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/materialdesigntheme.defaults.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-
     </Application.Resources>
 
 </Application>

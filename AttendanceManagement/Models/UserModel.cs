@@ -10,10 +10,8 @@ namespace AttendanceManagement.Views
     class UserModel : User
     {
 
-
         //New Ado For Connection
         static Ado Adonet = new Ado();
-
 
         #region Methode Login
 
@@ -46,24 +44,24 @@ namespace AttendanceManagement.Views
                     Adonet.Adapter = new SqlDataAdapter($"Select * from Users Where Email ='{email}' and Password ='{password}'", Adonet.Cnx);
 
                     //Fill DataSet with the result
-                    Adonet.Adapter.Fill(Adonet.DataSet, "User");
+                    Adonet.Adapter.Fill(Adonet.DataSet1, "User");
 
                     //Close Cnx
                     Adonet.Disconnect();
 
                     //If their is a result
-                    if (Adonet.DataSet.Tables["User"].Rows.Count > 0)
+                    if (Adonet.DataSet1.Tables["User"].Rows.Count > 0)
                     {
                         //Collect user information
-                        RoleId = Convert.ToInt32(Adonet.DataSet.Tables["User"].Rows[0][5]);
-                        UserId = Convert.ToInt32(Adonet.DataSet.Tables["User"].Rows[0][0]);
-                        UserName = Adonet.DataSet.Tables["User"].Rows[0][1].ToString().Trim();
-                        UserEmail = Adonet.DataSet.Tables["User"].Rows[0][2].ToString().Trim();
+                        RoleId = Convert.ToInt32(Adonet.DataSet1.Tables["User"].Rows[0][5]);
+                        UserId = Convert.ToInt32(Adonet.DataSet1.Tables["User"].Rows[0][0]);
+                        UserName = Adonet.DataSet1.Tables["User"].Rows[0][1].ToString().Trim();
+                        UserEmail = Adonet.DataSet1.Tables["User"].Rows[0][2].ToString().Trim();
 
                         //Check if its a Staff Or Student Then they can have a Class Id
                         if (RoleId > 2)
                         {
-                            ClassId = Convert.ToInt32(Adonet.DataSet.Tables["User"].Rows[0][6].ToString().Trim());
+                            ClassId = Convert.ToInt32(Adonet.DataSet1.Tables["User"].Rows[0][6].ToString().Trim());
                         }
 
                         return true;

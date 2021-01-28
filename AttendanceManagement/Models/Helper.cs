@@ -57,33 +57,18 @@ namespace AttendanceManagement.Models
         public static void GetUsers(DataGrid usertable)
         {
             Ado adonet = new Ado();
+
             adonet.Connect();
-            //adonet.Adapter = new SqlDataAdapter("Select * From Users INNER JOIN Roles ON Users.[Role Id]= Roles.[Role Id] INNER JOIN Classes On Users.[Class Id] = Classes.[Id Class];", adonet.Cnx);
-            //adonet.Adapter.Fill(adonet.DataSet, "Users");
-            //adonet.Disconnect();
-
-            //try
-            //{
-            //    usertable.Items.Clear();
-            //    usertable.ItemsSource = adonet.DataSet.Tables["Users"].DefaultView;
-            //}
-            //catch (Exception)
-            //{
-
-
-            //}
+            Task.Run(() =>
+            {
+                usertable.Items.Clear();
+            });
             Views.Admin admin = new Views.Admin();
 
             adonet.Cmd.CommandText = "Select u.[User Id], u.[Full Name], u.Email, r.[Role Name],c.[Class Name] From Users u INNER JOIN Roles r ON u.[Role Id]= r.[Role Id] Left JOIN Classes c On u.[Class Id] = c.[Id Class]; ";
             adonet.Cmd.Connection = adonet.Cnx;
             adonet.DataReader = adonet.Cmd.ExecuteReader();
             adonet.Datatable.Load(adonet.DataReader);
-            //var rr = adonet.Datatable.Rows;
-            //foreach (var row in rr)
-            //{
-            //    observableCollection.Add((DataRow)row);
-
-            //}
             adonet.Disconnect();
             usertable.ItemsSource = adonet.Datatable.DefaultView;
 

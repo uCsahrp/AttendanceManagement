@@ -63,10 +63,8 @@ namespace AttendanceManagement.Views
             popup.Closed += (s, e) =>
             {
 
-                if (admin.changed)
-                {
-                    Helper.GetUsers(userstable);
-                }
+                GetUsers();
+
             };
             //this.Close();
 
@@ -182,12 +180,10 @@ namespace AttendanceManagement.Views
 
 
 
-
         #region Edit Button 
 
         private void Edit_Click(object sender, RoutedEventArgs e)
         {
-
 
             var fullname = SearchInput.Text.ToString();
             UserModel.Search(fullname, userstable);
@@ -204,7 +200,6 @@ namespace AttendanceManagement.Views
 
             EditPopup editPop = new EditPopup();
             editPop.Show();
-
 
             editPop.Closed += (s, ev) =>
             {
@@ -312,11 +307,28 @@ namespace AttendanceManagement.Views
 
         private void ClassFilter_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DataView view = adonet.DataSet.Tables[0].DefaultView;
-            view.RowFilter = $"[Class Name] = '{ClassFilter.SelectedItem.ToString()}'";
-            userstable.ItemsSource = view.ToTable().DefaultView;
-            view.RowFilter = String.Empty;
 
+            //DataView view = adonet.DataSet.Tables[0].DefaultView;
+            //view.RowFilter = $"[Class Name] = '{ClassFilter.SelectedItem.ToString()}'";
+            //userstable.ItemsSource = view.ToTable().DefaultView;
+            //view.RowFilter = String.Empty;
+
+            //var item = sender.SelectionBoxItem as ComboBoxItem;
+            var item = (DataRowView)ClassFilter.SelectedItem;
+            MessageBox.Show(item[1].ToString());
+
+            DataView view = adonet.DataSet1.Tables[0].DefaultView;
+            view.RowFilter = $"[Class Name] = '{item[1].ToString()}'";
+
+        }
+
+        private void ClassFilter_Selected(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ClassFilter_Selected_1(object sender, RoutedEventArgs e)
+        {
 
         }
     }

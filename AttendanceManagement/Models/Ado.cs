@@ -20,7 +20,7 @@ namespace AttendanceManagement.Models
         private SqlDataAdapter adapter = new SqlDataAdapter();
         private SqlDataAdapter adapter1 = new SqlDataAdapter();
 
-
+        private DataSet dataSet1 = new DataSet();
         private DataSet dataSet = new DataSet();
         private DataRow row;
         private bool ifUpdate = false;
@@ -37,6 +37,7 @@ namespace AttendanceManagement.Models
         public SqlDataAdapter Adapter { get => adapter; set => adapter = value; }
         public DataSet DataSet { get => dataSet; set => dataSet = value; }
         public SqlDataAdapter Adapter1 { get => adapter1; set => adapter1 = value; }
+        public DataSet DataSet1 { get => dataSet1; set => dataSet1 = value; }
 
 
 

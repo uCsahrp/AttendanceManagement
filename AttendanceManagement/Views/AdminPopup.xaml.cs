@@ -43,7 +43,7 @@ namespace AttendanceManagement.Views
         void GetClasses()
         {
             Ado adonet = new Ado();
-            
+
             var query = $"Select * From Classes";
             adonet.Adapter = new SqlDataAdapter(query, adonet.Cnx);
             adonet.Adapter.Fill(adonet.DataSet);
@@ -84,11 +84,11 @@ namespace AttendanceManagement.Views
 
                     Helper.GetUsers(ad.userstable);
                     this.Close();
+
                 }
                 else
                 {
                     Message.Text = admin.error;
-
                 }
                 Thread.Sleep(1000);
 
