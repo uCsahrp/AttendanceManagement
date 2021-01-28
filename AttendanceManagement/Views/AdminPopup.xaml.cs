@@ -30,16 +30,31 @@ namespace AttendanceManagement.Views
 
         private void AdminPopup_OnLoaded(object sender, RoutedEventArgs e)
         {
-            Dispatcher.Invoke((() =>
-            {
-                Helper.GetRoles(UserRole);
-            }));
-            Dispatcher.Invoke((() =>
-            {
-                Helper.GetClasses(ClassesBox);
 
-            }));
+            Helper.GetRoles(UserRole);
+
+            GetClasses();
+
+
         }
+
+        #region GetUsers
+
+        void GetClasses()
+        {
+            Ado adonet = new Ado();
+            
+            var query = $"Select * From Classes";
+            adonet.Adapter = new SqlDataAdapter(query, adonet.Cnx);
+            adonet.Adapter.Fill(adonet.DataSet);
+            ClassesBox.SelectedValuePath = "Class Id";
+            ClassesBox.DisplayMemberPath = "Class Name";
+            ClassesBox.ItemsSource = adonet.DataSet.Tables[0].DefaultView;
+
+        }
+
+        #endregion
+
 
         void UploadPic(string pathFile, string ftp, string username, string password)
         {
