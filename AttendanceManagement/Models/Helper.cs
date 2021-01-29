@@ -83,7 +83,7 @@ namespace AttendanceManagement.Models
         {
             Ado adonet = new Ado();
             adonet.Connect();
-            adonet.Cmd = new SqlCommand("Select * From Users INNER JOIN Roles ON Users.[Role Id]= Roles.[Role Id] INNER JOIN Classes On Users.[Class Id] = Classes.[Id Class] INNER JOIN Attendance ON Attendance.[Student Id] = Users.[User Id] WHERE [User Id ]=@userid;", adonet.Cnx);
+            adonet.Cmd = new SqlCommand("Select * From Users INNER JOIN Roles ON Users.[Role Id]= Roles.[Role Id] INNER JOIN Classes On Users.[Class Id] = Classes.[Id Class] Left JOIN Attendance ON Attendance.[Student Id] = Users.[User Id] WHERE[User Id]=@userid;", adonet.Cnx);
             adonet.Cmd.Parameters.Add("@userid", SqlDbType.VarChar, 200).Value = userid;
             adonet.Adapter.SelectCommand = adonet.Cmd;
             adonet.Adapter.Fill(adonet.DataSet, "student");
