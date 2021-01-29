@@ -53,12 +53,11 @@ namespace AttendanceManagement.Views
 
 
 
-        #region Add Users To and Refesh the DataGrid
+        #region Add Users and Refesh the DataGrid
 
         private void AddNewUser_Click(object sender, RoutedEventArgs e)
         {
             AdminPopup popup = new AdminPopup();
-
             popup.Show();
             popup.Closed += (s, e) =>
             {
@@ -66,8 +65,6 @@ namespace AttendanceManagement.Views
                 GetUsers();
 
             };
-            //this.Close();
-
         }
 
         #endregion
@@ -75,7 +72,7 @@ namespace AttendanceManagement.Views
 
 
 
-        #region Grid Double Click
+        #region DataGrid Double Click Event
 
         private void userstable_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
@@ -106,7 +103,7 @@ namespace AttendanceManagement.Views
 
 
 
-        #region Selection Changed
+        #region DataGrid Selection Changed Event
 
         private void userstable_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -119,8 +116,10 @@ namespace AttendanceManagement.Views
                 {
                     DataRowView rowView = (DataRowView)userstable.Items[i];
                     string Id_user = rowView[0].ToString().Trim();
+
+                    //Save The Id of the Selected User
                     IdSelectedUser = int.Parse(Id_user);
-                    // MessageBox.Show(Id_user);
+                    //Save the Selected Row(User Infos)
                     items = rowView;
                 }
                 else
@@ -146,13 +145,11 @@ namespace AttendanceManagement.Views
 
         private void DelUser_Click(object sender, RoutedEventArgs e)
         {
-
+            //Call Delere Methode of Admin
             admin.DeleteUser(IdSelectedUser);
-
-
-            //Helper.GetUsers(userstable);
+            //Refresh
             GetUsers();
-
+            //Return the Error Message from Method to UI
             Message.Text = admin.error;
 
         }
@@ -263,6 +260,7 @@ namespace AttendanceManagement.Views
         #endregion
 
 
+
         #region Button Exit Event ==>
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -272,6 +270,7 @@ namespace AttendanceManagement.Views
         }
 
         #endregion
+
 
 
         #region EventMouse Down to Drag Window ==>
@@ -290,11 +289,19 @@ namespace AttendanceManagement.Views
 
         #endregion
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+
+
+        #region Btn Refresh Click Event
+
+
+        private void BtnRefresh_Click(object sender, RoutedEventArgs e)
         {
             GetUsers();
+            ClassFilter.SelectedIndex = -1;
         }
 
+
+        #endregion
         private void Userstable_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
             //var grid = (DataGrid)sender;
@@ -308,28 +315,26 @@ namespace AttendanceManagement.Views
         private void ClassFilter_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
-            //DataView view = adonet.DataSet.Tables[0].DefaultView;
-            //view.RowFilter = $"[Class Name] = '{ClassFilter.SelectedItem.ToString()}'";
-            //userstable.ItemsSource = view.ToTable().DefaultView;
-            //view.RowFilter = String.Empty;
 
-            //var item = sender.SelectionBoxItem as ComboBoxItem;
-            var item = (DataRowView)ClassFilter.SelectedItem;
-            MessageBox.Show(item[1].ToString());
+            try
+            {
+                Task.Run(() =>
+                   {
+                       userstable.Items.Clear();
 
-            DataView view = adonet.DataSet1.Tables[0].DefaultView;
-            view.RowFilter = $"[Class Name] = '{item[1].ToString()}'";
+                   });
+                var item = (DataRowView)ClassFilter.SelectedItem;
+                // var view = userstable.ItemsSource as DataView;
+                DataView view = adonet.DataSet.Tables[0].DefaultView;
+                view.RowFilter = $"[Class Name] = '{item[1].ToString()}'";
+                userstable.ItemsSource = view.ToTable().DefaultView;
+            }
+            catch (Exception)
+            {
 
-        }
-
-        private void ClassFilter_Selected(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void ClassFilter_Selected_1(object sender, RoutedEventArgs e)
-        {
+            }
 
         }
+
     }
 }
