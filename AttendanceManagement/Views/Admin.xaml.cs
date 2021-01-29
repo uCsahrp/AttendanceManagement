@@ -52,7 +52,6 @@ namespace AttendanceManagement.Views
 
 
 
-
         #region Add Users and Refesh the DataGrid
 
         private void AddNewUser_Click(object sender, RoutedEventArgs e)
@@ -68,7 +67,6 @@ namespace AttendanceManagement.Views
         }
 
         #endregion
-
 
 
 
@@ -99,7 +97,6 @@ namespace AttendanceManagement.Views
         }
 
         #endregion
-
 
 
 
@@ -138,9 +135,6 @@ namespace AttendanceManagement.Views
 
 
 
-
-
-
         #region Delete User
 
         private void DelUser_Click(object sender, RoutedEventArgs e)
@@ -155,25 +149,6 @@ namespace AttendanceManagement.Views
         }
 
         #endregion
-
-
-
-
-
-        #region On Text Change
-
-        private void SearchInput_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-            //var fullname = SearchInput.Text.ToString();
-            //UserModel.Search(fullname, userstable);
-            //items = userstable.SelectedItem as DataRowView;
-            //EditPopup editPop = new EditPopup();
-            //editPop.Show();
-        }
-
-        #endregion
-
 
 
 
@@ -209,6 +184,7 @@ namespace AttendanceManagement.Views
         #endregion
 
 
+
         #region GetUsers
         Ado adonet = new Ado();
 
@@ -239,6 +215,7 @@ namespace AttendanceManagement.Views
         #endregion
 
 
+
         #region GetClasses
 
 
@@ -254,6 +231,7 @@ namespace AttendanceManagement.Views
             ClassFilter.SelectedValuePath = "Class Id";
             ClassFilter.DisplayMemberPath = "Class Name";
             ClassFilter.ItemsSource = ado.DataSet.Tables[0].DefaultView;
+
 
         }
 
@@ -297,19 +275,11 @@ namespace AttendanceManagement.Views
         private void BtnRefresh_Click(object sender, RoutedEventArgs e)
         {
             GetUsers();
-            ClassFilter.SelectedIndex = -1;
         }
 
 
         #endregion
-        private void Userstable_OnSelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
-        {
-            //var grid = (DataGrid)sender;
-            //var selected = grid.SelectedCells;
-            //var id = selected[0].Item.ToString();
-            //string value = ((DataGrid)sender).Rows[e.RowIndex].Cells[0].Value;
-            //MessageBox.Show(id);
-        }
+
 
 
         private void ClassFilter_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -335,6 +305,55 @@ namespace AttendanceManagement.Views
             }
 
         }
+
+
+
+        #region On Text Change
+
+        private void SearchInput_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            try
+            {
+
+                Task.Run(() =>
+                {
+                    userstable.Items.Clear();
+
+                });
+                var text = SearchInput.Text.Trim();
+                DataView view = adonet.DataSet.Tables[0].DefaultView;
+                var row = adonet.DataSet.Tables[0].AsEnumerable()
+                     .Where(row =>
+
+                     string.IsNullOrEmpty(text)
+                     ? true
+                     : row["Full Name"].ToString().Contains(text) ?
+                     true
+                     : row["Email"].ToString().Contains(text) ?
+                     true
+                     : row["Class Name"].ToString().Contains(text) ?
+                     true
+                     : row["Role Name"].ToString().Contains(text)
+                     ).CopyToDataTable();
+
+
+
+                //view.RowFilter = $"[Full Name] = '{text}'";
+
+                //MessageBox.Show(view.RowFilter + "");
+
+                //userstable.ItemsSource = view.ToTable().DefaultView;
+                userstable.ItemsSource = row.DefaultView;
+
+            }
+            catch (Exception)
+            {
+
+            }
+
+        }
+
+        #endregion
 
     }
 }

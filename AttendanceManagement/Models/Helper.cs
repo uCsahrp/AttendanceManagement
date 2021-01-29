@@ -62,14 +62,15 @@ namespace AttendanceManagement.Models
             Task.Run(() =>
             {
                 usertable.Items.Clear();
-            });
-            Views.Admin admin = new Views.Admin();
+                // Views.Admin admin = new Views.Admin();
 
-            adonet.Cmd.CommandText = "Select u.[User Id], u.[Full Name], u.Email, r.[Role Name],c.[Class Name] From Users u INNER JOIN Roles r ON u.[Role Id]= r.[Role Id] Left JOIN Classes c On u.[Class Id] = c.[Id Class]; ";
-            adonet.Cmd.Connection = adonet.Cnx;
-            adonet.DataReader = adonet.Cmd.ExecuteReader();
-            adonet.Datatable.Load(adonet.DataReader);
-            adonet.Disconnect();
+                adonet.Cmd.CommandText = "Select u.[User Id], u.[Full Name], u.Email, r.[Role Name],c.[Class Name] From Users u INNER JOIN Roles r ON u.[Role Id]= r.[Role Id] Left JOIN Classes c On u.[Class Id] = c.[Id Class]; ";
+                adonet.Cmd.Connection = adonet.Cnx;
+                adonet.DataReader = adonet.Cmd.ExecuteReader();
+                adonet.Datatable.Load(adonet.DataReader);
+                adonet.Disconnect();
+            });
+
             usertable.ItemsSource = adonet.Datatable.DefaultView;
 
         }
