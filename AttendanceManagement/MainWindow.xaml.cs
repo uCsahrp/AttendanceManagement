@@ -24,5 +24,42 @@ namespace AttendanceManagement
         {
             InitializeComponent();
         }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            Login login = new Login();
+
+            login.Show();
+            this.Close();
+
+        }
+
+        #region Button Exit Event ==>
+
+        private void btnExit_Click(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+
+        }
+
+
+        #endregion
+
+        #region EventMouse Down to Drag Window ==>
+
+        private void Grid_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            try
+            {
+                DragMove();
+            }
+            catch
+            {
+            }
+            //
+        }
+
+        #endregion
+
     }
 }

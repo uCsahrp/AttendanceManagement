@@ -4,9 +4,41 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AttendanceManagement"
+Icon="Assets/Logo2-02.png"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="14"
+        WindowStartupLocation="CenterScreen"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        BorderBrush="#007bff"
+        BorderThickness="4"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="Roboto"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="MainWindow" Height="450" Width="793">
+    <Grid MouseDown="Grid_MouseDown" >
+        <Grid>
+            <Image Source="Assets/Logo3-04.png"></Image>
+        </Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom">
+
+
+            <StackPanel Margin=" 0 0 0 50">
+                <!--<TextBlock Text="Welcome..." FontSize="40" TextAlignment="Center" Style="{DynamicResource MaterialDesignTextBlock}" Foreground="White" FontWeight="Bold"/>-->
+                <Border  Padding="20"/>
+                <Button Width="180" Content="LOGIN" Style="{DynamicResource MaterialDesignFlatButton}" ToolTip="Sign-In" Background="#007bff" Foreground="White"  FontWeight="SemiBold" Click="ButtonBase_OnClick"/>
+            </StackPanel>
+
+        </StackPanel>
+        <StackPanel Width="80" HorizontalAlignment="Right" >
+            <Button x:Name="btnExit" Margin="10" Style="{StaticResource MaterialDesignFloatingActionButton}" Background="{x:Null}" Width="40" Height="40"
+                    ToolTip="Close" Click="btnExit_Click" Foreground="#007bff">
+                <materialDesign:PackIcon Kind="Close"  Width="20" Height="20" />
+            </Button>
+        </StackPanel>
     </Grid>
 </Window>

@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>AttendanceManagement</RootNamespace>
     <AssemblyName>AttendanceManagement</AssemblyName>
-    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
@@ -16,6 +16,7 @@
     <Deterministic>true</Deterministic>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -26,6 +27,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -35,6 +37,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MaterialDesignColors, Version=1.2.7.1979, Culture=neutral, PublicKeyToken=df2a72020bd7962a, processorArchitecture=MSIL">
@@ -63,8 +66,22 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\Admin.cs" />
+    <Compile Include="Models\Helper.cs" />
     <Compile Include="Views\Admin.xaml.cs">
       <DependentUpon>Admin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AdminPopup.xaml.cs">
+      <DependentUpon>AdminPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\EditPopup.xaml.cs">
+      <DependentUpon>EditPopup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Secretary.xaml.cs">
+      <DependentUpon>Secretary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff.xaml.cs">
+      <DependentUpon>Staff.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Student.xaml.cs">
       <DependentUpon>Student.xaml</DependentUpon>
@@ -90,6 +107,22 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Views\Admin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AdminPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\EditPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Secretary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Staff.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -127,12 +160,20 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Resource Include="Assets\account.png" />
-    <Resource Include="Assets\login.jpg" />
+    <Resource Include="Assets\Avatars\admin.png" />
+    <Resource Include="Assets\Avatars\student.png" />
+    <Resource Include="Assets\Avatars\secretary.png" />
+    <Resource Include="Assets\Avatars\staff.png" />
+    <Resource Include="Assets\Logo6-06.png" />
+    <Resource Include="Assets\Logo5-05.png" />
+    <Resource Include="Assets\Logo3-04.png" />
+    <Resource Include="Assets\Logo-04.png" />
+    <Resource Include="Assets\Logo2-02.png" />
+    <Resource Include="Assets\Logo2-04.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Resource Include="Assets\login.png" />
-    <Resource Include="Assets\password.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />
