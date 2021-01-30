@@ -29,7 +29,7 @@
         </Grid.RowDefinitions>
 
         <StackPanel Height="300" Background="#007bff" >
-            <Image Width="150" Source="Assets/login.png" Margin="0 70 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <Image Width="150" Source="/Assets/login.png" Margin="0 70 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" />
             <TextBlock Text="Login" FontWeight="Bold" FontSize="30" TextAlignment="Center" Margin="0 15" Foreground="White" />
         </StackPanel>
 

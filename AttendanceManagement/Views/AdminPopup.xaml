@@ -28,7 +28,7 @@
             <StackPanel HorizontalAlignment="Center" Margin="0 25 0 0" >
 
                 <Border materialDesign:ShadowAssist.Darken="True" materialDesign:ShadowAssist.ShadowEdges="All" Width="120" Height="120" BorderBrush="#007bff" BorderThickness="1" CornerRadius="100">
-                    <Image Source="../Assets/Avatars/programmer.png" x:Name="Avatar"/>
+                    <Image Source="/Assets/Avatars/student.png" x:Name="Avatar"/>
                 </Border>
 
 

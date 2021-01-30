@@ -30,8 +30,8 @@ namespace AttendanceManagement.Views
 
         SqlConnection conn = new SqlConnection(@"Data Source=ADAM-HP;Initial Catalog=AttendanceManagement;Integrated Security=True");
         SqlCommand Cmd;
-        SqlDataAdapter Sda;
-        SqlDataReader dr;
+        //SqlDataAdapter Sda;
+        //SqlDataReader dr;
         DataSet ds = new DataSet();
         DataTable dt = new DataTable();
 
