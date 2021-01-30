@@ -29,41 +29,37 @@ namespace AttendanceManagement.Models
             //Regex for making sure Email is valid
             Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             Match match = regex.Match(email);
+
             string avatar;
             var rId = roleId + 1;
             var cId = classId + 1;
+
+            //Set The Avatar Based on RoleId
             switch (rId)
             {
                 case 1:
-                    avatar = "Avatars/Admin.png";
+                    avatar = "Assets/Avatars/admin.png";
 
                     break;
                 case 2:
-                    avatar = "Avatars/Secretary.png";
+                    avatar = "Assets/Avatars/secretary.png";
                     break;
                 case 3:
-                    avatar = "Avatars/Staff.png";
+                    avatar = "Assets/Avatars/staff.png";
                     break;
                 case 4:
-                    avatar = "Avatars/Student.png";
+                    avatar = "Assets/Avatars/student.png";
                     break;
                 default:
                     avatar = string.Empty;
                     break;
             }
 
-            //Confirm pass must equal password.
-            if (password != confirmPass)
+            //If there is no username
+            if (fullName == null)
             {
-                error = "Passwords do not match";
-                //MessageBox.Show("Passwords do not match");
-                return false;
-            }
-            //Password must be at least 8 characters long
-            else if (password.Length < 6)
-            {
-                error = "Password must be at least 6 characters long";
-                //MessageBox.Show("Password must be at least 6 characters long");
+                error = "User Must have a Name";
+                //MessageBox.Show("User Must have a Name");
                 return false;
             }
             //If email is NOT valid
@@ -73,11 +69,18 @@ namespace AttendanceManagement.Models
                 //MessageBox.Show("Invalid Email");
                 return false;
             }
-            //If there is no username
-            else if (fullName == null)
+            //Password must be at least 8 characters long
+            else if (password.Length < 6)
             {
-                error = "User Must have a Name";
-                //MessageBox.Show("User Must have a Name");
+                error = "Password must be at least 6 characters long";
+                //MessageBox.Show("Password must be at least 6 characters long");
+                return false;
+            }
+            //Confirm pass must equal password.
+            else if (password != confirmPass)
+            {
+                error = "Passwords do not match";
+                //MessageBox.Show("Passwords do not match");
                 return false;
             }
             else if (rId == 0)
@@ -86,7 +89,6 @@ namespace AttendanceManagement.Models
                 error = "User must have a Role";
                 return false;
             }
-
             else
             {
                 string query;
@@ -102,7 +104,6 @@ namespace AttendanceManagement.Models
                     query = $"INSERT INTO Users ([Full Name], [Email], [Password], [Avatar], [Role Id]) " +
                                                    "VALUES (@fullName, @email, @password, @avatar, @roleId) ";
                 }
-
 
                 ado.Adapter = new SqlDataAdapter(query, ado.Cnx);
                 try

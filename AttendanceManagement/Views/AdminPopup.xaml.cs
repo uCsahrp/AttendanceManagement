@@ -99,17 +99,23 @@ namespace AttendanceManagement.Views
 
         #endregion
 
+
+        #region Role Selection Changed
+
         private void UserRole_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (((ComboBox)sender).SelectedIndex > 1)
-            {
-                ClassCombo.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                ClassCombo.Visibility = Visibility.Hidden;
-            }
+            ClassCombo.Visibility = ((ComboBox)sender).SelectedIndex > 1 ? Visibility.Visible : Visibility.Hidden;
+            //if (((ComboBox)sender).SelectedIndex > 1)
+            //{
+            //    ClassCombo.Visibility = Visibility.Visible;
+            //}
+            //else
+            //{
+            //    ClassCombo.Visibility = Visibility.Hidden;
+            //}
         }
+
+        #endregion
 
 
         #region BtnExit

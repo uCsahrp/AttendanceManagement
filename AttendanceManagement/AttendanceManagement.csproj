@@ -77,6 +77,12 @@
     <Compile Include="Views\EditPopup.xaml.cs">
       <DependentUpon>EditPopup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Secretary.xaml.cs">
+      <DependentUpon>Secretary.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Staff.xaml.cs">
+      <DependentUpon>Staff.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Student.xaml.cs">
       <DependentUpon>Student.xaml</DependentUpon>
     </Compile>
@@ -109,6 +115,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\EditPopup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Secretary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Staff.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -147,14 +161,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Avatars\manager.png" />
-    <Content Include="Assets\Avatars\manager.svg" />
-    <Resource Include="Assets\Avatars\programmer.png" />
-    <Content Include="Assets\Avatars\programmer.svg" />
+    <Resource Include="Assets\Avatars\admin.png" />
+    <Resource Include="Assets\Avatars\student.png" />
     <Resource Include="Assets\Avatars\secretary.png" />
-    <Content Include="Assets\Avatars\secretary.svg" />
-    <Resource Include="Assets\Avatars\teacher.png" />
-    <Content Include="Assets\Avatars\teacher.svg" />
+    <Resource Include="Assets\Avatars\staff.png" />
     <Resource Include="Assets\Logo6-06.png" />
     <Resource Include="Assets\Logo5-05.png" />
     <Resource Include="Assets\Logo3-04.png" />

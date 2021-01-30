@@ -64,7 +64,8 @@ namespace AttendanceManagement
 
                                  //Set Avatar To User
                                  user.UserAvatar = "Secretary Icon.png";
-
+                                 Secretary secretary = new Secretary();
+                                 secretary.Show();
                                  //Close Login Window
                                  Close();
 
@@ -76,7 +77,8 @@ namespace AttendanceManagement
 
                                  //Set Avatar To User
                                  user.UserAvatar = "Staff Icon.png";
-
+                                 Staff staff = new Staff();
+                                 staff.Show();
                                  //Close Login Window
                                  Close();
 
