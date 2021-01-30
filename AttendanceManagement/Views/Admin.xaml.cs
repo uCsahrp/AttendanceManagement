@@ -35,7 +35,8 @@ namespace AttendanceManagement.Views
         }
 
 
-        #region On Window Loads
+
+        #region On Admin Window Loads
         private void Admin_Loaded(object sender, RoutedEventArgs e)
         {
             //admin.usertable = userstable;
@@ -282,6 +283,9 @@ namespace AttendanceManagement.Views
 
 
 
+        #region DropDown Filter By Classes Selection Change Event
+
+
         private void ClassFilter_OnSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
@@ -305,6 +309,9 @@ namespace AttendanceManagement.Views
             }
 
         }
+
+
+        #endregion
 
 
 
@@ -336,13 +343,6 @@ namespace AttendanceManagement.Views
                      : row["Role Name"].ToString().Contains(text)
                      ).CopyToDataTable();
 
-
-
-                //view.RowFilter = $"[Full Name] = '{text}'";
-
-                //MessageBox.Show(view.RowFilter + "");
-
-                //userstable.ItemsSource = view.ToTable().DefaultView;
                 userstable.ItemsSource = row.DefaultView;
 
             }
@@ -354,6 +354,8 @@ namespace AttendanceManagement.Views
         }
 
         #endregion
+
+
 
     }
 }

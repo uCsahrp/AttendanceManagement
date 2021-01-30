@@ -25,7 +25,6 @@ namespace AttendanceManagement.Views
         private Models.Admin admin = new Models.Admin();
 
 
-
         public EditPopup()
         {
             InitializeComponent();
@@ -33,15 +32,8 @@ namespace AttendanceManagement.Views
         }
 
 
+        #region On Load
 
-
-        private void UserRole_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (((ComboBox)sender).SelectedIndex > 1)
-            {
-                ClassCombo.Visibility = Visibility.Visible;
-            }
-        }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             var item = Admin.items;
@@ -75,6 +67,26 @@ namespace AttendanceManagement.Views
 
         }
 
+        #endregion
+
+
+
+        #region Role Changes Event
+
+        private void UserRole_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (((ComboBox)sender).SelectedIndex > 1)
+            {
+                ClassCombo.Visibility = Visibility.Visible;
+            }
+        }
+
+
+        #endregion
+
+
+
+        #region Btn Edit Event
 
         private void BtnEditSubmit_Click(object sender, RoutedEventArgs e)
         {
@@ -104,6 +116,9 @@ namespace AttendanceManagement.Views
         }
 
 
+        #endregion
+
+
 
         #region EventMouse Down to Drag Window ==>
 
@@ -122,6 +137,7 @@ namespace AttendanceManagement.Views
         #endregion
 
 
+
         #region Button Exit Event ==>
 
         private void btnExit_Click(object sender, RoutedEventArgs e)
@@ -132,9 +148,6 @@ namespace AttendanceManagement.Views
         }
 
         #endregion
-
-
-
 
     }
 }
