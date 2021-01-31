@@ -28,7 +28,7 @@ namespace AttendanceManagement.Views
 
 
 
-        SqlConnection conn = new SqlConnection(@"Data Source=ADAM-HP;Initial Catalog=AttendanceManagement;Integrated Security=True");
+        SqlConnection conn = new SqlConnection(@"Data Source=ADAM-DELL;Initial Catalog=AttendanceManagement;Integrated Security=True");
         SqlCommand Cmd;
         //SqlDataAdapter Sda;
         //SqlDataReader dr;

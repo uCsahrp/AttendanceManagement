@@ -43,8 +43,8 @@ namespace AttendanceManagement.Views
         public void affi_filter(string f)
         {
             Cmd = new SqlCommand(
-                "select a.[Student Id] ,u.[Full Name] , a.[Date] , a.[Description] ,c.[Class Name], a.IsJustified From Users u inner join Attendance a on a.[Student Id] =u.[User Id] inner join Classes c on c.[Id Class]=u.[Class Id] where [Class Name]= '" +
-                f + "' ", conn);
+             "select a.[Student Id] ,u.[Full Name] , a.[Date] , a.[Description] ,c.[Class Name], a.IsJustified From Users u inner join Attendance a on a.[Student Id] =u.[User Id] inner join Classes c on c.[Id Class]=u.[Class Id] where [Class Name]= '" +
+             f + "' ", conn);
             SqlDataReader dr = Cmd.ExecuteReader();
             DataTable t = new DataTable();
             t.Load(dr);
@@ -55,8 +55,6 @@ namespace AttendanceManagement.Views
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //affichage 
-
             conn.Open();
             if (combo_class.Text == "All")
             {
@@ -111,13 +109,6 @@ namespace AttendanceManagement.Views
                 affi_filter("classe4");
             }
             conn.Close();
-
-        }
-
-        private void DataGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-
-
 
         }
 

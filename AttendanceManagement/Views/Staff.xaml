@@ -19,11 +19,6 @@
                 <DataGridTextColumn Width="50" Header="name " Binding="{Binding [Full Name]}"></DataGridTextColumn>
                 <DataGridTextColumn Width="130" Header="email" Binding="{Binding Email}"></DataGridTextColumn>
                 <DataGridTextColumn Width="100" Header="classe" Binding="{Binding [Class Name]}"></DataGridTextColumn>
-
-                <!--<DataGridTextColumn Width="110" Header="Phone" Binding="{Binding phone}"></DataGridTextColumn>
-                        <DataGridTextColumn Width="110" Header="Adresse" Binding="{Binding adresse}"></DataGridTextColumn>
-                        <DataGridTextColumn Width="110" Header="Formation" Binding="{Binding idFormation}"></DataGridTextColumn>-->
-                <!--<DataGridTextColumn Width="110" Header="Salle" Binding="{Binding salle}"></DataGridTextColumn>-->
                 <DataGridTemplateColumn x:Name="abs_temp" Header="Absent">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
