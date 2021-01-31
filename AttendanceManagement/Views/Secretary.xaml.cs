@@ -114,12 +114,6 @@ namespace AttendanceManagement.Views
         }
 
 
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Button_Click_2(object sender, RoutedEventArgs e)
 
         {
@@ -152,19 +146,9 @@ namespace AttendanceManagement.Views
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-            //conn.Open();
-            //Cmd = new SqlCommand("select a.[Student Id] ,u.[Full Name] , a.[Date] , a.[Description] ,c.[Class Name], a.IsJustified From Users u inner join Attendance a on a.[Student Id] =u.[User Id] inner join Classes c on c.[Id Class]=u.[Class Id]", conn);
-            //SqlDataReader dr = Cmd.ExecuteReader();
-            //DataTable t = new DataTable();
-            //t.Load(dr);
-            //dg.ItemsSource = t.DefaultView;
-            //dr.Close();
-            //conn.Close();
-
-
+       
             Ado ado = new Ado();
             var query = "select a.[Student Id] ,u.[Full Name] , a.[Date] , a.[Description] ,c.[Class Name], a.IsJustified From Users u inner join Attendance a on a.[Student Id] =u.[User Id] inner join Classes c on c.[Id Class]=u.[Class Id]";
-            //ado.Cmd = new SqlCommand(query);
             ado.Adapter = new SqlDataAdapter(query, ado.Cnx);
             ado.Adapter.Fill(ado.DataSet);
             dg.ItemsSource = ado.DataSet.Tables[0].DefaultView;
