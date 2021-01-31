@@ -28,7 +28,7 @@ namespace AttendanceManagement.Views
 
         public bool justf;
 
-        SqlConnection conn = new SqlConnection(@"Data Source=ADAM-HP; initial catalog=AttendanceManagement; integrated security=true;");
+        SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-OC51QH5; initial catalog=AttendanceManagement; integrated security=true;");
         SqlCommand Cmd;
         SqlDataReader dr;
         SqlDataAdapter da;
