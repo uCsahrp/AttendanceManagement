@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +30,10 @@ namespace AttendanceManagement.Views
 
         public bool justf;
 
-        SqlConnection conn = new SqlConnection(@"Data Source=DESKTOP-OC51QH5; initial catalog=AttendanceManagement; integrated security=true;");
+        SqlConnection conn =
+            new SqlConnection(
+                @"Data Source=ADAM-DELL; initial catalog=AttendanceManagement; integrated security=true;");
+
         SqlCommand Cmd;
         SqlDataReader dr;
         SqlDataAdapter da;
@@ -38,7 +42,9 @@ namespace AttendanceManagement.Views
 
         public void affi_filter(string f)
         {
-            Cmd = new SqlCommand("select a.[Student Id] ,u.[Full Name] , a.[Date] , a.[Description] ,c.[Class Name], a.IsJustified From Users u inner join Attendance a on a.[Student Id] =u.[User Id] inner join Classes c on c.[Id Class]=u.[Class Id] where [Class Name]= '" + f + "' ", conn);
+            Cmd = new SqlCommand(
+                "select a.[Student Id] ,u.[Full Name] , a.[Date] , a.[Description] ,c.[Class Name], a.IsJustified From Users u inner join Attendance a on a.[Student Id] =u.[User Id] inner join Classes c on c.[Id Class]=u.[Class Id] where [Class Name]= '" +
+                f + "' ", conn);
             SqlDataReader dr = Cmd.ExecuteReader();
             DataTable t = new DataTable();
             t.Load(dr);
@@ -55,7 +61,9 @@ namespace AttendanceManagement.Views
             if (combo_class.Text == "All")
             {
 
-                Cmd = new SqlCommand("select a.[Student Id] ,u.[Full Name] , a.[Date] , a.[Description] ,c.[Class Name], a.IsJustified From Users u inner join Attendance a on a.[Student Id] =u.[User Id] inner join Classes c on c.[Id Class]=u.[Class Id]", conn);
+                Cmd = new SqlCommand(
+                    "select a.[Student Id] ,u.[Full Name] , a.[Date] , a.[Description] ,c.[Class Name], a.IsJustified From Users u inner join Attendance a on a.[Student Id] =u.[User Id] inner join Classes c on c.[Id Class]=u.[Class Id]",
+                    conn);
                 SqlDataReader dr = Cmd.ExecuteReader();
                 DataTable t = new DataTable();
                 t.Load(dr);
@@ -102,7 +110,7 @@ namespace AttendanceManagement.Views
 
                 affi_filter("classe4");
             }
-
+            conn.Close();
 
         }
 
@@ -125,7 +133,10 @@ namespace AttendanceManagement.Views
             string description = desc.Text;
 
             conn.Open();
-            SqlCommand cmd = new SqlCommand("update Attendance set  [Description] = '" + description + "' , IsJustified  = '" + justf + "'WHERE [Student Id]='" + id_student + "' and Date = '" + date + "'", conn);
+            SqlCommand cmd =
+                new SqlCommand(
+                    "update Attendance set  [Description] = '" + description + "' , IsJustified  = '" + justf +
+                    "'WHERE [Student Id]='" + id_student + "' and Date = '" + date + "'", conn);
             cmd.ExecuteNonQuery();
             conn.Close();
 
@@ -133,6 +144,7 @@ namespace AttendanceManagement.Views
 
 
         }
+
         private void IsVerified_Checked(object sender, RoutedEventArgs e)
         {
             justf = true;
@@ -146,14 +158,16 @@ namespace AttendanceManagement.Views
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
-       
+
             Ado ado = new Ado();
-            var query = "select a.[Student Id] ,u.[Full Name] , a.[Date] , a.[Description] ,c.[Class Name], a.IsJustified From Users u inner join Attendance a on a.[Student Id] =u.[User Id] inner join Classes c on c.[Id Class]=u.[Class Id]";
+            var query =
+                "select a.[Student Id] ,u.[Full Name] , a.[Date] , a.[Description] ,c.[Class Name], a.IsJustified From Users u inner join Attendance a on a.[Student Id] =u.[User Id] inner join Classes c on c.[Id Class]=u.[Class Id]";
             ado.Adapter = new SqlDataAdapter(query, ado.Cnx);
             ado.Adapter.Fill(ado.DataSet);
             dg.ItemsSource = ado.DataSet.Tables[0].DefaultView;
 
-
         }
+
     }
 }
+
