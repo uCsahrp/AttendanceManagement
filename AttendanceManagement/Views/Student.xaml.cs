@@ -20,7 +20,7 @@ namespace AttendanceManagement.Views
     /// </summary>
     public partial class Student : Window
     {
-        
+
         public Student()
         {
             InitializeComponent();
@@ -33,13 +33,16 @@ namespace AttendanceManagement.Views
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            Models.Student student = new Models.Student();
+            student.
             var userid = Login.userid;
-            Helper.GetStudent(userid, studentattendence, studentName, TeacherName, ClassName);
-            Helper.getcountabsent(userid, absentdays);
-            Helper.GetCountAbsentJust(userid, absentdaysjust);
-            Helper.GetCountAbsentNotJust(userid, absentdaysNojust);
-
+            student.GetStudent(userid, studentattendence, studentName, TeacherName, ClassName);
+            student.getcountabsent(userid, absentdays);
+            student.GetCountAbsentJust(userid, absentdaysjust);
+            student.GetCountAbsentNotJust(userid, absentdaysNojust);
+      
 
         }
     }
+
 }

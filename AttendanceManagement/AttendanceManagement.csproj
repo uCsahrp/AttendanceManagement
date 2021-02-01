@@ -68,6 +68,7 @@
     </ApplicationDefinition>
     <Compile Include="Models\Admin.cs" />
     <Compile Include="Models\Helper.cs" />
+    <Compile Include="Models\Student.cs" />
     <Compile Include="Views\Admin.xaml.cs">
       <DependentUpon>Admin.xaml</DependentUpon>
     </Compile>
