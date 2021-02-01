@@ -38,7 +38,7 @@ namespace AttendanceManagement.Views
 
         }
 
-        #region GetUsers
+        #region GetClasses
 
         void GetClasses()
         {

@@ -356,6 +356,16 @@ namespace AttendanceManagement.Views
         #endregion
 
 
+        private void BtnUsersList_OnClick(object sender, RoutedEventArgs e)
+        {
+            UsersList.Visibility = Visibility.Visible;
+            DashBoard.Visibility = Visibility.Collapsed;
+        }
 
+        private void BtnDashBoard_OnClick(object sender, RoutedEventArgs e)
+        {
+            DashBoard.Visibility = Visibility.Visible;
+            UsersList.Visibility = Visibility.Collapsed;
+        }
     }
 }

@@ -54,84 +54,94 @@
 
             <Border Padding="50"></Border>
             <Line Width="220" Stroke="White" HorizontalAlignment="Center" StrokeThickness="2"></Line>
-            <Button x:Name="btnnewuser" Foreground="White" FontSize="24"  Height="50" BorderBrush="{x:Null}"  Background="{x:Null}" HorizontalContentAlignment="Center">All Users</Button>
+            <Button x:Name="BtnUsersList" Foreground="White" FontSize="24"  Height="50" BorderBrush="{x:Null}" Click="BtnUsersList_OnClick"  Background="{x:Null}" HorizontalContentAlignment="Center">All Users</Button>
 
-            <Button x:Name="btndash" Margin="0,40,0,0"  Foreground="White" FontSize="24" FontFamily="Roboto"  Background="{x:Null}" Height="50" BorderBrush="{x:Null}" HorizontalContentAlignment="Center">Dashboard</Button>
-
+            <Button x:Name="BtnDashBoard" Margin="0,40,0,0"  Foreground="White" FontSize="24" FontFamily="Roboto"  Background="{x:Null}" Height="50" BorderBrush="{x:Null}" Click="BtnDashBoard_OnClick" HorizontalContentAlignment="Center">Dashboard</Button>
         </StackPanel>
-        <Grid Grid.Row="1" Grid.Column="1" Background="White" Margin="0,25,0,0" >
-            <StackPanel ZIndex="3" >
-                <TextBlock  x:Name="Message" TextAlignment="Center" Style="{DynamicResource MaterialDesignBody1TextBlock}" Margin="15" Foreground="#007bff" />
 
-            </StackPanel>
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-
-                    <Button x:Name="AddNewUser" Style="{DynamicResource MaterialDesignFlatAccentButton}" Background="#007bff" Foreground="Azure" Height="35"  Click="AddNewUser_Click">
-                        Add new User
-                    </Button>
-                    <!--<Button  Width="145" Height="35" Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Background="OrangeRed" Content="Delete User" ToolTip="Select a User To Delete" Click="DelUser_Click" Margin="10 0"/>-->
+        <Border Name="UsersList"  Grid.Row="1" Grid.Column="1"  Background="White"  CornerRadius="15" Margin="0,25,0,0"  Padding="0">
+            <Grid >
+                <StackPanel ZIndex="3" >
+                    <TextBlock  x:Name="Message" TextAlignment="Center" Style="{DynamicResource MaterialDesignBody1TextBlock}" Margin="15" Foreground="#007bff" />
                 </StackPanel>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
 
-                <Border CornerRadius="10" Background="#007bff" Height="540" Margin="0,24,0,0" VerticalAlignment="Top" >
-                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Button x:Name="AddNewUser" Style="{DynamicResource MaterialDesignFlatAccentButton}" Background="#007bff" Foreground="Azure" Height="35"  Click="AddNewUser_Click">
+                            Add new User
+                        </Button>
+                        <!--<Button  Width="145" Height="35" Style="{DynamicResource MaterialDesignFlatDarkBgButton}" Background="OrangeRed" Content="Delete User" ToolTip="Select a User To Delete" Click="DelUser_Click" Margin="10 0"/>-->
+                    </StackPanel>
 
-                        <Grid Height="43" Width="750"  VerticalAlignment="Top" HorizontalAlignment="Center">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
-                                <ColumnDefinition Width="*"></ColumnDefinition>
+                    <Border CornerRadius="10" Background="#007bff" Height="540" Margin="0,24,0,0" VerticalAlignment="Top" >
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
 
-                            </Grid.ColumnDefinitions>
-                            <TextBox Grid.Column="0" x:Name="SearchInput" TextChanged="SearchInput_TextChanged" BorderBrush="White" Style="{DynamicResource MaterialDesignTextBoxBase}" Height="31" Width="150" VerticalAlignment="Center" HorizontalAlignment="Left" materialDesign:HintAssist.Hint=" Search..." Foreground="White" Padding="1" />
+                            <Grid Height="43" Width="860"  VerticalAlignment="Top" HorizontalAlignment="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
 
-                            <TextBlock Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold"  Foreground="White" Style="{DynamicResource MaterialDesignHeadline3TextBlock}" FontSize="20" Text="Users List"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBox Grid.Column="0" x:Name="SearchInput" TextChanged="SearchInput_TextChanged" BorderBrush="White" Style="{DynamicResource MaterialDesignTextBoxBase}" Height="31" Width="150" VerticalAlignment="Center" HorizontalAlignment="Left" materialDesign:HintAssist.Hint=" Search..." Foreground="White" Padding="1" />
 
-                            <StackPanel  Grid.Column="2" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
-                                <ComboBox Name="ClassFilter" Width="150" Height="31" Padding="6" VerticalAlignment="Center" Foreground="DimGray" BorderBrush="White" HorizontalAlignment="Right" materialDesign:HintAssist.Hint=" Filter"  Style="{DynamicResource MaterialDesignComboBox}"                                          SelectionChanged="ClassFilter_OnSelectionChanged"
+                                <TextBlock Grid.Column="1"  HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="SemiBold"  Foreground="White" Style="{DynamicResource MaterialDesignHeadline3TextBlock}" FontSize="20" Text="Users List"/>
+
+                                <StackPanel  Grid.Column="2" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <ComboBox Name="ClassFilter" Width="150" Height="31" Padding="6" VerticalAlignment="Center" Foreground="DimGray" BorderBrush="White" HorizontalAlignment="Right" materialDesign:HintAssist.Hint=" Filter"  Style="{DynamicResource MaterialDesignComboBox}"                                          SelectionChanged="ClassFilter_OnSelectionChanged"
                                           />
 
 
+                                    <Button Grid.Column="2" x:Name="BtnRefresh"  materialDesign:HintAssist.Hint="Clear filter" materialDesign:ButtonAssist.CornerRadius="50" VerticalAlignment="Center" HorizontalAlignment="Right" Style="{DynamicResource MaterialDesignFlatButton}"  Margin="16 0 0 0" Click="BtnRefresh_Click">
+                                        <materialDesign:PackIcon Kind="CloseCircle" Foreground="White" FontWeight="Bold"  Width="25" Height="25"/>
+                                    </Button>
 
 
-                                <Button x:Name="BtnRefresh" Style="{DynamicResource MaterialDesignFlatButton}" Background="LightSeaGreen"  Margin="10 0" Click="BtnRefresh_Click">
-                                    <materialDesign:PackIcon Kind="Reload" Foreground="White" FontWeight="Bold" Margin="2" Width="20" Height="20"/>
-                                </Button>
-                            </StackPanel>
+                                </StackPanel>
 
 
-                        </Grid>
+                            </Grid>
 
-                        <DataGrid x:Name="userstable"  Height="472" Margin="5 " VerticalScrollBarVisibility="Auto" ColumnWidth="130" HorizontalAlignment="Center" RowBackground="Azure" AutoGenerateColumns="False" MouseDoubleClick="userstable_MouseDoubleClick" CanUserAddRows="False" SelectionChanged="userstable_SelectionChanged" Style="{DynamicResource MaterialDesignDataGrid}" BorderBrush="#007bff" IsReadOnly="True" SelectionMode="Single">
+                            <DataGrid x:Name="userstable"  Height="472" Margin="5 " VerticalScrollBarVisibility="Auto" ColumnWidth="130" HorizontalAlignment="Center" RowBackground="Azure" AutoGenerateColumns="False" MouseDoubleClick="userstable_MouseDoubleClick" CanUserAddRows="False" SelectionChanged="userstable_SelectionChanged" Style="{DynamicResource MaterialDesignDataGrid}" BorderBrush="#007bff" IsReadOnly="True" SelectionMode="Single">
 
-                            <DataGrid.Columns >
-                                <DataGridTextColumn Header="User Id" Binding="{Binding [User Id]}" />
-                                <DataGridTextColumn Header="Full Name" Binding="{Binding [Full Name]}" />
-                                <DataGridTextColumn Header="Email" Binding="{Binding [Email]}"  />
-                                <DataGridTextColumn Header="Role Name"  Binding="{Binding [Role Name]}" />
-                                <DataGridTextColumn Header="Class Name" Binding="{Binding [Class Name]}" />
-                                <DataGridTemplateColumn Width="125" x:Name="action" Header="Action">
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate >
-                                            <Button x:Name="Edit" Content="Edit" Width="80" Click="Edit_Click" Background="#03DAC5" BorderBrush="{x:Null}" Foreground="White" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
-                                <DataGridTemplateColumn Width="125" x:Name="action1" >
-                                    <DataGridTemplateColumn.CellTemplate>
-                                        <DataTemplate >
-                                            <Button x:Name="DelUser"  Content="Delete" Width="80" Click="DelUser_Click" Background="#FFCF6679" BorderBrush="{x:Null}" Foreground="White" />
-                                        </DataTemplate>
-                                    </DataGridTemplateColumn.CellTemplate>
-                                </DataGridTemplateColumn>
+                                <DataGrid.Columns >
+                                    <DataGridTextColumn Header="User Id" Binding="{Binding [User Id]}" />
+                                    <DataGridTextColumn Header="Full Name" Binding="{Binding [Full Name]}" />
+                                    <DataGridTextColumn Header="Email" Binding="{Binding [Email]}"  />
+                                    <DataGridTextColumn Header="Role Name"  Binding="{Binding [Role Name]}" />
+                                    <DataGridTextColumn Header="Class Name" Binding="{Binding [Class Name]}" />
+                                    <DataGridTemplateColumn Width="125" x:Name="action" Header="Action">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate >
+                                                <Button x:Name="Edit" Content="Edit" Width="80" Click="Edit_Click" Background="#03DAC5" BorderBrush="{x:Null}" Foreground="White" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn Width="125" x:Name="action1" >
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate >
+                                                <Button x:Name="DelUser"  Content="Delete" Width="80" Click="DelUser_Click" Background="#FFCF6679" BorderBrush="{x:Null}" Foreground="White" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
 
-                            </DataGrid.Columns>
-                        </DataGrid>
-                    </StackPanel>
-                </Border>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+                    </Border>
 
-            </StackPanel>
-        </Grid>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+
+
+        <Border  Name="DashBoard"  Grid.Row="1" Grid.Column="1"  Visibility="Collapsed" Background="White"  CornerRadius="15" Margin="0,25,0,0"  Padding="0">
+            <Grid  >
+
+
+            </Grid>
+        </Border>
 
     </Grid>
 </Window>

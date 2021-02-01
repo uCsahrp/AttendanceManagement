@@ -28,7 +28,9 @@ namespace AttendanceManagement.Views
         public EditPopup()
         {
             InitializeComponent();
-            Helper.GetClasses(ClassesBox);
+            Helper.GetRoles(UserRole);
+            //Helper.GetClasses(ClassesBox);
+            GetClasses();
         }
 
 
@@ -81,6 +83,25 @@ namespace AttendanceManagement.Views
             }
         }
 
+
+        #endregion
+
+
+
+        #region GetClasses
+
+        void GetClasses()
+        {
+            Ado adonet = new Ado();
+
+            var query = $"Select * From Classes";
+            adonet.Adapter = new SqlDataAdapter(query, adonet.Cnx);
+            adonet.Adapter.Fill(adonet.DataSet);
+            ClassesBox.SelectedValuePath = "Class Id";
+            ClassesBox.DisplayMemberPath = "Class Name";
+            ClassesBox.ItemsSource = adonet.DataSet.Tables[0].DefaultView;
+
+        }
 
         #endregion
 

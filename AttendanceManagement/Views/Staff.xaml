@@ -6,14 +6,16 @@
         xmlns:local="clr-namespace:AttendanceManagement.Views"
         mc:Ignorable="d"
         Title="Staff" Height="800" Width="883">
-    <Grid Margin="1,0,-3,-0.333" Loaded="Grid_Loaded" Background="#FF353740">
+
+    <Grid Loaded="Grid_Loaded" Background="#FF353740">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBlock HorizontalAlignment="Left" Margin="742,14,0,0" TextWrapping="Wrap" Text="Classe C#" VerticalAlignment="Top" FontSize="24" FontFamily="Roboto" Foreground="#FFFEFEFE"/>
+        <TextBlock HorizontalAlignment="Left"  TextWrapping="Wrap" Text="Classe C#" VerticalAlignment="Top" FontSize="24" FontFamily="Roboto" Foreground="#FFFEFEFE"/>
         <TextBlock HorizontalAlignment="Left" Margin="480,97,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="22" FontFamily="Roboto" Text="Chercher par le nom :" Foreground="White" Width="210"/>
 
         <DataGrid x:Name="dg" IsReadOnly="True" Cursor="Arrow" AutoGenerateColumns="False" Margin="184,185,18,264" SelectedIndex="0" Visibility="Hidden">
+
             <DataGrid.Columns>
                 <DataGridTextColumn Width="50" Header="#" Binding="{Binding [User Id]}"></DataGridTextColumn>
                 <DataGridTextColumn Width="50" Header="name " Binding="{Binding [Full Name]}"></DataGridTextColumn>
@@ -33,13 +35,17 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-
             </DataGrid.Columns>
         </DataGrid>
+
         <Button x:Name="btn_ajouter_ab" Content="Ajouter absence" HorizontalAlignment="Left" Margin="506,140,0,0" VerticalAlignment="Top" Width="349" Height="46" Background="#FFD17A7A" Click="btn_ajouter_ab_Click"/>
+
         <Button x:Name="afficher_les_absents" Content="Afficher les absents" HorizontalAlignment="Left" Margin="184,140,0,0" VerticalAlignment="Top" Width="322" Height="45" Background="#FFF3B34E" Click="afficher_les_absents_Click"/>
+
         <DataGrid HorizontalAlignment="Left" Height="591" Margin="257,104,0,0" VerticalAlignment="Top" Width="595" Visibility="Hidden"/>
+
         <DataGrid x:Name="dg1" HorizontalAlignment="Left" Height="320" Margin="185,185,0,0" VerticalAlignment="Top" Width="670"/>
+
         <TextBox x:Name="text_search" HorizontalAlignment="Left" Height="30" Margin="695,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="160" TextChanged="text_search_TextChanged"/>
 
     </Grid>
