@@ -8,16 +8,18 @@
         Title="Student" Height="800" Width="1280" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded"
   
         >
-    <Grid Background="#FFF1F1F4"  >
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition  Width="333"/>
-
-        </Grid.ColumnDefinitions>
+    <Grid Background="#FFF1F1FF"  >
         <Grid.RowDefinitions>
-            <RowDefinition Height="55"/>
-            <RowDefinition />
+            <RowDefinition Height="48*"/>
+            <RowDefinition Height="156*"/>
+            <RowDefinition Height="165*"/>
+            <RowDefinition Height="400*"/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="11*"/>
+            <ColumnDefinition Width="102*"/>
+            <ColumnDefinition Width="368"/>
+        </Grid.ColumnDefinitions>
 
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Width="180" VerticalAlignment="Center" Grid.Column="1"  Height="22" Margin="0,16,0,17" >
 
@@ -27,50 +29,68 @@
 
 
         </StackPanel>
-        <TextBlock  HorizontalAlignment="Left" Text="attendance." Margin="30,20,18,0" FontSize="21"
-                        TextAlignment="Center"/>
-        <StackPanel Grid.Row="1" Grid.RowSpan="2" Background="WhiteSmoke" Width="887" Height="671">
+        <StackPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="4" Background="#FF605BFF">
+        </StackPanel>
+        <StackPanel Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" Background="#FF605BFF">
+        </StackPanel>
+        <Grid ZIndex="11" Grid.Column="0" Grid.ColumnSpan="3"  Width="230" Margin="5" VerticalAlignment="Top" HorizontalAlignment="Left">
+            <Image Source="../Assets/Logo6-06.png" Margin="0,0,0,-4" ></Image>
+        </Grid>
+
+        <StackPanel Grid.Row="1" Grid.RowSpan="3"  Grid.Column="1" Height="671" Margin="0,25,4,25">
 
 
 
-            <StackPanel Orientation="Vertical"  Grid.Column="0"  Grid.Row="1" Height="623">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  Margin="0,53,0,0">
-                    <Border CornerRadius="15">
+            <StackPanel Orientation="Vertical"  Grid.Column="1"  Grid.Row="1" Height="696" Margin="0,0,-1,0">
+                <StackPanel  HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Border CornerRadius="20" Height="122" Margin="15,0,0,0" VerticalAlignment="Center" Background="White" Width="692" HorizontalAlignment="Left">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock HorizontalAlignment="Center" FontSize="24" Width="416" Height="85" Margin="16,27,0,10" VerticalAlignment="Center"><Run Text="Hello"/><Run Text="!"/><Run Text=" Mme "/><Run Foreground="#FFFF8D1E" FontFamily="Brush Script Std" Text="Majda FANNAN"/><Run Text=", "/><LineBreak/><Run Foreground="#FF636363" Text="Have A Great WORK!"/></TextBlock>
+                            <Rectangle Width="222" Margin="0">
+                                <Rectangle.Fill>
+                                    <ImageBrush ImageSource="20944996.jpg" Stretch="UniformToFill"/>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                        </StackPanel>
+                    </Border>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  Margin="0,24,0,0">
+                    <Border CornerRadius="15" Width="196">
                         <Border.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FFBCD5EE" Offset="0"/>
                                 <GradientStop Color="#FF3699FB" Offset="1"/>
                             </LinearGradientBrush>
                         </Border.Background>
-                        <StackPanel Width="250" Height="130" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,6,0,0">
-                            <Label HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="20" Background="{x:Null}" Foreground="#DDFFFFFF" Margin="0,21,0,0" Content="Les jours Absenté"/>
+                        <StackPanel Width="196" Height="130" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,6,0,0">
+                            <Label HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" Background="{x:Null}" Foreground="#DDFFFFFF" Margin="0,21,0,0" Content="Les jours Absenté"/>
                             <TextBlock x:Name="absentdays" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="24" Margin="0,21,0,0"></TextBlock>
                         </StackPanel>
                     </Border>
 
-                    <Border Padding="20"></Border>
-                    <Border CornerRadius="15" >
+                    <Border Padding="10"></Border>
+                    <Border CornerRadius="15" Width="196" >
                         <Border.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                                 <GradientStop Color="#FFE1CBEE" Offset="0"/>
                                 <GradientStop Color="#FFB18CF2" Offset="1"/>
                             </LinearGradientBrush>
                         </Border.Background>
-                        <StackPanel  Width="250" Height="132" >
-                            <Label Background="{x:Null}" Foreground="#DDFFFFFF" FontSize="20" Margin="0,21,0,0" HorizontalAlignment="Center" Content="Les Absences Non-justfiée"/>
+                        <StackPanel  Width="196" Height="132" >
+                            <Label Background="{x:Null}" Foreground="#DDFFFFFF" FontSize="18" Margin="0,21,0,0" HorizontalAlignment="Center" Content="Les Absences Non-justfiée" HorizontalContentAlignment="Center" VerticalAlignment="Center"/>
                             <TextBlock x:Name="absentdaysNojust" Foreground="White" Margin="0,21,0,0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </StackPanel>
                     </Border>
-                    <Border Padding="20"></Border>
-                    <Border CornerRadius="15" >
+                    <Border Padding="10"></Border>
+                    <Border CornerRadius="15" Width="196" >
                         <Border.Background>
                             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FF8DD28A" Offset="0"/>
-                                <GradientStop Color="#FF03DAC5" Offset="1"/>
+                                <GradientStop Color="White" Offset="0"/>
+                                <GradientStop Color="#FF1999F1" Offset="1"/>
                             </LinearGradientBrush>
                         </Border.Background>
-                        <StackPanel  Width="250" Height="132" >
-                            <Label Background="{x:Null}" Foreground="#DDFFFFFF" FontSize="20" Margin="0,21,0,0" HorizontalAlignment="Center" Content="Les Absences justfiée"/>
+                        <StackPanel  Width="196" Height="132" >
+                            <Label Background="{x:Null}" Foreground="#DDFFFFFF" FontSize="18" Margin="0,21,0,0" HorizontalAlignment="Center" Content="Les Absences justfiée"/>
                             <TextBlock  x:Name="absentdaysjust" Foreground="White" Margin="0,21,0,0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </StackPanel>
                     </Border>
@@ -78,18 +98,18 @@
 
                 </StackPanel>
 
-                <StackPanel Orientation="Vertical" Margin="30,30,29,0" Background="WhiteSmoke" Height="403" Width="828">
+                <StackPanel Orientation="Vertical"  Grid.ColumnSpan="3" Margin="54,30,43,0"  Height="370">
 
 
-                    <DataGrid x:Name="studentattendence" Margin="14,25,14,0" ColumnWidth="130" AutoGenerateColumns="False"  CanUserAddRows="False" Width="800" Height="376" >
+                    <DataGrid x:Name="studentattendence"  ColumnWidth="100" AutoGenerateColumns="False"  CanUserAddRows="False" Background="White" BorderBrush="Black" Foreground="Black"  Height="366" >
 
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="User Id" Width="120" Binding="{Binding [User Id]}" />
-                            <DataGridTextColumn Header="Full Name" Width="120" Binding="{Binding [Full Name]}"  />
-                            <DataGridTextColumn Header="Email" Width="200" Binding="{Binding [Email]}"  />
-                            <DataGridTextColumn Header="Absent" Width="120"  Binding="{Binding [Date]}" />
-                            <DataGridTextColumn Header="Description" Width="120"  Binding="{Binding [Description]}" />
-                            <DataGridTextColumn Header="Justifié" Width="120" Binding="{Binding [IsJustified]}" />
+                            <DataGridTextColumn Header="User Id" Width="90" Binding="{Binding [User Id]}" />
+                            <DataGridTextColumn Header="Full Name" Width="110" Binding="{Binding [Full Name]}"  />
+                            <DataGridTextColumn Header="Email" Width="150" Binding="{Binding [Email]}"  />
+                            <DataGridTextColumn Header="Absent" Width="110"  Binding="{Binding [Date]}" />
+                            <DataGridTextColumn Header="Description" Width="110"  Binding="{Binding [Description]}" />
+                            <DataGridTextColumn Header="Justifié" Width="110" Binding="{Binding [IsJustified]}" />
                         </DataGrid.Columns>
 
                     </DataGrid>
@@ -102,28 +122,45 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel  Orientation="Vertical" Grid.Column="1" Background="#FF007ACC" Grid.RowSpan="2">
+        <StackPanel  Orientation="Vertical" Grid.Column="3" Grid.Row="0"  Grid.RowSpan="4">
 
-            <StackPanel Orientation="Vertical" Width="300" Margin="0,31,0,0">
-                <Border Padding="30"></Border>
-                <Border Width="120" Height="120" BorderBrush="#007bff" BorderThickness="1" CornerRadius="100">
-                    <Image />
+            <StackPanel Height="449">
+                <Border Height="48"></Border>
+                <Ellipse Panel.ZIndex="1" Width="130" Height="130" HorizontalAlignment="Center" VerticalAlignment="Center">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="christina-wocintechchat-com-4yTHVRarfGY-unsplash.jpg" Stretch="UniformToFill"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <Border CornerRadius="20" Width="335" Height="313" Background="White" Margin="16,-57,16,0">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Height="337" Width="374" Margin="-20,0,-19,-5">
+                        <Border Padding="30"></Border>
+                        <TextBlock FontSize="26" Width="283" TextAlignment="Center" x:Name="studentName" VerticalAlignment="Center" HorizontalAlignment="Center">Majda FANNAN</TextBlock>
+                        <TextBlock FontSize="17" TextAlignment="Center">Student</TextBlock>
+                        <Border Padding="20"></Border>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <StackPanel Orientation="Vertical" >
+                                <Label FontSize="20" HorizontalContentAlignment="Center" Background="White" Foreground="#DD000000" Width="160">Teacher Name</Label>
+                                <TextBlock x:Name="TeacherName" FontSize="18" HorizontalAlignment="Center" Foreground="Black"/>
+                            </StackPanel>
+                            <Path Width="6" Fill="Black" Panel.ZIndex="2"></Path>
+                            <StackPanel Orientation="Vertical"  >
+                                <Label FontSize="20" HorizontalContentAlignment="Center" Background="White" Foreground="#DD000000"  Content=" Classe Name" Width="160"/>
+                                <TextBlock x:Name="ClassName" HorizontalAlignment="Center" Foreground="Black" FontSize="18"></TextBlock>
+                            </StackPanel>
+
+
+                        </StackPanel>
+                        <Border Padding="15">
+
+                        </Border>
+                        <Border CornerRadius="20" Background="#FF605BFF" Width="150" Height="45" Margin="112,0">
+                            <Button  Background="{x:Null}" BorderBrush="{x:Null}" Foreground="White" Height="42" FontSize="22" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" >Log Out</Button>
+                        </Border>
+                    </StackPanel>
                 </Border>
-                <StackPanel Orientation="Vertical">
-                    <TextBlock x:Name="studentName" FontSize="24" TextAlignment="Center"  HorizontalAlignment="Center"  Width="209" VerticalAlignment="Center" Margin="0,23,0,0" Foreground="White" FontFamily="Roboto"/>
-                    <TextBlock TextAlignment="Center" FontSize="22" Foreground="Gainsboro">Student</TextBlock>
-
-                </StackPanel>
             </StackPanel>
             <Border Padding="15"/>
-            <StackPanel Orientation="Vertical" >
-                <Label FontSize="24" HorizontalContentAlignment="Center" Background="White" Foreground="#DD000000" Margin="0,20,0,0">Your Teacher Name</Label>
-                <TextBlock x:Name="TeacherName" FontSize="22" HorizontalAlignment="Center" Foreground="#FFEAEAEA"/>
-            </StackPanel>
-            <StackPanel Orientation="Vertical" Margin="0,20,0,0" >
-                <Label FontSize="24" HorizontalContentAlignment="Center" Background="White" Foreground="#DD000000" Margin="0,20,0,0" Content="Your Classe Name"/>
-                <TextBlock x:Name="ClassName" HorizontalAlignment="Center" Foreground="#FFE4E4E4" FontSize="22"></TextBlock>
-            </StackPanel>
+
 
 
 
