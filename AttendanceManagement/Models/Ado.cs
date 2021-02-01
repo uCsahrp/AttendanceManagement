@@ -13,7 +13,7 @@ namespace AttendanceManagement.Models
 
 
         // Declaration des objets sql
-        private SqlConnection cnx = new SqlConnection("Data Source=DESKTOP-OC51QH5;Initial Catalog=AttendanceManagement;Integrated Security=True");
+        private SqlConnection cnx = new SqlConnection("Data Source=ADAM-DELL;Initial Catalog=AttendanceManagement;Integrated Security=True");
         private SqlCommand cmd = new SqlCommand();
         private SqlDataReader dataReader;
         private DataTable datatable = new DataTable();
@@ -46,7 +46,7 @@ namespace AttendanceManagement.Models
         {
             if (Cnx.State == ConnectionState.Closed || Cnx.State == ConnectionState.Broken)
             {
-                Cnx.ConnectionString = "Data Source=DESKTOP-OC51QH5;Initial Catalog=AttendanceManagement;Integrated Security=True";
+                Cnx.ConnectionString = "Data Source=ADAM-DELL;Initial Catalog=AttendanceManagement;Integrated Security=True";
                 Cnx.Open();
             }
         }

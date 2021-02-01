@@ -34,7 +34,7 @@ namespace AttendanceManagement.Models
             var rId = roleId + 1;
             var cId = classId + 1;
 
-            avatar = Helper.SetAvatar(roleId);
+            avatar = Helper.SetAvatar(roleId) + 1;
 
             //If there is no username
             if (fullName == null)
