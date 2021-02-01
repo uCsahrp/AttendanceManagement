@@ -55,13 +55,7 @@
                     </Border>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"  Margin="0,24,0,0">
-                    <Border CornerRadius="15" Width="196">
-                        <Border.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FFBCD5EE" Offset="0"/>
-                                <GradientStop Color="#FF3699FB" Offset="1"/>
-                            </LinearGradientBrush>
-                        </Border.Background>
+                    <Border CornerRadius="15" Width="196" Background="#FF605BFF">
                         <StackPanel Width="196" Height="130" HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,6,0,0">
                             <Label HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="18" Background="{x:Null}" Foreground="#DDFFFFFF" Margin="0,21,0,0" Content="Les jours Absenté"/>
                             <TextBlock x:Name="absentdays" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="24" Margin="0,21,0,0"></TextBlock>
@@ -69,26 +63,14 @@
                     </Border>
 
                     <Border Padding="10"></Border>
-                    <Border CornerRadius="15" Width="196" >
-                        <Border.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="#FFE1CBEE" Offset="0"/>
-                                <GradientStop Color="#FFB18CF2" Offset="1"/>
-                            </LinearGradientBrush>
-                        </Border.Background>
+                    <Border CornerRadius="15" Width="196" Background="#FF605BFF" >
                         <StackPanel  Width="196" Height="132" >
                             <Label Background="{x:Null}" Foreground="#DDFFFFFF" FontSize="18" Margin="0,21,0,0" HorizontalAlignment="Center" Content="Les Absences Non-justfiée" HorizontalContentAlignment="Center" VerticalAlignment="Center"/>
                             <TextBlock x:Name="absentdaysNojust" Foreground="White" Margin="0,21,0,0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
                         </StackPanel>
                     </Border>
                     <Border Padding="10"></Border>
-                    <Border CornerRadius="15" Width="196" >
-                        <Border.Background>
-                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                                <GradientStop Color="White" Offset="0"/>
-                                <GradientStop Color="#FF1999F1" Offset="1"/>
-                            </LinearGradientBrush>
-                        </Border.Background>
+                    <Border CornerRadius="15" Width="196" Background="#FF605BFF" >
                         <StackPanel  Width="196" Height="132" >
                             <Label Background="{x:Null}" Foreground="#DDFFFFFF" FontSize="18" Margin="0,21,0,0" HorizontalAlignment="Center" Content="Les Absences justfiée"/>
                             <TextBlock  x:Name="absentdaysjust" Foreground="White" Margin="0,21,0,0" FontSize="24" VerticalAlignment="Center" HorizontalAlignment="Center"></TextBlock>
@@ -101,7 +83,7 @@
                 <StackPanel Orientation="Vertical"  Grid.ColumnSpan="3" Margin="54,30,43,0"  Height="370">
 
 
-                    <DataGrid x:Name="studentattendence"  ColumnWidth="100" AutoGenerateColumns="False"  CanUserAddRows="False" Background="White" BorderBrush="Black" Foreground="Black"  Height="375" >
+                    <DataGrid x:Name="studentattendence"  ColumnWidth="100" AutoGenerateColumns="False"  CanUserAddRows="False" Background="White" BorderBrush="#FF474747" Foreground="Black"  Height="375" >
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="User Id" Width="90" Binding="{Binding [User Id]}" />
