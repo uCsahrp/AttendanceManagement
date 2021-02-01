@@ -31,12 +31,19 @@ namespace AttendanceManagement.Views
         private void AdminPopup_OnLoaded(object sender, RoutedEventArgs e)
         {
 
+
+            FullName.Focus();
+            GetClasses();
             Helper.GetRoles(UserRole);
 
-            GetClasses();
-
-
         }
+
+
+
+
+
+
+
 
         #region GetClasses
 
@@ -80,9 +87,6 @@ namespace AttendanceManagement.Views
                     UserPassword.Password = "";
                     UserPassword2.Password = "";
                     admin.changed = true;
-                    Admin ad = new Admin();
-
-                    Helper.GetUsers(ad.userstable);
                     this.Close();
 
                 }

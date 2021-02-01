@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:AttendanceManagement"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
          
-             StartupUri="Login.xaml">
+             StartupUri="Views/AdminPopup.xaml">
 
 
     <Application.Resources>

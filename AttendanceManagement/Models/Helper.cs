@@ -52,7 +52,23 @@ namespace AttendanceManagement.Models
         }
 
 
-
+        public static string SetAvatar(int RoleId)
+        {
+            //Set The Avatar Based on RoleId
+            switch (RoleId)
+            {
+                case 0:
+                    return String.Empty;
+                case 1:
+                   return "Assets/Avatars/admin.png";
+                case 2:
+                    return "Assets/Avatars/secretary.png";
+                case 3:
+                    return "Assets/Avatars/staff.png";
+                default:
+                    return "Assets/Avatars/student.png";   
+            }
+        }
 
         public static void GetUsers(DataGrid usertable)
         {
@@ -63,7 +79,7 @@ namespace AttendanceManagement.Models
             {
                 usertable.Items.Clear();
                 // Views.Admin admin = new Views.Admin();
-
+                
                 adonet.Cmd.CommandText = "Select u.[User Id], u.[Full Name], u.Email, r.[Role Name],c.[Class Name] From Users u INNER JOIN Roles r ON u.[Role Id]= r.[Role Id] Left JOIN Classes c On u.[Class Id] = c.[Id Class]; ";
                 adonet.Cmd.Connection = adonet.Cnx;
                 adonet.DataReader = adonet.Cmd.ExecuteReader();

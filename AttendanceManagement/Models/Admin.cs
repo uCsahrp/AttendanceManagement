@@ -34,26 +34,7 @@ namespace AttendanceManagement.Models
             var rId = roleId + 1;
             var cId = classId + 1;
 
-            //Set The Avatar Based on RoleId
-            switch (rId)
-            {
-                case 1:
-                    avatar = "Assets/Avatars/admin.png";
-
-                    break;
-                case 2:
-                    avatar = "Assets/Avatars/secretary.png";
-                    break;
-                case 3:
-                    avatar = "Assets/Avatars/staff.png";
-                    break;
-                case 4:
-                    avatar = "Assets/Avatars/student.png";
-                    break;
-                default:
-                    avatar = string.Empty;
-                    break;
-            }
+            avatar = Helper.SetAvatar(roleId);
 
             //If there is no username
             if (fullName == null)
