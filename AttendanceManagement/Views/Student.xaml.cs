@@ -34,13 +34,13 @@ namespace AttendanceManagement.Views
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Models.Student student = new Models.Student();
-            student.
-            var userid = Login.userid;
-            student.GetStudent(userid, studentattendence, studentName, TeacherName, ClassName);
-            student.getcountabsent(userid, absentdays);
-            student.GetCountAbsentJust(userid, absentdaysjust);
-            student.GetCountAbsentNotJust(userid, absentdaysNojust);
-      
+            student.RoleId = Login.userid;
+            student.GetStudent(student.RoleId, studentattendence, studentName, TeacherName, ClassName);
+            student.getcountabsent(student.RoleId, absentdays);
+            student.GetCountAbsentJust(student.RoleId, absentdaysjust);
+            student.GetCountAbsentNotJust(student.RoleId, absentdaysNojust);
+
+            //
 
         }
     }
