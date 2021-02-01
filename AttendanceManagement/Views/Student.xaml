@@ -101,7 +101,7 @@
                 <StackPanel Orientation="Vertical"  Grid.ColumnSpan="3" Margin="54,30,43,0"  Height="370">
 
 
-                    <DataGrid x:Name="studentattendence"  ColumnWidth="100" AutoGenerateColumns="False"  CanUserAddRows="False" Background="White" BorderBrush="Black" Foreground="Black"  Height="366" >
+                    <DataGrid x:Name="studentattendence"  ColumnWidth="100" AutoGenerateColumns="False"  CanUserAddRows="False" Background="White" BorderBrush="Black" Foreground="Black"  Height="375" >
 
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="User Id" Width="90" Binding="{Binding [User Id]}" />
@@ -126,17 +126,17 @@
 
             <StackPanel Height="449">
                 <Border Height="48"></Border>
-                <Ellipse Panel.ZIndex="1" Width="130" Height="130" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <Ellipse Panel.ZIndex="1" Width="110" Height="110" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <Ellipse.Fill>
                         <ImageBrush ImageSource="christina-wocintechchat-com-4yTHVRarfGY-unsplash.jpg" Stretch="UniformToFill"/>
                     </Ellipse.Fill>
                 </Ellipse>
-                <Border CornerRadius="20" Width="335" Height="313" Background="White" Margin="16,-57,16,0">
+                <Border CornerRadius="20" Width="335" Height="298" Background="White" Margin="16,-57,16,0">
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Height="337" Width="374" Margin="-20,0,-19,-5">
                         <Border Padding="30"></Border>
                         <TextBlock FontSize="26" Width="283" TextAlignment="Center" x:Name="studentName" VerticalAlignment="Center" HorizontalAlignment="Center">Majda FANNAN</TextBlock>
                         <TextBlock FontSize="17" TextAlignment="Center">Student</TextBlock>
-                        <Border Padding="20"></Border>
+                        <Border Padding="15"></Border>
                         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                             <StackPanel Orientation="Vertical" >
                                 <Label FontSize="20" HorizontalContentAlignment="Center" Background="White" Foreground="#DD000000" Width="160">Teacher Name</Label>
@@ -150,7 +150,7 @@
 
 
                         </StackPanel>
-                        <Border Padding="15">
+                        <Border Padding="13">
 
                         </Border>
                         <Border CornerRadius="20" Background="#FF605BFF" Width="150" Height="45" Margin="112,0">
