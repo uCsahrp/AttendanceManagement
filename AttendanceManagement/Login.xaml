@@ -20,6 +20,37 @@
         ResizeMode="NoResize"
         BorderBrush="#007bff"
         BorderThickness="4" KeyDown="MainWindow_OnKeyDown">
+    <Window.Resources>
+        <Storyboard x:Key="login">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="stackPanel">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-381"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="3"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="stackPanel">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-0.5"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="-1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="image">
+                <EasingDoubleKeyFrame KeyTime="0" Value="455"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="image">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.X)" Storyboard.TargetName="textBlock">
+                <EasingDoubleKeyFrame KeyTime="0" Value="455"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:1" Value="0"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[3].(TranslateTransform.Y)" Storyboard.TargetName="textBlock">
+                <EasingDoubleKeyFrame KeyTime="0" Value="-1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource login}"/>
+        </EventTrigger>
+    </Window.Triggers>
     <!--Icon="icoon.ico"-->
 
     <Grid MouseDown="Border_MouseDown">
@@ -29,11 +60,37 @@
         </Grid.RowDefinitions>
 
         <StackPanel Height="300" Background="#007bff" >
-            <Image Width="150" Source="/Assets/login.png" Margin="0 70 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" />
-            <TextBlock Text="Login" FontWeight="Bold" FontSize="30" TextAlignment="Center" Margin="0 15" Foreground="White" />
+            <Image x:Name="image" Width="150" Source="/Assets/login.png" Margin="0 70 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5" >
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+            <TextBlock x:Name="textBlock" Text="Login" FontWeight="Bold" FontSize="30" TextAlignment="Center" Margin="0 15" Foreground="White" RenderTransformOrigin="0.5,0.5" >
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
         </StackPanel>
 
-        <StackPanel Grid.Row="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20">
+        <StackPanel x:Name="stackPanel" Grid.Row="1" Opacity="1"  HorizontalAlignment="Center" VerticalAlignment="Center" Margin="20" RenderTransformOrigin="0.5,0.5">
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
 
 
 
